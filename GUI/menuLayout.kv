@@ -1,0 +1,40 @@
+#:kivy 1.7.2
+
+<Button>:
+    color: .8, .9, 0, 1
+    font_size: 16
+
+
+<MenuLayout>:
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 10
+        extBtn: exitBtn
+        ovBtn: overBtn
+        wBtn: writeBtn
+        rBtn: readBtn
+        cBtn: contactBtn
+
+        GridLayout:
+            size_hint: [.3, 1]
+            cols: 1
+            Button:
+                id: overBtn
+                text: "Overview"
+                on_press: root.parent.parent.manager.current = "overview"
+            Button:
+                id: readBtn
+                text: "Read"
+                on_press: root.parent.parent.manager.current = "read"
+            Button:
+                id: writeBtn
+                text: "Write"
+                on_press: root.parent.parent.manager.current = "write"
+            Button:
+                id: contactBtn
+                text: "Contacts"
+                on_press: root.parent.parent.manager.current = "address"
+            Button:
+                id: exitBtn
+                text: "Exit"
+                on_press: exit()

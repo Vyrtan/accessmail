@@ -1,0 +1,20 @@
+#:kivy 1.7.2
+
+<ReadLayout>:
+    BoxLayout:
+        orientation: "horizontal"
+        MenuLayout:
+            size_hint: [0.2,1]
+        BoxLayout:
+            orientation: "vertical"
+            GridLayout:
+                size_hint: [1, 0.1]
+                rows: 1
+                Button:
+                    text: "Previous"
+                Button:
+                    text: "Save"
+                Button:
+                    text: "Next"
+            Label:
+                text: "Output"
