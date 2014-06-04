@@ -7,11 +7,10 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 
-from GUI.addressLayout import AddressLayout
-from GUI.writeLayout import WriteLayout
-from GUI.overviewLayout import OverviewLayout
-from GUI.readLayout import ReadLayout
-from GUI.menuLayout import MenuLayout
+from src.GUI.addressLayout import AddressLayout
+from src.GUI.writeLayout import WriteLayout
+from src.GUI.overviewLayout import OverviewLayout
+from src.GUI.readLayout import ReadLayout
 
 
 def switch_to(str):

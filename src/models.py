@@ -7,7 +7,7 @@ Base = declarative_base()
 
 
 class Email(Base):
-    __tablename__ = 'conCache'
+    __tablename__ = 'mail'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(255), index=True)
