@@ -10,7 +10,7 @@ from GUI.addressLayout import AddressLayout
 from GUI.writeLayout import WriteLayout
 from GUI.overviewLayout import OverviewLayout
 from GUI.readLayout import ReadLayout
-from GUI.menuLayout import MenuLayout
+
 
 
 def switch_to(str):
@@ -33,20 +33,20 @@ sm.add_widget(AddressLayout(name='address'))
 current_butt = 0
 
 
-def rotate_buttons(keyboard, key,  *args):
-    print("rotate buttons entered")
-    global current_butt
-    if key == 9:
-        current_butt += 1
-        print("Nachher %s" %(current_butt))
-    if key == 13:
-        print("Return pressed")
-        sm.current_screen.mn.buttons[current_butt].on_press()
-    print("leaving rotate buttons")
-    return
+# def rotate_buttons(keyboard, key,  *args):
+#     print("rotate buttons entered")
+#     # global current_butt
+#     if key == 9:
+#         current_butt += 1
+#         print("Nachher %s" %(current_butt))
+#     if key == 13:
+#         print("Return pressed")
+#         sm.current_screen.mn.buttons[current_butt].on_press()
+#     print("leaving rotate buttons")
+#     return
 
 
-Window.bind(on_key_down=rotate_buttons)
+# Window.bind(on_key_down=rotate_buttons)
 
 
 class MainApp(App):
