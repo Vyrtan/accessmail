@@ -1,43 +1,52 @@
 import kivy
+
 kivy.require('1.7.0')
 
+
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager
+from kivy.core.window import Window
 
-Builder.load_file('writelayout.kv')
-Builder.load_file('readlayout.kv')
-Builder.load_file('menuLayout.kv')
-Builder.load_file('overviewLayout.kv')
-Builder.load_file('addressLayout.kv')
+from addressLayout import AddressLayout
+from writeLayout import WriteLayout
+from overviewLayout import OverviewLayout
+from readLayout import ReadLayout
 
 
-class ReadLayout(Screen):
-    pass
+def switch_to(str):
+    sm.current = str
 
 
-class MenuLayout(Screen):
-    pass
+def doSomething(keyboard, key, *args):
+    print(key)
 
 
-class WriteLayout(Screen):
-    pass
-
-
-class OverviewLayout(Screen):
-    pass
-
-
-class AddressLayout(Screen):
-    pass
+def close_keyboard():
+    print("Keyboard closed now.")
 
 
 sm = ScreenManager()
+sm.add_widget(OverviewLayout(name='overview'))
 sm.add_widget(WriteLayout(name='write'))
 sm.add_widget(ReadLayout(name='read'))
-sm.add_widget(OverviewLayout(name='overview'))
 sm.add_widget(AddressLayout(name='address'))
+current_butt = 0
+
+
+def rotate_buttons(keyboard, key,  *args):
+    print("rotate buttons entered")
+    global current_butt
+    if key == 9:
+        current_butt += 1
+        print("Nachher %s" %(current_butt))
+    if key == 13:
+        print("Return pressed")
+        sm.current_screen.mn.buttons[current_butt].on_press()
+    print("leaving rotate buttons")
+    return
+
+
+Window.bind(on_key_down=rotate_buttons)
 
 
 class MainApp(App):
