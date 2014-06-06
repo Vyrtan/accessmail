@@ -6,35 +6,29 @@
 
 
 <MenuLayout>:
-    buttons: [overBtn, exitBtn, writeBtn, readBtn, readBtn, contactBtn]
-    oBtn: overBtn
-    extBtn: exitBtn
-    wBtn: writeBtn
-    rBtn: readBtn
-    cBtn: contactBtn
+    buttons: [overBtn, readBtn, writeBtn, contactBtn, exitBtn]
     BoxLayout:
         orientation: "horizontal"
         spacing: 10
 
         GridLayout:
-            size_hint: [.3, 1]
             cols: 1
             Button:
                 id: overBtn
                 text: "Overview"
-                on_press: root.parent.screen_manager.current = "Overview"
+                on_press: root.parent.show_layout("Overview")
             Button:
                 id: readBtn
                 text: "Read"
-                on_press: root.parent.screen_manager.current = "Read"
+                on_press: root.parent.show_layout("Read")
             Button:
                 id: writeBtn
                 text: "Write"
-                on_press: root.parent.screen_manager.current = "Write"
+                on_press: root.parent.show_layout("Write")
             Button:
                 id: contactBtn
                 text: "Contacts"
-                on_press: root.parent.screen_manager.current = "Address"
+                on_press: root.parent.show_layout("Address")
             Button:
                 id: exitBtn
                 text: "Exit"

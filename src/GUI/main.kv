@@ -2,7 +2,7 @@
 
 <Catalog@BoxLayout>:
     screen_manager: screen_manager
-    menu: menu
+    buttons: menu.buttons
 
     MenuLayout:
         id: menu
@@ -10,7 +10,6 @@
 
     BoxLayout:
         id: reactive_layout
-        orientation: "vertical"
 
         ScreenManager:
             id: screen_manager
@@ -19,7 +18,7 @@
                 OverviewLayout:
             Screen:
                 name: "Read"
-                AddressLayout
+                ReadLayout
             Screen:
                 name: "Write"
                 WriteLayout
