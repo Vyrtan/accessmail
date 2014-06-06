@@ -1,10 +1,10 @@
 import kivy
 
-kivy.require('1.7.0')
+kivy.require('1.8.0')
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import ObjectProperty, VariableListProperty
+from kivy.properties import ObjectProperty, ListProperty
 
 from kivy.core.window import Window
 
@@ -24,7 +24,7 @@ class Catalog(BoxLayout):
     def __init__(self, **kwargs):
         super(Catalog, self).__init__(**kwargs)
         screen_manager = ObjectProperty()
-        buttons = VariableListProperty()
+        buttons = ListProperty()
         self.current_butt = 0
         Window.bind(on_key_down=self.rotate_buttons)
 
@@ -35,6 +35,7 @@ class Catalog(BoxLayout):
     def rotate_buttons(self, keyboard, key,  *args):
         print("enter rotate button")
         print("current_butt: %d" %(self.current_butt))
+        print("current button: %s" %self.buttons[self.current_butt].text)
         if key == 9:
             if self.current_butt < len(self.buttons)-1:
                 self.current_butt += 1
@@ -42,7 +43,7 @@ class Catalog(BoxLayout):
                 self.current_butt = 0
         if key == 13:
             print("Return pressed")
-            self.buttons[self.current_butt].on_press()
+            self.buttons[self.current_butt].trigger_action(duration=0)
         print("leaving rotate buttons")
 
 
