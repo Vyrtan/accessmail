@@ -1,43 +1,30 @@
 import kivy
+
 kivy.require('1.7.0')
 
-
 from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager
-from kivy.core.window import Window
+from kivy.uix.boxlayout import BoxLayout
+from kivy.properties import ObjectProperty
+from kivy.clock import Clock
+from kivy.lang import Builder
 
-<<<<<<< HEAD:GUI/main.py
-from GUI.addressLayout import AddressLayout
-from GUI.writeLayout import WriteLayout
-from GUI.overviewLayout import OverviewLayout
-from GUI.readLayout import ReadLayout
 
-=======
+#from kivy.core.window import Window
+
+
 from src.GUI.addressLayout import AddressLayout
 from src.GUI.writeLayout import WriteLayout
 from src.GUI.overviewLayout import OverviewLayout
 from src.GUI.readLayout import ReadLayout
->>>>>>> c965e6d5209c93ebdb7818577dbdeb77aca54139:src/GUI/main.py
+from src.GUI.menuLayout import MenuLayout
 
 
-def switch_to(str):
-    sm.current = str
+class MenuLayout(BoxLayout):
+    pass
 
 
-def doSomething(keyboard, key, *args):
-    print(key)
-
-
-def close_keyboard():
-    print("Keyboard closed now.")
-
-
-sm = ScreenManager()
-sm.add_widget(OverviewLayout(name='overview'))
-sm.add_widget(WriteLayout(name='write'))
-sm.add_widget(ReadLayout(name='read'))
-sm.add_widget(AddressLayout(name='address'))
-current_butt = 0
+class Catalog(BoxLayout):
+    pass
 
 
 # def rotate_buttons(keyboard, key,  *args):
@@ -51,14 +38,12 @@ current_butt = 0
 #         sm.current_screen.mn.buttons[current_butt].on_press()
 #     print("leaving rotate buttons")
 #     return
-
-
 # Window.bind(on_key_down=rotate_buttons)
 
 
 class MainApp(App):
     def build(self):
-        return sm
+        return Catalog()
 
 if __name__ == "__main__":
     MainApp().run()
