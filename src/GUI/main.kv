@@ -1,0 +1,28 @@
+#:kivy 1.4
+
+<Catalog@BoxLayout>:
+    screen_manager: screen_manager
+    menu: menu
+
+    MenuLayout:
+        id: menu
+        size_hint: [0.2,1]
+
+    BoxLayout:
+        id: reactive_layout
+        orientation: "vertical"
+
+        ScreenManager:
+            id: screen_manager
+            Screen:
+                name: "Overview"
+                OverviewLayout:
+            Screen:
+                name: "Read"
+                AddressLayout
+            Screen:
+                name: "Write"
+                WriteLayout
+            Screen:
+                name: "Address"
+                AddressLayout
