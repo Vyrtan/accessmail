@@ -44,6 +44,8 @@ class Catalog(BoxLayout):
         if key == 13:
             print("Return pressed")
             self.buttons[self.current_butt].trigger_action(duration=0)
+            # Set current_butt to 0?
+            # current_butt = 0
         print("leaving rotate buttons")
 
 

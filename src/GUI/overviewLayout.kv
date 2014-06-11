@@ -1,8 +1,36 @@
-#:kivy 1.7.2
+#:kivy 1.8
+
+<EmailEntry@BoxLayout>:
+    Button:
+        text: "Open"
+    Button:
+        text: "Delete"
+    Button:
+        text: "Add Contact"
+    Label:
+        text: "Author"
+    Label:
+        text: "Subject"
 
 <OverviewLayout>:
-    buttons: []
-    BoxLayout:
-        orientation: "horizontal"
+    GridLayout:
+        cols: 1
+        spacing: 5
         Label:
-            text: "Place for a list of emails"
+            text: "Overview"
+        BoxLayout:
+            orientation: "horizontal"
+            Button:
+                text: "Previous Page"
+            Button:
+                text: "Next Page"
+        EmailEntry:
+        EmailEntry:
+        EmailEntry:
+        EmailEntry:
+        EmailEntry:
+        EmailEntry:
+        EmailEntry:
+        EmailEntry:
+        EmailEntry:
+        EmailEntry:
