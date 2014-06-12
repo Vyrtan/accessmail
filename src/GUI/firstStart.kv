@@ -1,0 +1,39 @@
+#:kivy 1.8
+
+<FirstStartLayout@BoxLayout>:
+    passwInput: passwT
+    passwCheck: passwC
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Program started for the first time"
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Provider"
+            TextInput:
+                text: "Käsebrot"
+                multiline: False
+            Label:
+                text: "Username"
+            TextInput:
+                text: "Schinkenbrot"
+                multiline: False
+        GridLayout:
+            cols: 3
+            Label:
+                text: "Password"
+            TextInput:
+                id: passwT
+                text: "Tomatenbrot"
+                multiline: False
+                password: True
+            ToggleButton:
+                id: passwC
+                text: "Show password?"
+                on_press: root.on_passwC_toggle(self.state)
+
+
+        Button:
+            text: "Close"
+            on_press: exit()

@@ -5,6 +5,8 @@ kivy.require('1.8.0')
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty, ListProperty
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 
 from kivy.core.window import Window
 
@@ -13,10 +15,7 @@ from src.GUI.writeLayout import WriteLayout
 from src.GUI.overviewLayout import OverviewLayout
 from src.GUI.readLayout import ReadLayout
 from src.GUI.menuLayout import MenuLayout
-
-
-class MenuLayout(BoxLayout):
-    pass
+from src.GUI.firstStartLayout import FirstStartLayout
 
 
 class Catalog(BoxLayout):
@@ -33,25 +32,35 @@ class Catalog(BoxLayout):
         return
 
     def rotate_buttons(self, keyboard, key,  *args):
-        print("enter rotate button")
-        print("current_butt: %d" %(self.current_butt))
-        print("current button: %s" %self.buttons[self.current_butt].text)
+        # print("enter rotate button")
+        # print("current_butt: %d" %(self.current_butt))
+        # print("current button: %s" %self.buttons[self.current_butt].text)
         if key == 9:
             if self.current_butt < len(self.buttons)-1:
                 self.current_butt += 1
             else:
                 self.current_butt = 0
         if key == 13:
-            print("Return pressed")
+            # print("Return pressed")
             self.buttons[self.current_butt].trigger_action(duration=0)
             # Set current_butt to 0?
             # current_butt = 0
-        print("leaving rotate buttons")
+        # print("leaving rotate buttons")
 
 
 class MainApp(App):
     def build(self):
         return Catalog()
 
+
+class FirstStartApp(App):
+    def build(self):
+        return FirstStartLayout()
+
+firstStart_bool = True
+
 if __name__ == "__main__":
-    MainApp().run()
+    if firstStart_bool:
+        FirstStartApp().run()
+    else:
+        MainApp().run()
