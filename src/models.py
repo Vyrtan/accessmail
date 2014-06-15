@@ -33,3 +33,12 @@ class Inbox(Base):
     protocol = Column(String(255))
     authProtocol = Column(String(255))
     caches = relationship("ConCacheConcrete")
+
+#simply add a class like this?
+class Contacts(Base):
+    __tablename__ = 'contacts'
+
+    id = Column(Integer, primary_key=True)
+    firstName = Column(String(255))  #TODO: We should use the internal sqlite date type
+    lastName = Column(String(255), index=True)
+    emailAddress = Column(String(255))
