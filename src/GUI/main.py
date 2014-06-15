@@ -28,6 +28,7 @@ class Catalog(BoxLayout):
         Window.bind(on_key_down=self.rotate_buttons)
 
     def show_layout(self, value):
+        print(type(self.buttons))
         self.screen_manager.current = value
         return
 
@@ -57,7 +58,7 @@ class FirstStartApp(App):
     def build(self):
         return FirstStartLayout()
 
-firstStart_bool = True
+firstStart_bool = False
 
 if __name__ == "__main__":
     if firstStart_bool:
