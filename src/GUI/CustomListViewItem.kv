@@ -1,0 +1,29 @@
+#:kivy 1.8
+#:import la kivy.adapters.listadapter
+#:import lbl kivy.uix.label
+
+
+<CustomListViewItem>:
+    size_hint: [1, None]
+    height: "100dp"
+    email: "None"
+    name: "None"
+    subject: "None"
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint: [1, 1]
+        Label:
+            text: root.email
+        Label:
+            text: root.name
+        Label:
+            text: root.subject
+        Button:
+            text: "Read"
+            on_press: root.trigger_read
+        Button:
+            text: "Reply"
+            on_press: root.trigger_reply
+        Button:
+            text: "Delete"
+            on_press: root.trigger_delete

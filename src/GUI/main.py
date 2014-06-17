@@ -72,6 +72,7 @@ class MainApp(App):
         return Catalog()
 
 
+# input form for email settings
 class FirstStartApp(App):
     def build(self):
         return FirstStartLayout()
@@ -83,3 +84,5 @@ if __name__ == "__main__":
         FirstStartApp().run()
     else:
         MainApp().run()
+
+# holy shit right click draws red circles!!

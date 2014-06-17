@@ -1,6 +1,7 @@
 #:kivy 1.8
 #:import la kivy.adapters.listadapter
 #:import lbl kivy.uix.label
+#:import ok CustomListViewItem
 
 <EmailEntry@BoxLayout>:
     Button:
@@ -49,4 +50,4 @@
         ListView:
             id: list_view
             size_hint: .8, .8
-            adapter: la.ListAdapter(data=[], cls=lbl.Label)
+            adapter: la.ListAdapter(data={"text":"asdf", "email":"asdf2"}, cls=ok.CustomListViewItem)
