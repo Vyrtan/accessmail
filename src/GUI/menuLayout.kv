@@ -15,21 +15,21 @@
             cols: 1
             Button:
                 id: overBtn
-                text: "Overview"
+                background_normal: "Icons/app_overview.png"
                 on_press: root.parent.show_layout("Overview")
             Button:
                 id: readBtn
-                text: "Read"
+                background_normal: "Icons/app_read.png"
                 on_press: root.parent.show_layout("Read")
             Button:
                 id: writeBtn
-                text: "Write"
+                background_normal: "Icons/app_write.png"
                 on_press: root.parent.show_layout("Write")
             Button:
                 id: contactBtn
-                text: "Contacts"
+                background_normal: "Icons/app_addressbook.png"
                 on_press: root.parent.show_layout("Address")
             Button:
                 id: exitBtn
-                text: "Exit"
-                on_press: exit()
+                background_normal: "Icons/app_exit.png"
+                on_press: root.parent.on_exit_press()

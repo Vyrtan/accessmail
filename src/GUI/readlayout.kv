@@ -1,9 +1,16 @@
 #:kivy 1.7.2
 
 <ReadLayout>:
-    buttons: []
     BoxLayout:
-        orientation: "horizontal"
+        orientation: "vertical"
+        Label:
+            id: label
+            size_hint: [1, 0.2]
+            color: (0,0,0,1)
+            disabled_color: (0,0,0,1)
+            bold: True
+            font_size: 40
+            text: "Read"
         BoxLayout:
             orientation: "vertical"
             GridLayout:
