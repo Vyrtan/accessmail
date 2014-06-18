@@ -13,8 +13,8 @@ class CustomListViewItem(BoxLayout, ListItemButton):
     email = StringProperty()
     subject = StringProperty()
 
-    def __init__(self):
-        super(CustomListViewItem).__init__()
+    def __init__(self, **kwargs):
+        super(CustomListViewItem).__init__(kwargs)
         self.name = "Test1"
         self.email = "Test2"
         self.subject = "Test3"
@@ -30,6 +30,3 @@ class CustomListViewItem(BoxLayout, ListItemButton):
     def trigger_reply(self):
         #fill with behaviour
         pass
-
-    def cool_adapter(self):
-        return "asdf"

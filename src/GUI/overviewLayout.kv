@@ -1,17 +1,22 @@
 #:kivy 1.8
 #:import la kivy.adapters.listadapter
 #:import ok CustomListViewItem
+#:import label kivy.uix.label
 
-<OverviewLayout@Screen>:
+<Label>
+    color: (0,0,0,1)
+    disabled_color: (0,0,0,1)
+
+<OverviewLayout>:
     list_view: list_view
+    grid: grid
     GridLayout:
+        id: grid
         cols: 1
         spacing: 5
         Label:
             id: label
             size_hint: [1, 0.1]
-            color: (0,0,0,1)
-            disabled_color: (0,0,0,1)
             bold: True
             font_size: 40
             text: "Overview"
@@ -37,3 +42,4 @@
         ListView:
             id: list_view
             size_hint: [0.8, 0.7]
+            adapter: la.ListAdapter(data=[], cls=ok.CustomListViewItem)
