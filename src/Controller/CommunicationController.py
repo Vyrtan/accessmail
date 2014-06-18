@@ -16,7 +16,7 @@ class CommunicationController(object):
         cred = self.__main_controller.get_database_controller().load_credentials()
         return cred
 
-     def _load_inbox(self):
+    def _load_inbox(self):
         inb = self.__main_controller.get_database_controller().load_inbox()
         return inb
 
@@ -29,7 +29,7 @@ class CommunicationController(object):
     #TODO: IMAP verbindung dauerhaft aufrechterhalten? Oder Intervall abfrage? Oder Buttons?
 
     def _getmails(self):
-        connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden
+        connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden, SSL ?
         connection.login()
         mail = connection.fetch()       #TODO: Mail an DataBase übergeben
         connection.close()
@@ -38,14 +38,14 @@ class CommunicationController(object):
     def _getstats(self):
         connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden
         connection.login()
-        mail = connection.status()       #TODO: Brauchen wir Size und Count`?
+        status = connection.status()       #TODO: Brauchen wir Size und Count`?
         connection.close()
         connection.logout()
 
-     def _del(self):
+    def _del(self):
         connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden
-        connection.logiin()
-        mail = connection.delete()       #TODO: Richtiger Befehl Phillip? oder lösche ich ne ganze Mailbox? :D
+        connection.login()
+        connection.delete()       #TODO: Richtiger Befehl Phillip? oder lösche ich ne ganze Mailbox? :D
         connection.quit()
         connection.close()
         connection.logout()
