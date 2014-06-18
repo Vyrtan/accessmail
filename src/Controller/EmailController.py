@@ -14,3 +14,7 @@ class EmailController(object):
     def __load_emails(self):
         emails = self.__main_controller.get_database_controller().load_emails()
         return emails
+
+    def _remove_email(self, mail):
+        self.__main_controller.get_database_controller().remove_email(mail)
+
