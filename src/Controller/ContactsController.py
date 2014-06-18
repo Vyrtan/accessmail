@@ -18,6 +18,9 @@ class EmailController(object):
     def _edit_contact(self,contact):
         self.__main_controller.get_database_controller().edit_contacts(contact)
 
+    def _save_contact(self,contact):
+        self.__main_controller.get_database_controller().save_contact(contact)
+
     def _remove_contact(self,contact):
         self._main_controller.get_database_controller().remove_contact(contact)
 

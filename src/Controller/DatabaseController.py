@@ -7,6 +7,8 @@ class DatabaseController(object):
     def __init__(self, main_controller):
         self.__main_controller = main_controller
 
+    #TODO: Emails und Kontakte in der DB speichern
+
     def load_emails(self):
         conn = sqlite3.connect("../../data.db")
         c = conn.cursor()

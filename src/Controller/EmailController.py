@@ -15,6 +15,9 @@ class EmailController(object):
         emails = self.__main_controller.get_database_controller().load_emails()
         return emails
 
+    def _save_email(self, mail):
+        self.__main_controller.get_database_controller().save_email(mail)
+
     def _remove_email(self, mail):
         self.__main_controller.get_database_controller().remove_email(mail) #TODO: Mail auch aus Webadresse löschen?
 
