@@ -1,19 +1,6 @@
 #:kivy 1.8
 #:import la kivy.adapters.listadapter
-#:import lbl kivy.uix.label
 #:import ok CustomListViewItem
-
-<EmailEntry@BoxLayout>:
-    Button:
-        text: "Open"
-    Button:
-        text: "Delete"
-    Button:
-        text: "Add Contact"
-    Label:
-        text: "Author"
-    Label:
-        text: "Subject"
 
 <OverviewLayout@Screen>:
     list_view: list_view
@@ -22,7 +9,7 @@
         spacing: 5
         Label:
             id: label
-            size_hint: [1, 0.2]
+            size_hint: [1, 0.1]
             color: (0,0,0,1)
             disabled_color: (0,0,0,1)
             bold: True
@@ -30,7 +17,7 @@
             text: "Overview"
         BoxLayout:
             id: ext_navigation
-            size_hint: [1, 0.2]
+            size_hint: [1, 0.1]
             orientation: "horizontal"
             Button:
                 text: "Not Read"
@@ -40,7 +27,7 @@
                 text: "Sent"
         BoxLayout:
             id: int_navigation
-            size_hint: [1, 0.2]
+            size_hint: [1, 0.1]
             orientation: "horizontal"
             Button:
                 text: "Previous Page"
@@ -49,5 +36,4 @@
         #this list view does not work properly yet
         ListView:
             id: list_view
-            size_hint: .8, .8
-            adapter: la.ListAdapter(data={"text":"asdf", "email":"asdf2"}, cls=ok.CustomListViewItem)
+            size_hint: [0.8, 0.7]

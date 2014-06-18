@@ -5,25 +5,13 @@
 
 <CustomListViewItem>:
     size_hint: [1, None]
-    height: "100dp"
-    email: "None"
-    name: "None"
-    subject: "None"
-    BoxLayout:
-        orientation: "horizontal"
-        size_hint: [1, 1]
-        Label:
-            text: root.email
-        Label:
-            text: root.name
-        Label:
-            text: root.subject
-        Button:
-            text: "Read"
-            on_press: root.trigger_read
-        Button:
-            text: "Reply"
-            on_press: root.trigger_reply
-        Button:
-            text: "Delete"
-            on_press: root.trigger_delete
+    height: "50dp"
+    Label:
+        text: root.name
+    Label:
+        text: root.email
+    Label:
+        text: root.subject
+
+
+

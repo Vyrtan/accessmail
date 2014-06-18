@@ -13,6 +13,12 @@ class CustomListViewItem(BoxLayout, ListItemButton):
     email = StringProperty()
     subject = StringProperty()
 
+    def __init__(self):
+        super(CustomListViewItem).__init__()
+        self.name = "Test1"
+        self.email = "Test2"
+        self.subject = "Test3"
+
     def trigger_delete(self):
         #fill with behaviour
         pass
@@ -24,3 +30,6 @@ class CustomListViewItem(BoxLayout, ListItemButton):
     def trigger_reply(self):
         #fill with behaviour
         pass
+
+    def cool_adapter(self):
+        return "asdf"
