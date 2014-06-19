@@ -8,7 +8,7 @@
     disabled_color: (0,0,0,1)
 
 <OverviewLayout>:
-    list_view: list_view if list_view else []
+    grid: grid
     GridLayout:
         cols: 1
         spacing: 5
@@ -36,7 +36,7 @@
                 text: "Previous Page"
             Button:
                 text: "Next Page"
-        ListView:
-            id: list_view
-            size_hint: [0.8, 0.7]
-            adapter: la.ListAdapter(data=[], cls=ok.CustomListViewItem)
+        GridLayout:
+            id: grid
+            cols: 1
+            size_hint: [1, 0.7]

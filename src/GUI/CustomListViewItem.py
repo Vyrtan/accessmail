@@ -8,18 +8,20 @@ from kivy.properties import StringProperty
 Builder.load_file("CustomListViewItem.kv")
 
 
-class CustomListViewItem(BoxLayout, ListItemButton):
+class CustomListViewItem(BoxLayout):
     text = StringProperty()
+    #subject = StringProperty()
 
+    def __init__(self, text, **kwargs):
+        super(CustomListViewItem, self).__init__(**kwargs)
+        self.text = text
+        #self.subject = subject
 
     def trigger_delete(self):
-        #fill with behaviour
-        pass
+        print "Delete pressed"
 
     def trigger_read(self):
-        #fill with behaviour
-        pass
+        print "Read pressed"
 
     def trigger_reply(self):
-        #fill with behaviour
-        pass
+        print "Reply pressed"
