@@ -5,7 +5,7 @@ from kivy.uix.listview import ListItemButton
 from kivy.properties import StringProperty
 
 
-Builder.load_file("CustomListViewItem.kv")
+Builder.load_file("GUI/CustomListViewItem.kv")
 
 
 class CustomListViewItem(BoxLayout):
@@ -18,10 +18,10 @@ class CustomListViewItem(BoxLayout):
         #self.subject = subject
 
     def trigger_delete(self):
-        print "Delete pressed"
+        print("Delete pressed")
 
     def trigger_read(self):
-        print "Read pressed"
+        print("Read pressed")
 
     def trigger_reply(self):
-        print "Reply pressed"
+        print("Reply pressed")

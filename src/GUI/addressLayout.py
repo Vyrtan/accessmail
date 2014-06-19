@@ -3,7 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 #from kivy.properties import ListProperty
 
-Builder.load_file('addressLayout.kv')
+Builder.load_file('GUI/addressLayout.kv')
 
 
 class AddressLayout(Screen):

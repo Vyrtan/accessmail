@@ -7,9 +7,7 @@ from kivy.uix.button import Button
 import CustomListViewItem
 import time
 
-Builder.load_file("overviewLayout.kv")
-
-Builder.load_file('overviewLayout.kv')
+Builder.load_file('GUI/overviewLayout.kv')
 
 # The kivy developers themselves are not happy with the list_view. Since we only need about 10 emails at once
 # we can just create an own widget adding it x-10 times to the overview

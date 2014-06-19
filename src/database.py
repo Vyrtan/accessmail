@@ -35,9 +35,6 @@ class Database:
 
         return mail
 
-    def getMails(self):
-        pass
-
     def insertMail(self, subject, inbox):
         """
 
@@ -93,6 +90,6 @@ class Database:
 
 if __name__ == "__main__":
     test = Database()
-    inbox = test.createInbox("abc", "abc", "abc", "abc", 22, "asds")
-    test.insertMail("blabal", inbox)
+    _inbox = test.createInbox("abc", "abc", "abc", "abc", 22, "asds")
+    test.insertMail("blabal", _inbox)
     print(test.getMailBy("id", 1).subject)

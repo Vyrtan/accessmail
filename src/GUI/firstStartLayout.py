@@ -2,7 +2,7 @@ __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 
-Builder.load_file("firstStart.kv")
+Builder.load_file("GUI/firstStart.kv")
 
 
 class FirstStartLayout(BoxLayout):

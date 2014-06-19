@@ -11,14 +11,9 @@ from kivy.lang import Builder
 
 from kivy.core.window import Window
 
-from src.GUI.addressLayout import AddressLayout
-from src.GUI.writeLayout import WriteLayout
-from src.GUI.overviewLayout import OverviewLayout
-from src.GUI.readLayout import ReadLayout
-from src.GUI.menuLayout import MenuLayout
-from src.GUI.firstStartLayout import FirstStartLayout
+from .firstStartLayout import FirstStartLayout
 
-Builder.load_file("exitPopup.kv")
+Builder.load_file("GUI/exitPopup.kv")
 
 
 class Catalog(BoxLayout):

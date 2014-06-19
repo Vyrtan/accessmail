@@ -3,7 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 
 
-Builder.load_file('readlayout.kv')
+Builder.load_file('GUI/readlayout.kv')
 
 
 class ReadLayout(Screen):
