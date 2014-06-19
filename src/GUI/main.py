@@ -32,8 +32,9 @@ class Catalog(BoxLayout):
         print("catalog init called")
 
     def show_layout(self, value):
-        print(type(self.buttons))
         self.screen_manager.current = value
+        # if value == "Overview":
+        #     self.screen_manager.current_screen.delay_list_view()
         return
 
     def rotate_buttons(self, keyboard, key,  *args):

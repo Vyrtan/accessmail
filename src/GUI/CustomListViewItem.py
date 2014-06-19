@@ -9,15 +9,8 @@ Builder.load_file("CustomListViewItem.kv")
 
 
 class CustomListViewItem(BoxLayout, ListItemButton):
-    name = StringProperty()
-    email = StringProperty()
-    subject = StringProperty()
+    text = StringProperty()
 
-    def __init__(self, **kwargs):
-        super(CustomListViewItem).__init__(kwargs)
-        self.name = "Test1"
-        self.email = "Test2"
-        self.subject = "Test3"
 
     def trigger_delete(self):
         #fill with behaviour

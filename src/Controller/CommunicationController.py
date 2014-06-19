@@ -44,10 +44,13 @@ class CommunicationController(object):
 
     def _getmails(self):
         c = _imap_login()
-        c.select()              #TODO: Mailbox auswaehlen
-        typ, msg_data = c.fetch('1', '(BODY.PEEK[HEADER] FLAGS)')   #TODO: Nur Recent abfragen?
-        c.close()
+        c.select()
+        rv, data = c.search(None, "ALL")           #TODO: Mailbox auswaehlen, holt sich erstmal ALLE mails
+        for num in data[0].split():
+            typ, msg_data = c.fetch(num, '(RFC822)')
+        msg = email.message_from_string(msg_data[0][1]) #typ und rv können für Fehlermeldungen genutzt werden.
+        c.close()                                       # beinhalten server antwort.
         c.logout()
-        return msg_data         #TODO: Daten weiter verarbeiten
+        return msg         #TODO: Daten weiter verarbeiten
 
-
+    # TODO: delete

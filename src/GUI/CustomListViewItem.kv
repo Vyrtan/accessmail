@@ -1,17 +1,8 @@
 #:kivy 1.8
-#:import la kivy.adapters.listadapter
-#:import lbl kivy.uix.label
 
 
 <CustomListViewItem>:
     size_hint: [1, None]
     height: "50dp"
     Label:
-        text: root.name
-    Label:
-        text: root.email
-    Label:
-        text: root.subject
-
-
-
+        text: root.text
