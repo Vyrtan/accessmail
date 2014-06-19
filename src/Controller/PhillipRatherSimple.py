@@ -45,7 +45,7 @@ class POP3Receiver(MailReceiver):
 
     def get_mailbox_size(self):
         count, size = self._server.stat()
-        return size;
+        return size
 
     def quit(self):
         self._server.quit()

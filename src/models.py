@@ -18,7 +18,7 @@ class Mails(Base):
     cc = Column(Text)
     bcc = Column(Text)
     inReplyTo = Column(String(255), index=True)
-    messageId = Column(String(255), index=True)
+    message = Column(String(255), index=True)
     inboxId = Column(Integer, ForeignKey('inboxes.id'))
 
 
@@ -26,13 +26,13 @@ class Inbox(Base):
     __tablename__ = 'inboxes'
 
     id = Column(Integer, primary_key=True)
-    userMail = Column(String(255))  #TODO: We should use the internal sqlite date type
+    userMail = Column(String(255))
+    account = Column(String(255))
     password = Column(String(255), index=True)
     server = Column(String(255))
     port = Column(String(255))
     protocol = Column(String(255))
-    authProtocol = Column(String(255))
-    caches = relationship("ConCacheConcrete")
+    caches = relationship("Mails")
 
 #simply add a class like this?
 class Contacts(Base):
