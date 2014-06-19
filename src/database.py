@@ -39,8 +39,18 @@ class Database:
         pass
 
     def insertMail(self, subject):
+        """
+
+        :param subject: Mail's subject
+        :type subject: str
+        :return:
+        """
         mail = Mails()
+        mail.date = time.time() #TODO: Use some date function here
         mail.subject = subject
+
+        self.session.add(subject)
+        self.execute()
 
     def createInbox(self, userMail, account, password, server, port, protocol):
         """
@@ -74,4 +84,6 @@ class Database:
 
 if __name__ == "__main__":
     test = Database()
+    test.createInbox("abc", "abc", "abc", "abc", 22, "asds")
+    test.insertMail("blabal")
     print(test.getMailBy("id", 1))
