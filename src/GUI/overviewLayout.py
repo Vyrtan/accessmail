@@ -10,21 +10,26 @@ import time
 
 Builder.load_file("overviewLayout.kv")
 
+Builder.load_file('overviewLayout.kv')
+
 
 class OverviewLayout(Screen):
     list_view = ObjectProperty()
+    label = ObjectProperty()
+    text = StringProperty()
+    grid = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(OverviewLayout, self).__init__(**kwargs)
         if self.list_view:
             self.list_view.adapter.data = ["test1", "test2"]
         #self.add_listview()
-        print "Listview initialized"
+        print("Listview initialized")
 
     #called when the list_view property changes
     #unfortunately the updated view does not get rendered
     def on_list_view(self, instance, value):
-        print "value changed"
+        print("value changed")
         self.list_view.adapter.data = ["asdf"]
 
     # def add_listview(self):
