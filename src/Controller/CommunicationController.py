@@ -64,5 +64,13 @@ class CommunicationController(object):
         c = self._pop_login()
         msg = c.list()      #TODO: alle Messages in String format (liste)
         c.quit()
+        return msg
+
+    def _pop_delete(self, msgnum):
+        c = self._pop_login()
+        msgs = self._getmails_pop()
+                                    #TODO: msg filtern nach der zu löschenden msgnum!
+        c.dele(msgnum)
+        c.quit()
 
     # TODO: delete imap/pop
