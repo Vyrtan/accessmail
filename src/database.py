@@ -30,7 +30,7 @@ class Database:
         :return: returns an email by id
         :rtype: Mails
         """
-        mail = self.session.query(Inbox)\
+        mail = self.session.query(Mails)\
             .filter(and_(getattr(Mails, what) == value)).one()
 
         return mail
@@ -38,18 +38,25 @@ class Database:
     def getMails(self):
         pass
 
-    def insertMail(self, subject):
+    def insertMail(self, subject, inbox):
         """
 
         :param subject: Mail's subject
         :type subject: str
+        :type inbox: Inbox
         :return:
         """
         mail = Mails()
         mail.date = time.time() #TODO: Use some date function here
         mail.subject = subject
+        mail._from = ""
+        mail.bcc = ""
+        mail.cc = ""
+        mail.inReplyTo = ""
+        mail.message = ""
+        mail.inboxId = inbox.id
 
-        self.session.add(subject)
+        self.session.add(mail)
         self.execute()
 
     def createInbox(self, userMail, account, password, server, port, protocol):
@@ -74,6 +81,8 @@ class Database:
         self.session.add(inbox)
         self.execute()
 
+        return inbox
+
     def execute(self):
         self.session.commit()
         self.session.flush()
@@ -84,6 +93,6 @@ class Database:
 
 if __name__ == "__main__":
     test = Database()
-    test.createInbox("abc", "abc", "abc", "abc", 22, "asds")
-    test.insertMail("blabal")
-    print(test.getMailBy("id", 1))
+    inbox = test.createInbox("abc", "abc", "abc", "abc", 22, "asds")
+    test.insertMail("blabal", inbox)
+    print(test.getMailBy("id", 1).subject)
