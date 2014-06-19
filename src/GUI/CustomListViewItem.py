@@ -9,13 +9,13 @@ Builder.load_file("CustomListViewItem.kv")
 
 
 class CustomListViewItem(BoxLayout):
-    sender = StringProperty()
-    subject = StringProperty()
+    text = StringProperty()
+    #subject = StringProperty()
 
-    def __init__(self, **kwargs):
+    def __init__(self, text, **kwargs):
         super(CustomListViewItem, self).__init__(**kwargs)
-        self.sender = kwargs["sender"]
-        self.subject = kwargs["subject"]
+        self.text = text
+        #self.subject = subject
 
     def trigger_delete(self):
         print "Delete pressed"

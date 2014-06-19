@@ -1,17 +1,7 @@
 #:kivy 1.8
 
 <CustomListViewItem>:
+    orientation: "horizontal"
     size_hint: [1, 0.1]
     Label:
-        text: root.sender
-    Label:
-        text: root.subject
-    Button:
-        text: "Delete"
-        on_release: root.trigger_delete
-    Button:
-        text: "Read"
-        on_release: root.trigger_read
-    Button:
-        text: "Reply"
-        on_release: root.trigger_reply
+        text: root.text
