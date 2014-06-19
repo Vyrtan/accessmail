@@ -11,43 +11,26 @@ import time
 Builder.load_file("overviewLayout.kv")
 
 
+# The kivy developers themselves are not happy with the list_view. Since we only need about 10 emails at once
+# we can just create an own widget adding it x-10 times to the overview
 class OverviewLayout(Screen):
-    list_view = ObjectProperty()
+    grid = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(OverviewLayout, self).__init__(**kwargs)
-        if self.list_view:
-            self.list_view.adapter.data = ["test1", "test2"]
-        #self.add_listview()
-        print "Listview initialized"
+        if self.grid:
+            self.test_data()
+        #self.bind(grid=self.callback)
 
-    #called when the list_view property changes
-    #unfortunately the updated view does not get rendered
-    def on_list_view(self, instance, value):
-        print "value changed"
-        self.list_view.adapter.data = ["asdf"]
+    def on_grid(self, instance, value):
+        print "Callback called"
+        self.test_data()
 
-    # def add_listview(self):
-    #     print "add_listview called"
-    #
-    #     sample = {"sample1": {"name": "Rudolph", "address": "rudolph@rentier.np", "subject": "empty"}}
-    #
-    #     list_item_args_converter = \
-    #             lambda row_index, rec: {'text': rec['name'],
-    #                                     'size_hint_y': None,
-    #                                     'height': 25}
-    #
-    #     my_dict_adapter = \
-    #             DictAdapter(
-    #                 sorted_keys=sorted(sample.keys()),
-    #                 data=sample,
-    #                 args_converter=list_item_args_converter,
-    #                 selection_mode='single',
-    #                 allow_empty_selection=True,
-    #                 cls=CustomListViewItem)
-    #
-    #     fruits_list_view = ListView(adapter=my_dict_adapter,
-    #                                 size_hint=(.2, 1.0))
-    #
-    #     self.add_widget(fruits_list_view)
+    def add_email(self, sender, subject):
+        print "add_email called"
+        print self.grid
+        self.grid.add_widget(CustomListViewItem(sender=sender, subject=subject))
 
+    def test_data(self):
+        print "test_data called"
+        self.add_email("testsender", "testsubject")
