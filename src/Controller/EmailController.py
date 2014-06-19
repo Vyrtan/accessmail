@@ -20,4 +20,5 @@ class EmailController(object):
 
     def _remove_email(self, mail):
         self.__main_controller.get_database_controller().remove_email(mail) #TODO: Mail auch aus Webadresse loeschen?
+                                                                            #TODO: IMAP delete
 
