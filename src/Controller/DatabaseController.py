@@ -31,7 +31,7 @@ class DatabaseController(object):
         conn = sqlite3.connect("../../data.db")
         c = conn.cursor()
         c.execute("SELECT * FROM contact;")
-        context = c.fetchone(cont) #Todo: richtigen Context fetchen. Edit fenster oder direkte übergabe der zu edit. Daten?
+        context = c.fetchone(cont) #Todo: richtigen Context fetchen. Edit fenster oder direkte uebergabe der zu edit. Daten?
 
     def load_credentials(self):
         conn = sqlite3.connect("../../data.db")
