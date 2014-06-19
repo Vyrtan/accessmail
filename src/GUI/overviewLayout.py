@@ -1,7 +1,7 @@
 __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, StringProperty
 from kivy.adapters.listadapter import ListAdapter
 from kivy.uix.listview import ListView
 from kivy.clock import Clock
@@ -16,7 +16,7 @@ Builder.load_file('overviewLayout.kv')
 class OverviewLayout(Screen):
     list_view = ObjectProperty()
     label = ObjectProperty()
-    text = StringProperty()
+    text = StringProperty
     grid = ObjectProperty()
 
     def __init__(self, **kwargs):
