@@ -1,7 +1,6 @@
 from GUI import main
 import os
 import sys
-sys.path.append(os.getcwd() + "/GUI")
 
 firstStart_bool = False
 

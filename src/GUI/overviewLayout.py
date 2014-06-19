@@ -4,7 +4,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 
-import CustomListViewItem
+from .CustomListViewItem import CustomListViewItem
 import time
 
 Builder.load_file('GUI/overviewLayout.kv')

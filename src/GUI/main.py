@@ -1,4 +1,5 @@
 import kivy
+import os
 
 kivy.require('1.8.0')
 
@@ -11,6 +12,12 @@ from kivy.lang import Builder
 
 from kivy.core.window import Window
 
+from .addressLayout import AddressLayout
+from .writeLayout import WriteLayout
+from .overviewLayout import OverviewLayout
+from .readLayout import ReadLayout
+from .menuLayout import MenuLayout
+from .CustomListViewItem import CustomListViewItem
 from .firstStartLayout import FirstStartLayout
 
 Builder.load_file("GUI/exitPopup.kv")
