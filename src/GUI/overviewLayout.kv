@@ -8,10 +8,8 @@
     disabled_color: (0,0,0,1)
 
 <OverviewLayout>:
-    list_view: list_view
-    grid: grid
+    list_view: list_view if list_view else []
     GridLayout:
-        id: grid
         cols: 1
         spacing: 5
         Label:
@@ -38,7 +36,6 @@
                 text: "Previous Page"
             Button:
                 text: "Next Page"
-        #this list view does not work properly yet
         ListView:
             id: list_view
             size_hint: [0.8, 0.7]

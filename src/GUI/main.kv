@@ -10,18 +10,13 @@
 
     BoxLayout:
         id: reactive_layout
-
         ScreenManager:
             id: screen_manager
-            Screen:
+            OverviewLayout:
                 name: "Overview"
-                OverviewLayout:
-            Screen:
+            ReadLayout:
                 name: "Read"
-                ReadLayout
-            Screen:
+            WriteLayout:
                 name: "Write"
-                WriteLayout
-            Screen:
+            AddressLayout:
                 name: "Address"
-                AddressLayout
