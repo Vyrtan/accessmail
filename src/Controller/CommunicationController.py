@@ -4,6 +4,10 @@ import smtplib
 import email #TODO: Python mail class im Modell?
 import imaplib
 
+def _imap_login(self):
+    connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden, SSL ?
+    connection.login()
+    return connection
 
 class CommunicationController(object):
 
@@ -20,32 +24,33 @@ class CommunicationController(object):
         inb = self.__main_controller.get_database_controller().load_inbox()
         return inb
 
-    def _send(self):                   #TODO: Mail aus Model laden? (Wo/wann ins Model kopieren)
-       connection = smtplib.SMTP_SSL() #TODO: Inbox in Feld umwandeln, SSL verschlüsselung?
+    def _send(self):                              #TODO: Mail aus Model laden? (Wo/wann ins Model kopieren)
+       connection = smtplib.SMTP()      #TODO: Inbox in Feld umwandeln, SSL verschluesselung?
+       connection.starttls()
        connection.login()              #TODO: Python mail class benutzen?
        connection.sendmail()
-       connection.close()
+       connection.quit()
 
     #TODO: IMAP verbindung dauerhaft aufrechterhalten? Oder Intervall abfrage? Oder Buttons?
 
+
+
+    def _getmailboxes(self):
+        c = _imap_login()
+        typ, data = c.list()    #TODO: Richtige Mailbox auswaehlen(erstmal nur "Bekannte?")
+        c.close()
+        c.logout()
+        return data
+
     def _getmails(self):
-        connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden, SSL ?
-        connection.login()
-        mail = connection.fetch()       #TODO: Mail an DataBase übergeben
-        connection.close()
-        connection.logout()
+        c = _imap_login()
+        c.select()
+        rv, data = c.search(None, "ALL")           #TODO: Mailbox auswaehlen, holt sich erstmal ALLE mails
+        for num in data[0].split():
+            typ, msg_data = c.fetch(num, '(RFC822)')
+        msg = email.message_from_string(msg_data[0][1]) #typ und rv können für Fehlermeldungen genutzt werden.
+        c.close()                                       # beinhalten server antwort.
+        c.logout()
+        return msg         #TODO: Daten weiter verarbeiten
 
-    def _getstats(self):
-        connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden
-        connection.login()
-        status = connection.status()       #TODO: Brauchen wir Size und Count`?
-        connection.close()
-        connection.logout()
-
-    def _del(self):
-        connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden
-        connection.login()
-        connection.delete()       #TODO: Richtiger Befehl Phillip? oder lösche ich ne ganze Mailbox? :D
-        connection.quit()
-        connection.close()
-        connection.logout()
+    # TODO: delete
