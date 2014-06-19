@@ -29,7 +29,7 @@ class Catalog(BoxLayout):
         super(Catalog, self).__init__(**kwargs)
         self.current_butt = 0
         Window.bind(on_key_down=self.rotate_buttons)
-        print "catalog init called"
+        print("catalog init called")
 
     def show_layout(self, value):
         print(type(self.buttons))

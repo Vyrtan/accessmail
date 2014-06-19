@@ -20,10 +20,10 @@ class OverviewLayout(Screen):
     def __init__(self, **kwargs):
         super(OverviewLayout, self).__init__(**kwargs)
         self.add_listview()
-        print "Listview initialized"
+        print("Listview initialized")
 
     def add_listview(self):
-        print "add_listview called"
+        print("add_listview called")
 
         sample = {"sample1": {"name": "Rudolph", "address": "rudolph@rentier.np", "subject": "empty"}}
 
