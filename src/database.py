@@ -56,7 +56,7 @@ class Database:
         self.session.add(mail)
         self.execute()
 
-    def createInbox(self, userMail, account, password, server, port, protocol):
+    def createInbox(self, firstName, lastName, userMail, account, password, imapServer, smtpServer, imapPort, smtpPort, imapSSL, smtpSSL, smtpAuth):
         """
         Creates an Inbox
 
@@ -68,12 +68,18 @@ class Database:
         :type protocol: str
         """
         inbox = Inbox()
+        inbox.firstName = firstName
+        inbox.lastName = lastName
         inbox.userMail = userMail
         inbox.account = account
         inbox.password = password
-        inbox.server = server
-        inbox.port = port
-        inbox.protocol = protocol
+        inbox.imapServer = imapServer
+        inbox.smtpServer = smtpServer
+        inbox.imapPort = imapPort
+        inbox.smtpPort = smtpPort
+        inbox.imapSSL = imapSSL
+        inbox.smtpSSL = smtpSSL
+        inbox.smtpAuth = smtpAuth
 
         self.session.add(inbox)
         self.execute()

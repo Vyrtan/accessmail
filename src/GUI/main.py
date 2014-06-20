@@ -1,5 +1,6 @@
 import kivy
 import os
+from GUI.firstStartRootLayout import FirstStartRootApp
 
 kivy.require('1.8.0')
 
@@ -88,12 +89,5 @@ class FirstStartApp(App):
     def build(self):
         return FirstStartLayout()
 
-firstStart_bool = False
-
-if __name__ == "__main__":
-    if firstStart_bool:
-        FirstStartApp().run()
-    else:
-        MainApp().run()
 
 # holy shit right click draws red circles!!

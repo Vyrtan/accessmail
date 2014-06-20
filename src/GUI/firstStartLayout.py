@@ -9,6 +9,7 @@ class FirstStartLayout(BoxLayout):
 
     def __init__(self, **kwargs):
         super(FirstStartLayout, self).__init__(**kwargs)
+        self.size_hint_x = 1
 
     #switch togglebutton to display password
     def on_passwC_toggle(self, state):

@@ -29,9 +29,20 @@ class Inbox(Base):
     userMail = Column(String(255))
     account = Column(String(255))
     password = Column(String(255), index=True)
-    server = Column(String(255))
-    port = Column(String(255))
-    protocol = Column(String(255))
+
+    firstName = Column(String(255))
+    lastName = Column(String(255))
+
+    imapServer = Column(String(255))
+    smtpServer = Column(String(255))
+
+    imapPort = Column(String(255))
+    smtpPort = Column(String(255))
+
+    imapSSL = Column(Integer())
+    smtpSSL = Column(Integer())
+
+    smtpAuth = Column(Integer())
     caches = relationship("Mails")
 
 #simply add a class like this?
