@@ -11,11 +11,12 @@
         text: "E-Mail"
 
 <AddressLayout>:
+    grid: grid
     GridLayout:
         cols: 1
         Label:
             id: label
-            size_hint: [1, 0.2]
+            size_hint: [1, 0.1]
             color: (0,0,0,1)
             disabled_color: (0,0,0,1)
             bold: True
@@ -23,9 +24,14 @@
             text: "Address book"
         BoxLayout:
             orientation: "horizontal"
+            size_hint: [1, 0.1]
             Button:
                 text: "Previous Page"
             Button:
                 text: "Add Contact"
             Button:
                 text: "Next Page"
+        GridLayout:
+            id: grid
+            cols: 1
+            size_hint: [1, 0.7]

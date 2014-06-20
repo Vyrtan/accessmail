@@ -35,8 +35,11 @@ class Catalog(BoxLayout):
     def show_layout(self, value, **param):
         if value == "Read":
             # read then contains the id for the email to be displayed
+            param.setdefault("email_id", "None")
             read = param["email_id"]
         elif value == "Write":
+            param.setdefault("address", "None")
+            param.setdefault("subject", "None")
             address = param["address"]
             subject = "Re:" + param["subject"]
             print("Write %s %s" %(address, subject))

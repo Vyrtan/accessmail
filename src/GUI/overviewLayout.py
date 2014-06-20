@@ -15,6 +15,7 @@ class OverviewLayout(Screen):
 
     def __init__(self, **kwargs):
         super(OverviewLayout, self).__init__(**kwargs)
+        self.counter = 0
         if self.grid:
             self.test_data()
 
@@ -29,7 +30,6 @@ class OverviewLayout(Screen):
     # all_emails[counter*10:(counter+1)*10]
     # Parameter emails is a list of email objects as defined below, maybe adjust getter if different class is used
     def add_emails(self, emails):
-        counter = 0
         for v in emails:
             print "email added"
             item = EmailItem(name=v.get_name(), email=v.get_email(), subject=v.get_subject())
@@ -47,16 +47,20 @@ class OverviewLayout(Screen):
         items = [Email(name="Max Mustermann", email="max.mustermann@web.de", subject="Your photo"),
                  Email(email="dascha.grib@mail.ru", subject="50 Euro"),
                  Email()]
-        item1 = Email()
-        print item1.get_email()
         self.add_emails(items)
 
     def previous_page(self):
-        print("previous page pressed")
+        if self.counter > 0:
+            self.counter -= 1
+        else:
+            self.counter = 0
+        print(self.counter)
 
     def next_page(self):
-        print("next page pressed")
+        self.counter += 1
+        print(self.counter)
 
+    # responsible to switch between folders
     def switch_to(self, str):
         print("%s pressed" %str)
 
