@@ -16,22 +16,22 @@
             cols: 1
             Button:
                 id: overBtn
-                background_normal: "Icons/app_overview.png"
+                background_normal: "GUI/Icons/app_overview.png"
                 on_release: root.parent.show_layout("Overview")
             Button:
                 id: readBtn
-                background_normal: "Icons/app_read.png"
+                background_normal: "GUI/Icons/app_read.png"
                 on_release: root.parent.show_layout("Read")
             Button:
                 id: writeBtn
-                background_normal: "Icons/app_write.png"
+                background_normal: "GUI/Icons/app_write.png"
                 on_release: root.parent.show_layout("Write")
             Button:
                 id: contactBtn
-                background_normal: "Icons/app_addressbook.png"
+                background_normal: "GUI/Icons/app_addressbook.png"
                 on_release: root.parent.show_layout("Address")
             Button:
                 id: exitBtn
-                background_normal: "Icons/app_exit.png"
-                background_down: "Icons/app_exit_down.png"
+                background_normal: "GUI/Icons/app_exit.png"
+                background_down: "GUI/Icons/app_exit_down.png"
                 on_release: root.parent.on_exit_press()
