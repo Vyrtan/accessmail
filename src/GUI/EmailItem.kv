@@ -1,0 +1,27 @@
+#:kivy 1.8
+
+<Label>
+    color: (0,0,0,1)
+
+<EmailItem>:
+    orientation: "horizontal"
+    #sizehint does not work
+    size_hint: [1, 0.1]
+    Label:
+        text: root.name
+    Label:
+        text: root.email
+    Label:
+        text: root.subject
+    Button:
+        text: "Read"
+        size_hint: [0.3, 1]
+        on_press: root.trigger_read()
+    Button:
+        text: "Reply"
+        size_hint: [0.3, 1]
+        on_press: root.trigger_reply()
+    Button:
+        text: "Delete"
+        size_hint: [0.3, 1]
+        on_press: root.trigger_delete()

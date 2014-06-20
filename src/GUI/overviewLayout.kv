@@ -1,13 +1,11 @@
 #:kivy 1.8
-#:import la kivy.adapters.listadapter
-#:import ok GUI.CustomListViewItem
-#:import label kivy.uix.label
 
 <Label>
     color: (0,0,0,1)
     disabled_color: (0,0,0,1)
 
 <OverviewLayout>:
+    grid: grid
     GridLayout:
         cols: 1
         spacing: 5
@@ -23,18 +21,23 @@
             orientation: "horizontal"
             Button:
                 text: "Not Read"
+                on_press: root.switch_to("Not Read")
             Button:
                 text: "All"
+                on_press: root.switch_to("All")
             Button:
                 text: "Sent"
+                on_press: root.switch_to("Sent")
         BoxLayout:
             id: int_navigation
             size_hint: [1, 0.1]
             orientation: "horizontal"
             Button:
                 text: "Previous Page"
+                on_press: root.previous_page()
             Button:
                 text: "Next Page"
+                on_press: root.next_page()
         GridLayout:
             id: grid
             cols: 1

@@ -17,7 +17,7 @@ from .writeLayout import WriteLayout
 from .overviewLayout import OverviewLayout
 from .readLayout import ReadLayout
 from .menuLayout import MenuLayout
-from .CustomListViewItem import CustomListViewItem
+from .EmailItem import EmailItem
 from .firstStartLayout import FirstStartLayout
 
 Builder.load_file("GUI/exitPopup.kv")
@@ -31,7 +31,6 @@ class Catalog(BoxLayout):
         super(Catalog, self).__init__(**kwargs)
         self.current_butt = 0
         Window.bind(on_key_down=self.rotate_buttons)
-        print("catalog init called")
 
     def show_layout(self, value):
         self.screen_manager.current = value
