@@ -86,6 +86,14 @@ class Database:
 
         return inbox
 
+    def hasInbox(self):
+        try:
+            self.session.query(Inbox).one()
+        except NoResultFound:
+            return False
+
+        return True
+
     def execute(self):
         self.session.commit()
         self.session.flush()
