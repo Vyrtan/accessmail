@@ -31,7 +31,7 @@ class OverviewLayout(Screen):
     # Parameter emails is a list of email objects as defined below, maybe adjust getter if different class is used
     def add_emails(self, emails):
         for v in emails:
-            print "email added"
+            print("email added")
             item = EmailItem(name=v.get_name(), email=v.get_email(), subject=v.get_subject())
             self.grid.add_widget(item)
 

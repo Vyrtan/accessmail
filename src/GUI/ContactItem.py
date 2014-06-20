@@ -22,4 +22,4 @@ class ContactItem(BoxLayout):
         print("Delete pressed")
 
     def trigger_write_mail(self):
-        print "Write mail pressed"
+        print("Write mail pressed")

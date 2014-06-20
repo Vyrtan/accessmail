@@ -1,7 +1,7 @@
 __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
-from ContactItem import ContactItem
+from GUI.ContactItem import ContactItem
 from kivy.properties import ObjectProperty
 from kivy.uix.button import Button
 
