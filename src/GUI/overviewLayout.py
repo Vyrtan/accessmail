@@ -24,8 +24,10 @@ class OverviewLayout(Screen):
         print("Callback called")
         self.test_data()
 
-    #TODO: limit added emails to 8/10 and store rest somewhere else for later use
-    #Parameter emails is a list of email objects as defined below, maybe adjust getter if different class is used
+    # TODO: limit added emails to 8/10 and store rest somewhere else for later use
+    # even better: we always only fetch 8/10 emails from the controller and hand over a counter which indicates
+    # all_emails[counter*10:(counter+1)*10]
+    # Parameter emails is a list of email objects as defined below, maybe adjust getter if different class is used
     def add_emails(self, emails):
         counter = 0
         for v in emails:

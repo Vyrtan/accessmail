@@ -32,7 +32,14 @@ class Catalog(BoxLayout):
         self.current_butt = 0
         Window.bind(on_key_down=self.rotate_buttons)
 
-    def show_layout(self, value):
+    def show_layout(self, value, **param):
+        if value == "Read":
+            # read then contains the id for the email to be displayed
+            read = param["email_id"]
+        elif value == "Write":
+            address = param["address"]
+            subject = "Re:" + param["subject"]
+            print("Write %s %s" %(address, subject))
         self.screen_manager.current = value
         return
 
