@@ -64,6 +64,8 @@ class ProviderDataLayout(GridLayout):
         imapCon = None
         if(clunkyConfig[0]["SMTP"]["ssl"]):
             imapCon = imaplib.IMAP4_SSL(clunkyConfig[0]["IMAP"]["host"])
+        else:
+            imapCon = imaplib.IMAP4(clunkyConfig[0]["IMAP"]["host"])
 
         try:
             imapCon.login(self.mailInput.text, self.pwInput.text)

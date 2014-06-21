@@ -5,9 +5,6 @@ from abc import ABCMeta, abstractmethod
 class MailReceiver:
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        pass
-
     @abstractmethod
     def connect(self, config):
         pass
