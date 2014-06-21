@@ -2,9 +2,11 @@ __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ObjectProperty
+from kivy.uix.popup import Popup
 
 
 Builder.load_file("GUI/EmailItem.kv")
+Builder.load_file("GUI/deletePopup.kv")
 
 
 class EmailItem(BoxLayout):
@@ -21,7 +23,11 @@ class EmailItem(BoxLayout):
 
     # delete email with corresponding id from model
     def trigger_delete(self):
-        print("Delete pressed")
+        p = DeletePopup()
+        p.open()
+
+    def deleteMail(self):
+        print("Mail almost deleted")
 
     # call this function with some email id to switch to the corresponding email from the model
     def trigger_read(self, email_id="None"):
@@ -34,3 +40,7 @@ class EmailItem(BoxLayout):
         address = self.email
         subject = self.subject
         self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=address, subject=subject)
+
+
+class DeletePopup(Popup):
+    pass

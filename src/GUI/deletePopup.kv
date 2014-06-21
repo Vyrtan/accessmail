@@ -1,0 +1,16 @@
+#:kivy 1.8
+
+<DeletePopup>:
+    size_hint: .5, .5
+    auto_dismiss: False
+    title: 'Confirm'
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Do you really want to delete this Email?"
+        Button:
+            text: 'No'
+            on_press: root.dismiss()
+        Button:
+            text: 'Yes'
+            on_press: root.parent.deleteMail
