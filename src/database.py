@@ -35,6 +35,21 @@ class Database:
 
         return mail
 
+    def getAllMailsBy(self, what, value):
+        """
+
+        :param what: By What do you want to search?
+        :type what: string
+        :param value: Which value should I search for?
+        :type value: object
+        :return: returns a list of emails
+        :rtype: Mails
+        """
+        mail = self.session.query(Mails)\
+            .filter(and_(getattr(Mails, what) == value)).all()
+
+        return mail
+
     def insertMail(self, subject, inbox):
         """
 
@@ -93,6 +108,9 @@ class Database:
             return False
 
         return True
+
+    def getInbox(self):
+        return self.session.query(Inbox).first()
 
     def execute(self):
         self.session.commit()

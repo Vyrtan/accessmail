@@ -1,24 +1,33 @@
 __author__ = 'grafgustav'
 import sqlite3
+from src.database import Database
 
 
 class DatabaseController(object):
 
-    def __init__(self, main_controller):
+    def __init__(self, main_controller=None):
         self.__main_controller = main_controller
 
     #TODO: Emails und Kontakte in der DB speichern
 
-    def load_emails(self):
-        conn = sqlite3.connect("../../data.db")
-        c = conn.cursor()
-        c.execute("SELECT * FROM mail;")
-        emails = c.fetchall()
-        conn.commit()
-        conn.close()
-        return emails
+    @staticmethod
+    def load_emails():
+        db = Database()
+        #get all mails send to active account
+        inbox = db.getInbox()
+        mails = db.getAllMailsBy("to", inbox.userMail)
 
-    def load_contacts(self):
+        # conn = sqlite3.connect("../../data.db")
+        # c = conn.cursor()
+        # c.execute("SELECT * FROM mail;")
+        # emails = c.fetchall()
+        # conn.commit()
+        # conn.close()
+
+        return mails
+
+    @staticmethod
+    def load_contacts():
         conn = sqlite3.connect("../../data.db")
         c = conn.cursor()
         c.execute("SELECT * FROM contact;")

@@ -3,6 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 from .EmailItem import EmailItem
+from src.Controller.DatabaseController import DatabaseController
 
 Builder.load_file('GUI/overviewLayout.kv')
 
@@ -16,6 +17,7 @@ class OverviewLayout(Screen):
     def __init__(self, **kwargs):
         super(OverviewLayout, self).__init__(**kwargs)
         self.counter = 0
+        self.mails = self.get_emails_from_db()
         if self.grid:
             self.test_data()
 
@@ -23,7 +25,14 @@ class OverviewLayout(Screen):
     #this method observes the property and trigger on_change
     def on_grid(self, instance, value):
         print("Callback called")
-        self.test_data()
+        self.displayEmails()
+
+    def get_emails_from_db(self):
+        return DatabaseController.load_emails()
+
+    def displayEmails(self):
+        currentMails = self.mails[self.counter*10:(self.counter+1)*10]
+        self.add_emails(currentMails)
 
     # TODO: limit added emails to 8/10 and store rest somewhere else for later use
     # even better: we always only fetch 8/10 emails from the controller and hand over a counter which indicates
@@ -32,7 +41,7 @@ class OverviewLayout(Screen):
     def add_emails(self, emails):
         for v in emails:
             print("email added")
-            item = EmailItem(name=v.get_name(), email=v.get_email(), subject=v.get_subject())
+            item = EmailItem(name="asdf", email="asdf", subject=v.subject)
             self.grid.add_widget(item)
 
         # testing routines
@@ -43,40 +52,23 @@ class OverviewLayout(Screen):
         # self.grid.add_widget(item2)
         # self.grid.add_widget(item3)
 
-    def test_data(self):
-        items = [Email(name="Max Mustermann", email="max.mustermann@web.de", subject="Your photo"),
-                 Email(email="dascha.grib@mail.ru", subject="50 Euro"),
-                 Email()]
-        self.add_emails(items)
+    # def test_data(self):
+    #     items = [Email(name="Max Mustermann", email="max.mustermann@web.de", subject="Your photo"),
+    #              Email(email="dascha.grib@mail.ru", subject="50 Euro"),
+    #              Email()]
+    #     self.add_emails(items)
 
     def previous_page(self):
         if self.counter > 0:
             self.counter -= 1
         else:
             self.counter = 0
-        print(self.counter)
+        self.displayEmails()
 
     def next_page(self):
         self.counter += 1
-        print(self.counter)
+        self.displayEmails()
 
     # responsible to switch between folders
     def switch_to(self, str):
         print("%s pressed" %str)
-
-
-class Email(object):
-
-    def __init__(self, name="Unknown", email="Unknown", subject="Unknown"):
-        self.name = name
-        self.email = email
-        self.subject = subject
-
-    def get_name(self):
-        return self.name
-
-    def get_email(self):
-        return self.email
-
-    def get_subject(self):
-        return self.subject
