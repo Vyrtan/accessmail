@@ -116,6 +116,10 @@ class Database:
         self.session.commit()
         self.session.flush()
 
+    def close(self):
+        if self.session is not None:
+            self.session.close()
+
     def __del__(self):
         if self.session is not None:
             self.session.close()

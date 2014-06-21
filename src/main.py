@@ -10,5 +10,5 @@ db = Database()
 if __name__ == "__main__":
     if not db.hasInbox():
         main.FirstStartRootApp().run()
-    else:
-        main.MainApp().run()
+
+    main.MainApp().run()

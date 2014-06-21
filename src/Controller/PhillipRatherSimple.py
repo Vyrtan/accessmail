@@ -3,6 +3,7 @@ __author__ = 'phillip'
 from MailReceiver import MailReceiver
 import poplib
 
+
 class POP3Receiver(MailReceiver):
 
     def __init__(self):
