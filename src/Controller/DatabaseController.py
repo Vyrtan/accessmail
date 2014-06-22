@@ -13,17 +13,9 @@ class DatabaseController(object):
     @staticmethod
     def load_emails():
         db = Database()
-        #get all mails send to active account
+        #get all mails sent to active account
         inbox = db.getInbox()
-        mails = db.getAllMailsBy("to", inbox.userMail)
-
-        # conn = sqlite3.connect("../../data.db")
-        # c = conn.cursor()
-        # c.execute("SELECT * FROM mail;")
-        # emails = c.fetchall()
-        # conn.commit()
-        # conn.close()
-
+        mails = db.getAllMailsBy("to", "maxi")
         return mails
 
     @staticmethod

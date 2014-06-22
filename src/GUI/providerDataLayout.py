@@ -9,6 +9,7 @@ from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from database import Database
+from kivy.core.window import Window
 
 __author__ = 'ubuntu'
 
@@ -28,11 +29,13 @@ clunkyConfig = {
     }
 }
 
-
 class ProviderDataLayout(GridLayout):
 
     def __init__(self, **kwargs):
         super(ProviderDataLayout, self).__init__(**kwargs)
+
+        self.selectable = []
+        self.current_butt = 0
 
         self.cols = 1
         self.rows = 6
@@ -41,10 +44,10 @@ class ProviderDataLayout(GridLayout):
 
         self.descriptionLabel = Label(text='Now you have to enter your user credentials,\n so we can get your mails', size_hint=(.1, .1), font_size=30)
 
-        self.mailInputLabel = Label(text='Please enter you Email', size_hint=(.1, .1), font_size=40)
-        self.mailInput = TextInput(text='Hello world', multiline=False, size_hint=(.1, .1), font_size=40)
+        self.mailInputLabel = Label(text='Please enter your Email', size_hint=(.1, .1), font_size=40)
+        self.mailInput = TextInput(text='', multiline=False, size_hint=(.1, .1), font_size=40, focus=True)
 
-        self.pwInputLabel = Label(text='Please enter you Password', size_hint=(.1, .1), font_size=40)
+        self.pwInputLabel = Label(text='Please enter your Password', size_hint=(.1, .1), font_size=40)
         self.pwInput = TextInput(text='', multiline=False, size_hint=(.1, .1), font_size=40, password=True)
 
         self.add_widget(self.descriptionLabel)
@@ -56,6 +59,10 @@ class ProviderDataLayout(GridLayout):
         submitButton = Button(text='Save', size_hint=(.2, .1))
         submitButton.bind(on_press=self.save_credentials)
         self.add_widget(submitButton)
+
+        self.selectable += [self.mailInput, self.pwInput, submitButton]
+
+        Window.bind(on_key_down=self.rotate_buttons)
 
     def save_credentials(self, event):
         print(self.pwInput.text)
@@ -84,5 +91,19 @@ class ProviderDataLayout(GridLayout):
             content.bind(on_press=popup.dismiss)
             popup.open()
             print(e)
+
+    # use focusbehaviour maybe? s. kivy 1.8.1
+    def rotate_buttons(self, keyboard, key,  *args):
+        print self.current_butt
+        if key == 9:
+            if self.current_butt < len(self.selectable)-1:
+                self.current_butt += 1
+            else:
+                self.current_butt = 0
+        if key == 13:
+            if type(self.selectable[self.current_butt]) == Button:
+                self.selectable[self.current_butt].trigger_action()
+            else:
+                self.selectable[self.current_butt].focus = True
 
 

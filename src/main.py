@@ -4,7 +4,6 @@ import sys
 from database import Database
 
 
-firstStart_bool = True
 db = Database()
 
 if __name__ == "__main__":
