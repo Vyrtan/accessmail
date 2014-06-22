@@ -83,6 +83,10 @@ class Database:
         self.session.add(contact)
         self.execute()
 
+    def deleteContact(self, contact):
+        self.session.delete(contact)
+        self.execute()
+
     def createInbox(self, firstName, lastName, userMail, account, password, imapServer, smtpServer, imapPort, smtpPort, imapSSL, smtpSSL, smtpAuth):
         """
         Creates an Inbox

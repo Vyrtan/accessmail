@@ -18,6 +18,11 @@ class AddressLayout(Screen):
         self.contacts = []
 
     def on_grid(self, instance, value):
+        # this only indicates the object is loaded properly
+        # better set observer to datamodel as well
+        self.onChange()
+
+    def onChange(self):
         self.getContactsFromDB()
         self.addContacts(self.contacts)
 
@@ -30,7 +35,7 @@ class AddressLayout(Screen):
         # counter = 0
         for v in contacts:
             print("Contact added")
-            item = ContactItem(name=v.name, email=v.emailAddress)
+            item = ContactItem(v)
             self.grid.add_widget(item)
 
     def getContactsFromDB(self):
@@ -40,7 +45,7 @@ class AddressLayout(Screen):
     def addNewContact(self):
         p = AddContactPopup()
         p.open()
-
+        # this thread continues even with the popup open
 
     def addContactToDB(self, name, address):
         DatabaseController.DatabaseController.addContact(name, address)

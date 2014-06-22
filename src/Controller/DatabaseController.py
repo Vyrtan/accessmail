@@ -33,6 +33,11 @@ class DatabaseController(object):
         db = Database()
         db.insertContact(contact)
 
+    @staticmethod
+    def deleteContact(contact):
+        db = Database()
+        db.deleteContact(contact)
+
     def load_credentials(self):
         conn = sqlite3.connect("../../data.db")
         c = conn.cursor()
