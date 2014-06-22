@@ -3,6 +3,7 @@
 <WriteLayout>:
     mailText: mailText
     sendTo: sendTo
+    subject: subject
     BoxLayout:
         orientation: "vertical"
         Label:
@@ -25,8 +26,10 @@
                     id: sendTo
                     text: ""
                     multiline: False
-                Button:
-                    text: "Add Contact"
+                TextInput:
+                    id: subject
+                    text: ""
+                    multiline: False
             TextInput:
                 id: mailText
                 text: ""

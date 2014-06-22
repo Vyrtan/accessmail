@@ -23,5 +23,6 @@ class ContactItem(BoxLayout):
     def trigger_delete(self):
        DatabaseController.DatabaseController.deleteContact(self.contact)
 
+    # switches to WriteLayout and already fills in the address (supposedly)
     def trigger_write_mail(self):
-        print("Write mail pressed")
+        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=self.email)

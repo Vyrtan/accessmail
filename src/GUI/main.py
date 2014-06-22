@@ -44,7 +44,11 @@ class Catalog(BoxLayout):
             address = param["address"]
             subject = "Re:" + param["subject"]
             print("Write %s %s" %(address, subject))
-        self.screen_manager.current = value
+            self.screen_manager.current = value
+            self.screen_manager.current_screen.strSendTo = address
+            self.screen_manager.current_screen.strSubject = subject
+        else:
+            self.screen_manager.current = value
         return
 
     def rotate_buttons(self, keyboard, key,  *args):

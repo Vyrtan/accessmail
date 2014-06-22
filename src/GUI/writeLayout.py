@@ -1,4 +1,4 @@
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from Service import smtpsender
@@ -16,6 +16,15 @@ class WriteLayout(Screen):
 
     mailText = ObjectProperty(None)
     sendTo = ObjectProperty(None)
+    subject = ObjectProperty(None)
+    strSendTo = StringProperty()
+    strSubject = StringProperty()
+
+    def on_strSendTo(self, instance, value):
+        self.sendTo.text = value
+
+    def on_strSubject(self, instance, value):
+        self.subject.text = value
 
     def send_mail(self):
         if self.sendTo.text == "":
