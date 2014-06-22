@@ -41,7 +41,6 @@ class AddressLayout(Screen):
     def addContacts(self, contacts):
         # counter = 0
         for v in contacts:
-            print("Contact added")
             item = ContactItem(v)
             self.grid.add_widget(item)
 
