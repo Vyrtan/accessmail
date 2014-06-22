@@ -1,11 +1,13 @@
 __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
-from GUI.ContactItem import ContactItem
-from kivy.properties import ObjectProperty
+from src.GUI.ContactItem import ContactItem
+from kivy.properties import ObjectProperty, StringProperty
 from src.Controller import DatabaseController
+from kivy.uix.popup import Popup
 
 Builder.load_file('GUI/addressLayout.kv')
+Builder.load_file('GUI/addContactPopup.kv')
 
 
 class AddressLayout(Screen):
@@ -35,6 +37,11 @@ class AddressLayout(Screen):
         contacts = DatabaseController.DatabaseController.loadContacts()
         self.contacts = contacts
 
+    def addNewContact(self):
+        p = AddContactPopup()
+        p.open()
+
+
     def addContactToDB(self, name, address):
         DatabaseController.DatabaseController.addContact(name, address)
 
@@ -43,4 +50,20 @@ class AddressLayout(Screen):
 
     def next_page(self):
         print("next page pressed")
+
+    def printStuff(self):
+        print "Stuff"
+
+
+class AddContactPopup(Popup):
+    name = StringProperty()
+    address = StringProperty()
+
+    def handOverInfo(self, pname, paddress):
+        self.name = pname
+        self.address = paddress
+        print("Name: %s, Address: %s" %(self.name, self.address))
+        DatabaseController.DatabaseController.addContact(self.name, self.address)
+        self.dismiss()
+
 

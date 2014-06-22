@@ -12,6 +12,7 @@
 
 <AddressLayout>:
     grid: grid
+    add: False
     GridLayout:
         cols: 1
         Label:
@@ -29,6 +30,7 @@
                 text: "Previous Page"
             Button:
                 text: "Add Contact"
+                on_press: root.addNewContact()
             Button:
                 text: "Next Page"
         GridLayout:
