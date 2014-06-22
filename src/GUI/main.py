@@ -42,7 +42,10 @@ class Catalog(BoxLayout):
             param.setdefault("address", "None")
             param.setdefault("subject", "None")
             address = param["address"]
-            subject = "Re:" + param["subject"]
+            if param["subject"] == "None":
+                subject = "None"
+            else:
+                subject = "Re:" + param["subject"]
             print("Write %s %s" %(address, subject))
             self.screen_manager.current = value
             self.screen_manager.current_screen.strSendTo = address
