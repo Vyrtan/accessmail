@@ -35,12 +35,11 @@ def upgrade():
     op.create_index('ix_inboxes_password', 'inboxes', ['password'], unique=False)
     op.create_table('contacts',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('firstName', sa.String(length=255), nullable=True),
-    sa.Column('lastName', sa.String(length=255), nullable=True),
+    sa.Column('name', sa.String(length=255), nullable=True),
     sa.Column('emailAddress', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index('ix_contacts_lastName', 'contacts', ['lastName'], unique=False)
+    op.create_index('ix_contacts_name', 'contacts', ['name'], unique=False)
     op.create_table('mails',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('date', sa.String(length=255), nullable=True),

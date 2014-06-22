@@ -1,6 +1,7 @@
 __author__ = 'grafgustav'
 import sqlite3
 from src.database import Database
+from src.models import *
 
 
 class DatabaseController(object):
@@ -19,20 +20,18 @@ class DatabaseController(object):
         return mails
 
     @staticmethod
-    def load_contacts():
-        conn = sqlite3.connect("../../data.db")
-        c = conn.cursor()
-        c.execute("SELECT * FROM contact;")
-        contacts = c.fetchall()
-        conn.commit()
-        conn.close()
+    def loadContacts():
+        db = Database()
+        contacts = db.getContacts()
         return contacts
 
-    def edit_contacts(self, cont):
-        conn = sqlite3.connect("../../data.db")
-        c = conn.cursor()
-        c.execute("SELECT * FROM contact;")
-        context = c.fetchone(cont) #Todo: richtigen Context fetchen. Edit fenster oder direkte uebergabe der zu edit. Daten?
+    @staticmethod
+    def addContact(name, address):
+        contact = Contacts()
+        contact.name = name
+        contact.emailAddress = address
+        db = Database()
+        db.insertContact(contact)
 
     def load_credentials(self):
         conn = sqlite3.connect("../../data.db")

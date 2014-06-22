@@ -3,7 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from GUI.ContactItem import ContactItem
 from kivy.properties import ObjectProperty
-from kivy.uix.button import Button
+from src.Controller import DatabaseController
 
 Builder.load_file('GUI/addressLayout.kv')
 
@@ -13,28 +13,30 @@ class AddressLayout(Screen):
 
     def __init__(self, **kwargs):
         super(AddressLayout, self).__init__(**kwargs)
+        self.contacts = []
 
     def on_grid(self, instance, value):
-        self.test_data()
+        self.getContactsFromDB()
+        self.addContacts(self.contacts)
 
     def get_buttons(self):
         for child in self.children:
             print(child)
 
     # see comments above add_emails in overviewLayout.py
-    def add_contacts(self, contacts):
+    def addContacts(self, contacts):
         # counter = 0
         for v in contacts:
             print("Contact added")
-            item = ContactItem(name=v.get_name(), email=v.get_email())
+            item = ContactItem(name=v.name, email=v.emailAddress)
             self.grid.add_widget(item)
 
-    # TODO: delete this method
-    def test_data(self):
-        items = [Contact(name="Max Mustermann", email="max.mustermann@web.de"),
-                 Contact(email="dascha.grib@mail.ru"),
-                 Contact()]
-        self.add_contacts(items)
+    def getContactsFromDB(self):
+        contacts = DatabaseController.DatabaseController.loadContacts()
+        self.contacts = contacts
+
+    def addContactToDB(self, name, address):
+        DatabaseController.DatabaseController.addContact(name, address)
 
     def previous_page(self):
         print("previous page pressed")
@@ -42,15 +44,3 @@ class AddressLayout(Screen):
     def next_page(self):
         print("next page pressed")
 
-
-class Contact(object):
-
-    def __init__(self, name="Unknown", email="Unknown"):
-        self.name = name
-        self.email = email
-
-    def get_name(self):
-        return self.name
-
-    def get_email(self):
-        return self.email

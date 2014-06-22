@@ -71,6 +71,18 @@ class Database:
         self.session.add(mail)
         self.execute()
 
+    # Contacts
+    def getContacts(self):
+        contacts = self.session.query(Contacts).all()
+        return contacts
+
+    def insertContact(self, pContact):
+        contact = Contacts()
+        contact.name = pContact.name
+        contact.emailAddress = pContact.emailAddress
+        self.session.add(contact)
+        self.execute()
+
     def createInbox(self, firstName, lastName, userMail, account, password, imapServer, smtpServer, imapPort, smtpPort, imapSSL, smtpSSL, smtpAuth):
         """
         Creates an Inbox
