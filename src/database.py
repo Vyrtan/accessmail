@@ -50,7 +50,7 @@ class Database:
 
         return mail
 
-    def insertMail(self, subject, inbox):
+    def insertMail(self, pmail):
         """
 
         :param subject: Mail's subject
@@ -60,13 +60,13 @@ class Database:
         """
         mail = Mails()
         mail.date = time.time() #TODO: Use some date function here
-        mail.subject = subject
-        mail._from = ""
-        mail.bcc = ""
-        mail.cc = ""
-        mail.inReplyTo = ""
-        mail.message = ""
-        mail.inboxId = inbox.id
+        mail.subject = pmail.subject
+        mail._from = pmail._from
+        mail.bcc = pmail.bcc
+        mail.cc = pmail.cc
+        mail.inReplyTo = pmail.inReplyTo
+        mail.message = pmail.message
+        mail.inboxId = pmail.inboxId
 
         self.session.add(mail)
         self.execute()

@@ -8,7 +8,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
-from database import Database
+from src.database import Database
 from kivy.core.window import Window
 
 __author__ = 'ubuntu'
@@ -62,8 +62,6 @@ class ProviderDataLayout(GridLayout):
 
         self.selectable += [self.mailInput, self.pwInput, submitButton]
 
-        Window.bind(on_key_down=self.rotate_buttons)
-
     def save_credentials(self, event):
         print(self.pwInput.text)
         print(self.mailInput.text)
@@ -77,13 +75,15 @@ class ProviderDataLayout(GridLayout):
         try:
             imapCon.login(self.mailInput.text, self.pwInput.text)
             db = Database()
-            db.createInbox("test", "test", self.mailInput.text, "hans", self.pwInput.text,
+            db.createInbox("test", "test", self.mailInput.text, "None", self.pwInput.text,
                            clunkyConfig[0]["IMAP"]["host"], clunkyConfig[0]["SMTP"]["host"],
                            clunkyConfig[0]["IMAP"]["port"], clunkyConfig[0]["SMTP"]["port"],
                            clunkyConfig[0]["IMAP"]["ssl"], clunkyConfig[0]["SMTP"]["ssl"],
                            clunkyConfig[0]["SMTP"]["auth"])
             db.close()
+            imapCon.logout()
             self.parent.killMe()
+            # we are still logged in, right?
         except imaplib.IMAP4.error as e:
             content = Button(text='An error occurred! Click here to try again')
             popup = Popup(title='Error!', content=content,
@@ -91,19 +91,4 @@ class ProviderDataLayout(GridLayout):
             content.bind(on_press=popup.dismiss)
             popup.open()
             print(e)
-
-    # use focusbehaviour maybe? s. kivy 1.8.1
-    def rotate_buttons(self, keyboard, key,  *args):
-        print self.current_butt
-        if key == 9:
-            if self.current_butt < len(self.selectable)-1:
-                self.current_butt += 1
-            else:
-                self.current_butt = 0
-        if key == 13:
-            if type(self.selectable[self.current_butt]) == Button:
-                self.selectable[self.current_butt].trigger_action()
-            else:
-                self.selectable[self.current_butt].focus = True
-
 

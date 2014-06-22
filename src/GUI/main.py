@@ -20,6 +20,7 @@ from .readLayout import ReadLayout
 from .menuLayout import MenuLayout
 from .EmailItem import EmailItem
 from .firstStartLayout import FirstStartLayout
+from src.Controller.CommunicationController import CommunicationController
 
 Builder.load_file("GUI/exitPopup.kv")
 
@@ -31,7 +32,12 @@ class Catalog(BoxLayout):
     def __init__(self, **kwargs):
         super(Catalog, self).__init__(**kwargs)
         self.current_butt = 0
+        # alternative solution to rotate through buttons: kivy1.8.1 FocusBehaviour
         Window.bind(on_key_down=self.rotate_buttons)
+        # load emails from webserver here
+        CommunicationController.getEmailsFromServer()
+
+
 
     def show_layout(self, value, **param):
         if value == "Read":
@@ -46,7 +52,6 @@ class Catalog(BoxLayout):
                 subject = "None"
             else:
                 subject = "Re:" + param["subject"]
-            print("Write %s %s" %(address, subject))
             self.screen_manager.current = value
             self.screen_manager.current_screen.strSendTo = address
             self.screen_manager.current_screen.strSubject = subject
@@ -73,6 +78,10 @@ class Catalog(BoxLayout):
     def on_exit_press(self):
         p = ExitPopup()
         p.open()
+
+    def getEmailsFromServer(self):
+        pass
+
 
 
 class ExitPopup(Popup):

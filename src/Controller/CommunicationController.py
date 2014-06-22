@@ -1,76 +1,152 @@
 __author__ = 'grafgustav'
 import MainController
 import smtplib
-import email #TODO: Python mail class im Modell?
+import email
 import imaplib
 import poplib
+from src.database import Database
+from kivy.uix.button import Button
+from kivy.uix.popup import Popup
+from src.models import Mails
+
+clunkyConfig = {
+    0: {
+        "IMAP": {
+            "host": "imap.gmail.com",
+            "port": 993,
+            "ssl": True
+        },
+        "SMTP": {
+            "host": "smtp.gmail.com",
+            "port": 465,
+            "ssl": True,
+            "auth": True
+        }
+    }
+}
 
 
 class CommunicationController(object):
 
-    def __init__(self, main_controller):
-        self.__credentials = self._load_credentials()
-        self.__inbox = self._load_inbox()
-        self.__main_controller = main_controller
+    # def __init__(self):
+    #     self.__credentials = self._load_credentials()
+    #     self.__inbox = self._load_inbox()
 
-    def _imap_login(self):
-        connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden, SSL ?
-        connection.login()
-        return connection
+    # def _imap_login(self):
+    #     connection = imaplib.IMAP4_SSL() #TODO: Daten aus Model laden, SSL ?
+    #     connection.login()
+    #     return connection
+    #
+    # def _pop_login(self):
+    #     connection = poplib.POP3_SSL()
+    #     connection.login()
+    #     return connection
+    #
+    # def _load_credentials(self):
+    #     cred = self.__main_controller.get_database_controller().load_credentials()
+    #     return cred
+    #
+    # def _load_inbox(self):
+    #     inb = self.__main_controller.get_database_controller().load_inbox()
+    #     return inb
+    #
+    # def _send(self):                              #TODO: Mail aus Model laden? (Wo/wann ins Model kopieren)
+    #    connection = smtplib.SMTP()      #TODO: Inbox in Feld umwandeln, SSL verschluesselung?
+    #    connection.starttls()
+    #    connection.login()              #TODO: Python mail class benutzen?
+    #    connection.sendmail()
+    #    connection.quit()
+    #
+    # #TODO: IMAP verbindung dauerhaft aufrechterhalten? Oder Intervall abfrage? Oder Buttons?
+    #
+    # def _getmailboxes_imap(self):
+    #     c = self._imap_login()
+    #     typ, data = c.list()    #TODO: Richtige Mailbox auswaehlen(erstmal nur "Bekannte?")
+    #     c.close()
+    #     c.logout()
+    #     return data
+    #
+    # def _getmails_imap(self):
+    #     c = self._imap_login()
+    #     c.select()
+    #     rv, data = c.search(None, "ALL")           #TODO: Mailbox auswaehlen, holt sich erstmal ALLE mails
+    #     for num in data[0].split():
+    #         typ, msg_data = c.fetch(num, '(RFC822)')
 
-    def _pop_login(self):
-        connection = poplib.POP3_SSL()
-        connection.login()
-        return connection
+    #     c.close()                                       # beinhalten server antwort.
+    #     c.logout()
+    #     return msg         #TODO: Daten weiter verarbeiten
+    #
+    # def _getmails_pop(self):
+    #     c = self._pop_login()
+    #     msg = c.list()      #TODO: alle Messages in String format (liste)
+    #     c.quit()
+    #     return msg
+    #
+    # def _pop_delete(self, msgnum):
+    #     c = self._pop_login()
+    #     msgs = self._getmails_pop()
+    #     c.dele(msgnum)
+    #     c.quit()
 
-    def _load_credentials(self):
-        cred = self.__main_controller.get_database_controller().load_credentials()
-        return cred
+    @staticmethod
+    def getEmailsFromServer():
+        # establish IMAP Connection
+        imapCon = None
+        if(clunkyConfig[0]["IMAP"]["ssl"]):
+            imapCon = imaplib.IMAP4_SSL(clunkyConfig[0]["IMAP"]["host"])
+        else:
+            imapCon = imaplib.IMAP4(clunkyConfig[0]["IMAP"]["host"])
+        print("Connection established")
 
-    def _load_inbox(self):
-        inb = self.__main_controller.get_database_controller().load_inbox()
-        return inb
+        try:
+            # open database connection and get credentials
+            db = Database()
+            inbox = db.getInbox()
 
-    def _send(self):                              #TODO: Mail aus Model laden? (Wo/wann ins Model kopieren)
-       connection = smtplib.SMTP()      #TODO: Inbox in Feld umwandeln, SSL verschluesselung?
-       connection.starttls()
-       connection.login()              #TODO: Python mail class benutzen?
-       connection.sendmail()
-       connection.quit()
+            # get inbox id for later use
+            inboxID = inbox.id
 
-    #TODO: IMAP verbindung dauerhaft aufrechterhalten? Oder Intervall abfrage? Oder Buttons?
+            emailAddress = inbox.userMail
+            password = inbox.password
+            print emailAddress
+            print password
 
+            imapCon.login(emailAddress, password)
+            # fetch emails from server
+            imapCon.select("inbox")
+            result, data = imapCon.search(None, "ALL")
+            ids = data[0].split()
+            raw_mails = []
+            index = 0
+            for i in ids:
+                result, data = imapCon.fetch(i, "(RFC822)")
+                raw_mails.append(data[0][1])
+                m = Mails()
 
+                e = email.message_from_string(raw_mails[index])
+                m.to = e["To"]
+                m._from = e["From"]
+                m.date = e["Date"]
+                m.cc = e["CC"]
+                m.inReplyTo = e["In-Reply-To"]
+                message = ""
+                if e.is_multipart():
+                    for payload in e.get_payload():
+                        message = message + " " + str(payload)
+                else:
+                    message = e.get_payload()
+                m.message = message
+                m.inboxId = inboxID
+                db.insertMail(m)
+                index += 1
 
-    def _getmailboxes_imap(self):
-        c = self._imap_login()
-        typ, data = c.list()    #TODO: Richtige Mailbox auswaehlen(erstmal nur "Bekannte?")
-        c.close()
-        c.logout()
-        return data
+            # close database connection
+            db.close()
 
-    def _getmails_imap(self):
-        c = self._imap_login()
-        c.select()
-        rv, data = c.search(None, "ALL")           #TODO: Mailbox auswaehlen, holt sich erstmal ALLE mails
-        for num in data[0].split():
-            typ, msg_data = c.fetch(num, '(RFC822)')
-        msg = email.message_from_string(msg_data[0][1]) #typ und rv können für Fehlermeldungen genutzt werden.
-        c.close()                                       # beinhalten server antwort.
-        c.logout()
-        return msg         #TODO: Daten weiter verarbeiten
-
-    def _getmails_pop(self):
-        c = self._pop_login()
-        msg = c.list()      #TODO: alle Messages in String format (liste)
-        c.quit()
-        return msg
-
-    def _pop_delete(self, msgnum):
-        c = self._pop_login()
-        msgs = self._getmails_pop()
-                                    #TODO: msg filtern nach der zu löschenden msgnum!
-        c.dele(msgnum)
-        c.quit()
+            imapCon.logout()
+            # we are still logged in, right?
+        except imaplib.IMAP4.error as e:
+            print(e)
 
     # TODO: delete imap/pop
