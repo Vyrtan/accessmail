@@ -31,7 +31,7 @@ class Database:
         :rtype: Mails
         """
         mail = self.session.query(Mails)\
-            .filter(and_(getattr(Mails, what) == value)).one()
+            .filter(and_(getattr(Mails, what) == value)).first()
 
         return mail
 
@@ -110,6 +110,9 @@ class Database:
         return True
 
     def getInbox(self):
+        """
+        :rtype: Inbox
+        """
         return self.session.query(Inbox).first()
 
     def execute(self):

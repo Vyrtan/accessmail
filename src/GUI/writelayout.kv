@@ -1,6 +1,8 @@
 #:kivy 1.7.2
 
 <WriteLayout>:
+    mailText: mailText
+    sendTo: sendTo
     BoxLayout:
         orientation: "vertical"
         Label:
@@ -13,16 +15,32 @@
             text: "Write"
         BoxLayout:
             orientation: "vertical"
-
+            GridLayout:
+                size_hint: [1, 0.1]
+                rows: 1
+                Label:
+                    size_hint: [0.2, 1]
+                    text: "To:"
+                TextInput:
+                    id: sendTo
+                    text: ""
+                    multiline: False
+                Button:
+                    text: "Add Contact"
+            TextInput:
+                id: mailText
+                text: ""
             GridLayout:
                 size_hint: [1, 0.1]
                 rows: 1
                 Button:
-                    text: "Previous"
+                    text: "Attach"
                 Button:
-                    text: "Save"
+                    text: "Add Contact"
                 Button:
-                    text: "Next"
-            TextInput:
-                text: "Input"
+                    text: "Send"
+                    on_press: root.send_mail()
+            Label:
+                size_hint: [0.2, 0.1]
+                text: "Attached:"
 
