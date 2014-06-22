@@ -33,17 +33,17 @@ class Catalog(BoxLayout):
         super(Catalog, self).__init__(**kwargs)
         self.current_butt = 0
         # alternative solution to rotate through buttons: kivy1.8.1 FocusBehaviour
-        Window.bind(on_key_down=self.rotate_buttons)
+        # Window.bind(on_key_down=self.rotate_buttons)
         # load emails from webserver here
-        # CommunicationController.getEmailsFromServer()
-
-
+        CommunicationController.getEmailsFromServer()
 
     def show_layout(self, value, **param):
         if value == "Read":
             # read then contains the id for the email to be displayed
-            param.setdefault("email_id", "None")
-            read = param["email_id"]
+            param.setdefault("email", None)
+            read = param["email"]
+            self.screen_manager.current = value
+            self.screen_manager.current_screen.email = read
         elif value == "Write":
             param.setdefault("address", "None")
             param.setdefault("subject", "None")
@@ -78,10 +78,6 @@ class Catalog(BoxLayout):
     def on_exit_press(self):
         p = ExitPopup()
         p.open()
-
-    def getEmailsFromServer(self):
-        pass
-
 
 
 class ExitPopup(Popup):

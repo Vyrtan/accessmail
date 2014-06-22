@@ -1,6 +1,7 @@
 #:kivy 1.7.2
 
 <ReadLayout>:
+    textOutput: textOutput
     BoxLayout:
         orientation: "vertical"
         Label:
@@ -18,7 +19,14 @@
                 rows: 1
                 Button:
                     text: "Vorherige E-Mail"
+                    on_press: root.previousEmail()
                 Button:
                     text: "Nächste E-Mail"
-            Label:
-                text: "Ausgabe"
+                    on_press: root.nextEmail()
+            ScrollView:
+                id: scrlv
+                TextInput:
+                    id: textOutput
+                    text: "text"
+                    size_hint: 1, None
+                    height: max( (len(self._lines)+1) * self.line_height, scrlv.height)
