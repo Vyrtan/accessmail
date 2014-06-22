@@ -34,6 +34,18 @@ class WriteLayout(Screen):
                 'pw': inbox.password,
                 'ssl': inbox.smtpSSL
             }
-            test = SMTPSender(dicti)
-            test.connect()
-            test.send_mail(inbox.userMail, self.sendTo.text, "test", self.mailText.text, None)
+            try:
+                test = SMTPSender(dicti)
+                test.connect()
+                test.send_mail(inbox.userMail, self.sendTo.text, "test", self.mailText.text, None)
+                content = Button(text='Worked!')
+                popup = Popup(title='Worked!', content=content,
+                              size_hint=(None, None), size=(400, 400))
+                content.bind(on_press=popup.dismiss)
+                popup.open()
+            except Exception:
+                content = Button(text='An error occurred! Click here to try again')
+                popup = Popup(title='Error!', content=content,
+                              size_hint=(None, None), size=(400, 400))
+                content.bind(on_press=popup.dismiss)
+                popup.open()
