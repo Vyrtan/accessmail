@@ -16,12 +16,13 @@ class DatabaseController(object):
         db = Database()
         #get all mails sent to active account
         inbox = db.getInbox()
-        print "Inbox Usermail:"
-        print inbox.userMail
         mails = db.getAllMails()
-        print "Mails:"
-        print mails
         return mails
+
+    @staticmethod
+    def deleteEmail(email):
+        db = Database()
+        db.deleteMail(email)
 
     @staticmethod
     def loadContacts():
@@ -30,10 +31,7 @@ class DatabaseController(object):
         return contacts
 
     @staticmethod
-    def addContact(name, address):
-        contact = Contacts()
-        contact.name = name
-        contact.emailAddress = address
+    def addContact(contact):
         db = Database()
         db.insertContact(contact)
 

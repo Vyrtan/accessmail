@@ -2,7 +2,7 @@ __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ObjectProperty
-from src.Controller import DatabaseController
+from src.Controller.DatabaseController import DatabaseController
 
 
 Builder.load_file("GUI/ContactItem.kv")
@@ -21,7 +21,7 @@ class ContactItem(BoxLayout):
         self.email = contact.emailAddress
 
     def trigger_delete(self):
-       DatabaseController.DatabaseController.deleteContact(self.contact)
+       print self.root.parent.parent.parent.deleteContact(self.contact)
 
     # switches to WriteLayout and already fills in the address (supposedly)
     def trigger_write_mail(self):

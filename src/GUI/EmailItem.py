@@ -3,6 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.popup import Popup
+from src.Controller import DatabaseController
 
 
 Builder.load_file("GUI/EmailItem.kv")
@@ -14,23 +15,29 @@ class EmailItem(BoxLayout):
     email = StringProperty()
     subject = StringProperty()
     root = ObjectProperty()
+    oMail = ObjectProperty()
 
-    def __init__(self, name="Unknown", email="Unknown", subject="Unknown", **kwargs):
+    def __init__(self, email, **kwargs):
         super(EmailItem, self).__init__(**kwargs)
-        self.name = name
-        self.email = email
-        if subject:
-            self.subject = subject
+        self.oMail = email
+        self.name = email._from
+        self.email = email._from
+        if email.subject:
+            self.subject = email.subject
         else:
             self.subject = "None"
 
     # delete email with corresponding id from model
     def trigger_delete(self):
-        p = DeletePopup()
-        p.open()
+        self.deleteMail()
+
+        # alternative version using a popup and confirmation
+        # p = DeletePopup()
+        # p.open()
 
     def deleteMail(self):
-        print("Mail almost deleted")
+        DatabaseController.DatabaseController.deleteEmail(self.oMail)
+
 
     # call this function with some email id to switch to the corresponding email from the model
     def trigger_read(self, email_id="None"):

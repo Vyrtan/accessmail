@@ -51,8 +51,13 @@ class Database:
         :type inbox: Inbox
         :return:
         """
+        for m in self.session.query(Mails).all():
+            if (m.date == pmail.date) & (m.subject == pmail.subject):
+                print("Email dismissed")
+                return
+
         mail = Mails()
-        mail.date = time.time() #TODO: Use some date function here
+        mail.date = pmail.date
         mail.subject = pmail.subject
         mail._from = pmail._from
         mail.bcc = pmail.bcc
@@ -62,6 +67,10 @@ class Database:
         mail.inboxId = pmail.inboxId
 
         self.session.add(mail)
+        self.execute()
+
+    def deleteMail(self, email):
+        self.session.delete(email)
         self.execute()
 
     # Contacts

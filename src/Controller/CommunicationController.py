@@ -127,10 +127,11 @@ class CommunicationController(object):
                 e = email.message_from_string(raw_mails[index])
                 m_name, m.to = email.utils.parseaddr(e["To"])
                 m_name, m._from = email.utils.parseaddr(e["From"])
-                print m.to
-                print m._from
                 m.date = e["Date"]
                 m.cc = e["CC"]
+                m.subject = e["Subject"]
+                print "----------------------Subject-------------------------"
+                print m.subject
                 m.inReplyTo = e["In-Reply-To"]
                 message = ""
                 if e.is_multipart():
@@ -148,5 +149,3 @@ class CommunicationController(object):
             imapCon.logout()
         except imaplib.IMAP4.error as e:
             print(e)
-
-    # TODO: delete imap/pop

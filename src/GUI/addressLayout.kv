@@ -28,11 +28,13 @@
             size_hint: [1, 0.1]
             Button:
                 text: "Previous Page"
+                on_press: root.previousPage()
             Button:
                 text: "Add Contact"
                 on_press: root.addNewContact()
             Button:
                 text: "Next Page"
+                on_press: root.nextPage()
         GridLayout:
             id: grid
             cols: 1
