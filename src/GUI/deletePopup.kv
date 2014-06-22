@@ -3,14 +3,14 @@
 <DeletePopup>:
     size_hint: .5, .5
     auto_dismiss: False
-    title: 'Confirm'
+    title: 'Löschen bestätigen'
     BoxLayout:
         orientation: "vertical"
         Label:
-            text: "Do you really want to delete this Email?"
+            text: "Möchten Sie diese E-Mail wirklich löschen?"
         Button:
-            text: 'No'
+            text: 'Nein'
             on_press: root.dismiss()
         Button:
-            text: 'Yes'
+            text: 'Ja'
             on_press: root.dismiss()

@@ -22,18 +22,18 @@
             disabled_color: (0,0,0,1)
             bold: True
             font_size: 40
-            text: "Address book"
+            text: "Adressbuch"
         BoxLayout:
             orientation: "horizontal"
             size_hint: [1, 0.1]
             Button:
-                text: "Previous Page"
+                text: "Vorherige Seite"
                 on_press: root.previousPage()
             Button:
-                text: "Add Contact"
+                text: "Kontakt hinzufügen"
                 on_press: root.addNewContact()
             Button:
-                text: "Next Page"
+                text: "Nächste Seite"
                 on_press: root.nextPage()
         GridLayout:
             id: grid

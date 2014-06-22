@@ -13,7 +13,7 @@
             disabled_color: (0,0,0,1)
             bold: True
             font_size: 40
-            text: "Write"
+            text: "E-Mail verfassen"
         BoxLayout:
             orientation: "vertical"
             GridLayout:
@@ -21,7 +21,7 @@
                 rows: 1
                 Label:
                     size_hint: [0.2, 1]
-                    text: "To:"
+                    text: "An:"
                 TextInput:
                     id: sendTo
                     text: ""
@@ -37,13 +37,11 @@
                 size_hint: [1, 0.1]
                 rows: 1
                 Button:
-                    text: "Attach"
+                    text: "Anhänge"
                 Button:
-                    text: "Add Contact"
-                Button:
-                    text: "Send"
+                    text: "Senden"
                     on_press: root.send_mail()
             Label:
                 size_hint: [0.2, 0.1]
-                text: "Attached:"
+                text: "anhänge:"
 

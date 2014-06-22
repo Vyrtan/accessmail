@@ -14,29 +14,29 @@
             size_hint: [1, 0.1]
             bold: True
             font_size: 40
-            text: "Overview"
+            text: "Übersicht"
         BoxLayout:
             id: ext_navigation
             size_hint: [1, 0.1]
             orientation: "horizontal"
             Button:
-                text: "Not Read"
+                text: "Ungelesen"
                 on_press: root.switch_to("Not Read")
             Button:
-                text: "All"
+                text: "Alle"
                 on_press: root.switch_to("All")
             Button:
-                text: "Sent"
+                text: "Gesendet"
                 on_press: root.switch_to("Sent")
         BoxLayout:
             id: int_navigation
             size_hint: [1, 0.1]
             orientation: "horizontal"
             Button:
-                text: "Previous Page"
+                text: "Vorherige Seite"
                 on_press: root.previous_page()
             Button:
-                text: "Next Page"
+                text: "Nächste Seite"
                 on_press: root.next_page()
         GridLayout:
             id: grid

@@ -9,16 +9,17 @@
     BoxLayout:
         orientation: "vertical"
         Label:
-            text: "Please enter name and email of your new contact:"
+            #text: "Please enter name and email of your new contact:"
+            text: "Bitte gib den Namen und die \nE-Mailadresse des neuen Kontakts ein:"
         TextInput:
             id: tname
-            text: "name"
+            text: "Name"
         TextInput:
             id: taddress
-            text: "email"
+            text: "E-Mail"
         Button:
-            text: 'Add'
+            text: 'Hinzufügen'
             on_press: root.handOverInfo(tname.text, taddress.text)
         Button:
-            text: 'Cancel'
+            text: 'Abbrechen'
             on_press: root.dismiss()

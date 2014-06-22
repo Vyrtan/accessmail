@@ -3,14 +3,14 @@
 <ExitPopup>:
     size_hint: .5, .5
     auto_dismiss: False
-    title: 'Confirm'
+    title: 'Verlassen bestätigen'
     BoxLayout:
         orientation: "vertical"
         Label:
-            text: "Do you really want to exit?"
+            text: "Möchten Sie das Programm wirklich verlassen?"
         Button:
-            text: 'No'
+            text: 'Nein'
             on_press: root.dismiss()
         Button:
-            text: 'Yes'
+            text: 'Ja'
             on_press: exit()
