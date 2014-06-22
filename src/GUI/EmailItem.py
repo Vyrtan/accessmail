@@ -19,7 +19,10 @@ class EmailItem(BoxLayout):
         super(EmailItem, self).__init__(**kwargs)
         self.name = name
         self.email = email
-        self.subject = subject
+        if subject:
+            self.subject = subject
+        else:
+            self.subject = "None"
 
     # delete email with corresponding id from model
     def trigger_delete(self):

@@ -35,20 +35,13 @@ class Database:
 
         return mail
 
-    def getAllMailsBy(self, what, value):
+    def getAllMails(self):
         """
-
-        :param what: By What do you want to search?
-        :type what: string
-        :param value: Which value should I search for?
-        :type value: object
         :return: returns a list of emails
         :rtype: Mails
         """
-        mail = self.session.query(Mails)\
-            .filter(and_(getattr(Mails, what) == value)).all()
-
-        return mail
+        mails = self.session.query(Mails).all()
+        return mails
 
     def insertMail(self, pmail):
         """

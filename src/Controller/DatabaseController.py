@@ -16,7 +16,11 @@ class DatabaseController(object):
         db = Database()
         #get all mails sent to active account
         inbox = db.getInbox()
-        mails = db.getAllMailsBy("to", "maxi")
+        print "Inbox Usermail:"
+        print inbox.userMail
+        mails = db.getAllMails()
+        print "Mails:"
+        print mails
         return mails
 
     @staticmethod

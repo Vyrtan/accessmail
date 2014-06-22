@@ -18,8 +18,6 @@ class OverviewLayout(Screen):
         super(OverviewLayout, self).__init__(**kwargs)
         self.counter = 0
         self.mails = self.get_emails_from_db()
-        if self.grid:
-            self.test_data()
 
     #the kivy properties don't always load properly
     #this method observes the property and trigger on_change
@@ -28,10 +26,16 @@ class OverviewLayout(Screen):
         self.displayEmails()
 
     def get_emails_from_db(self):
-        return DatabaseController.load_emails()
+        print("Fetching mails from db")
+        emails = DatabaseController.load_emails()
+        print emails
+        return emails
 
     def displayEmails(self):
+        self.grid.clear_widgets()
         currentMails = self.mails[self.counter*10:(self.counter+1)*10]
+        print "Current mails"
+        print currentMails
         self.add_emails(currentMails)
 
     # TODO: limit added emails to 8/10 and store rest somewhere else for later use
@@ -41,7 +45,7 @@ class OverviewLayout(Screen):
     def add_emails(self, emails):
         for v in emails:
             print("email added")
-            item = EmailItem(name="asdf", email="asdf", subject=v.subject)
+            item = EmailItem(name=v._from, email=v._from, subject=v.subject)
             self.grid.add_widget(item)
 
         # testing routines
