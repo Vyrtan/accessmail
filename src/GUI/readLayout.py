@@ -2,6 +2,8 @@ __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
+from time import strptime
+from src.Controller.DatabaseController import DatabaseController
 
 
 Builder.load_file('GUI/readlayout.kv')
@@ -23,11 +25,32 @@ class ReadLayout(Screen):
         self.textOutput.text = self.email.message
         self.subject.text = self.email.subject
 
+    # maybe we should have a separate datamodel where all the emails are loaded? Which criteria defines
+    # which email is next in the list? -> We already have all emails loaded in the overview layout
     def nextEmail(self):
-        print "next email"
+        # example for time
+        # Sun, 22 Jun 2014 23:13:07 +0000
+        # oldD = strptime(self.email.date, "%a, %d %b %Y %H:%M:%S +0000")
+        allMails = DatabaseController.load_emails()
+        currMail = self.email
+        for m in allMails:
+            if m.id == currMail.id:
+                index = allMails.index(m)
+        print currMail
+        nextMail = allMails[index+1] if index < (len(allMails)-1) else allMails[0]
+        print nextMail
+        self.email = nextMail
 
     def previousEmail(self):
-        print "previous Email"
+        allMails = DatabaseController.load_emails()
+        currMail = self.email
+        for m in allMails:
+            if m.id == currMail.id:
+                index = allMails.index(m)
+        print currMail
+        nextMail = allMails[index-1] if index > 0 else allMails[(len(allMails) -1)]
+        print nextMail
+        self.email = nextMail
 
     def reply(self):
         print self.parent.parent.parent.show_layout("Write", subject=self.email.subject, address=self.email._from)

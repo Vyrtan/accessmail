@@ -21,8 +21,8 @@ class SMTPSender(object):
             self.conn = smtplib.SMTP_SSL(self.host, int(self.port))
         else:
             self.conn = smtplib.SMTP(self.host, int(self.port))
+            self.conn.starttls()
 
-        self.conn.starttls()
         self.conn.login(self.user, self.pw)
 
     def send_mail(self, _from, to, subject, msg, attachments):

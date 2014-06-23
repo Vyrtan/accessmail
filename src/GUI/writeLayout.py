@@ -1,9 +1,8 @@
 from kivy.properties import ObjectProperty, StringProperty
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
-from Service import smtpsender
 from Service.smtpsender import SMTPSender
-from database import Database
+from src.database import Database
 
 __author__ = 'grafgustav'
 from kivy.lang import Builder
@@ -41,20 +40,25 @@ class WriteLayout(Screen):
                 'port': inbox.smtpPort,
                 'user': inbox.userMail,
                 'pw': inbox.password,
-                'ssl': inbox.smtpSSL
+                'ssl': inbox.imapSSL
             }
+            print dicti
             try:
                 test = SMTPSender(dicti)
+                print "vor connect"
                 test.connect()
+                print "connected"
                 test.send_mail(inbox.userMail, self.sendTo.text, "test", self.mailText.text, None)
-                content = Button(text='Worked!')
-                popup = Popup(title='Worked!', content=content,
+                print "mail sent"
+                content = Button(text='Erfolgreich verschickt!')
+                popup = Popup(title='Erfolgreich!', content=content,
                               size_hint=(None, None), size=(400, 400))
                 content.bind(on_press=popup.dismiss)
                 popup.open()
-            except Exception:
-                content = Button(text='An error occurred! Click here to try again')
-                popup = Popup(title='Error!', content=content,
+            except Exception as e:
+                print e
+                content = Button(text='Ein Fehler ist aufgetreten. Bitte versuchen Sie es nocheinmal.')
+                popup = Popup(title='Fehler!', content=content,
                               size_hint=(None, None), size=(400, 400))
                 content.bind(on_press=popup.dismiss)
                 popup.open()

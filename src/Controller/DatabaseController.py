@@ -14,8 +14,6 @@ class DatabaseController(object):
     @staticmethod
     def load_emails():
         db = Database()
-        #get all mails sent to active account
-        inbox = db.getInbox()
         mails = db.getAllMails()
         return mails
 

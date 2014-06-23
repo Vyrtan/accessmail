@@ -4,6 +4,7 @@ import time
 from sqlalchemy import *
 from sqlalchemy.orm import relation, sessionmaker, contains_eager
 from models import *
+from time import strptime
 
 
 class Database:

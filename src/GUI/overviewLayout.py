@@ -47,7 +47,8 @@ class OverviewLayout(Screen):
         self.displayEmails()
 
     def next_page(self):
-        self.counter += 1
+        if (self.counter+1 * 10) < len(self.mails):
+            self.counter += 1
         self.displayEmails()
 
     # responsible to switch between folders, will probably never be used

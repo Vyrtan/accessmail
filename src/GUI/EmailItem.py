@@ -40,7 +40,7 @@ class EmailItem(BoxLayout):
 
 
     # call this function with some email id to switch to the corresponding email from the model
-    def trigger_read(self, email_id="None"):
+    def trigger_read(self):
         # best. expression. ever.
         self.root.parent.parent.parent.parent.parent.parent.show_layout("Read", email=self.oMail)
 
