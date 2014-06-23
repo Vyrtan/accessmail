@@ -39,7 +39,7 @@ class WriteLayout(Screen):
             dicti = {
                 'host': inbox.smtpServer,
                 'port': inbox.smtpPort,
-                'user': inbox.userMail,
+                'user': inbox.account,
                 'pw': inbox.password,
                 'ssl': inbox.smtpSSL
             }
