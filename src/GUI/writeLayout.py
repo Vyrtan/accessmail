@@ -42,7 +42,6 @@ class WriteLayout(Screen):
                 'pw': inbox.password,
                 'ssl': inbox.imapSSL
             }
-            print dicti
             try:
                 test = SMTPSender(dicti)
                 print "vor connect"
