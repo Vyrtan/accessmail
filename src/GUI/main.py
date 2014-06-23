@@ -37,7 +37,7 @@ class Catalog(BoxLayout):
         # Window.bind(on_key_down=self.rotate_buttons)
         # load emails from webserver here
         Clock.schedule_once(self.checkMails, 0)
-        Clock.schedule_interval(self.checkMails, 20)
+        Clock.schedule_interval(self.checkMails, 300)
 
 
     def checkMails(self,_):
