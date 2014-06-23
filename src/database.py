@@ -60,10 +60,10 @@ class Database:
         mail = Mails()
         mail.date = pmail.date
         mail.subject = unicode(pmail.subject, "utf-8")
-        mail._from = pmail._from
-        mail.bcc = pmail.bcc
-        mail.cc = pmail.cc
-        mail.inReplyTo = pmail.inReplyTo
+        mail._from = unicode(pmail._from, "utf-8")
+        mail.bcc = unicode(pmail.bcc, "utf-8")
+        mail.cc = unicode(pmail.cc, "utf-8")
+        mail.inReplyTo = unicode(pmail.inReplyTo, "utf-8")
         mail.message = unicode(pmail.message, "utf-8")
         mail.inboxId = pmail.inboxId
 
