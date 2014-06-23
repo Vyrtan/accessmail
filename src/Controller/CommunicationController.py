@@ -1,5 +1,4 @@
 __author__ = 'grafgustav'
-import MainController
 import smtplib
 import email
 import imaplib

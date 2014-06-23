@@ -1,18 +1,16 @@
 #:kivy 1.8
 
-<ExitPopup>:
+<ResetPopup>:
     size_hint: .5, .5
     auto_dismiss: False
-    title: 'Verlassen bestätigen'
+    title: 'Reset bestätigen'
     BoxLayout:
         orientation: "vertical"
         Label:
-            text: "Möchten Sie das Programm wirklich verlassen?"
+            text: "Möchten Sie das Programm wirklich auf den \nursprünglichen Zustand zurücksetzen?"
         Button:
-            text: ''
             background_normal: "GUI/Icons/iCancel.png"
             on_press: root.dismiss()
         Button:
-            text: ''
             background_normal: "GUI/Icons/iConfirm.png"
-            on_press: exit()
+            on_press: print root.parent.parent

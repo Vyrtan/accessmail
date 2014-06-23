@@ -134,6 +134,11 @@ class Database:
         """
         return self.session.query(Inbox).first()
 
+    def resetAll(self):
+        print("Deleting everything")
+        self.session.expunge_all()
+        self.execute()
+
     def execute(self):
         self.session.commit()
         # flush after commit is redundant

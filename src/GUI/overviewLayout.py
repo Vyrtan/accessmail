@@ -20,7 +20,7 @@ class OverviewLayout(Screen):
         self.counter = 0
         self.mails = []
         Clock.schedule_once(self.scheduledMailCheck, 0)
-        Clock.schedule_interval(self.scheduledMailCheck, 10)
+        Clock.schedule_interval(self.scheduledMailCheck, 60)
 
     def scheduledMailCheck(self,_):
         self.mails = DatabaseController.load_emails()
@@ -37,7 +37,7 @@ class OverviewLayout(Screen):
 
     def displayEmails(self):
         self.grid.clear_widgets()
-        currentMails = self.mails[self.counter*10:(self.counter+1)*10]
+        currentMails = self.mails[self.counter*7:(self.counter+1)*7]
         self.add_emails(currentMails)
 
     # Parameter emails is a list of email objects as defined below

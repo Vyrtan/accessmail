@@ -5,6 +5,11 @@ from GUI.firstStartRootLayout import FirstStartRootApp
 kivy.require('1.8.0')
 
 from kivy.app import App
+from kivy.config import Config
+import pygame
+
+
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.uix.popup import Popup
@@ -22,8 +27,10 @@ from .EmailItem import EmailItem
 from .firstStartLayout import FirstStartLayout
 from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
+from src.database import Database
 
 Builder.load_file("GUI/exitPopup.kv")
+Builder.load_file("GUI/resetPopup.kv")
 
 
 class Catalog(BoxLayout):
@@ -69,6 +76,10 @@ class Catalog(BoxLayout):
             self.screen_manager.current = value
         return
 
+    def triggerReset(self):
+        p = ResetPopup()
+        p.open()
+
     def rotate_buttons(self, keyboard, key,  *args):
         # print("enter rotate button")
         # print("current_butt: %d" %(self.current_butt))
@@ -94,10 +105,21 @@ class ExitPopup(Popup):
     pass
 
 
+class ResetPopup(Popup):
+    pass
+
+
 class MainApp(App):
     def build(self):
         self.title = "Accessmail"
-
+        # try to maximize the window on start, doesn't work
+        # pygame.display.init()
+        # info = pygame.display.Info()
+        # width, height = info.current_w, info.current_h
+        # print width
+        # print height
+        # Config.set('graphics', 'width', str(width))
+        # Config.set('graphics', 'height', str(height))
         #set the background colour of the application
         Window.clearcolor = (1, 1, 1, 1)
 

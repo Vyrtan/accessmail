@@ -15,14 +15,17 @@
     Label:
         text: root.subject
     Button:
-        text: "Lesen"
+        text: ""
         size_hint: [0.3, 1]
+        background_normal: "GUI/Icons/iRead.png"
         on_press: root.trigger_read()
     Button:
         text: "Antworten"
+        background_normal: "GUI/Icons/iReply.png"
         size_hint: [0.3, 1]
         on_press: root.trigger_reply()
     Button:
         text: "Löschen"
+        background_normal: "GUI/Icons/iCancel.png"
         size_hint: [0.3, 1]
         on_press: root.trigger_delete()

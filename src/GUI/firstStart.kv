@@ -6,10 +6,10 @@
         Label:
             text: "Bitte wählen Sie den von Ihnen genutzten E-Mail Anbieter:"
         GridLayout:
-            cols: 3
-            Button:
-                text: "GMX"
-                on_press: root.parent.selectedProvider(0)
+            cols: 2
+            # Button:
+            #     text: "GMX"
+            #     on_press: root.parent.selectedProvider(0)
             Button:
                 text: "WEB.de"
                 on_release: root.parent.selectedProvider(1)
@@ -17,7 +17,7 @@
                 text: "GMAIL"
                 on_press: root.parent.selectedProvider(2)
 
-
         Button:
             text: "Abbrechen"
+            background_normal: "GUI/Icons/iCancel.png"
             on_press: exit()
