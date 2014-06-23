@@ -45,12 +45,15 @@ class Catalog(BoxLayout):
 
 
     def show_layout(self, value, **param):
+        if self.screen_manager.current == value:
+            return
         if value == "Read":
             # read then contains the id for the email to be displayed
             param.setdefault("email", None)
             read = param["email"]
             self.screen_manager.current = value
-            self.screen_manager.current_screen.email = read
+            if read:
+                self.screen_manager.current_screen.email = read
         elif value == "Write":
             param.setdefault("address", "None")
             param.setdefault("subject", "None")

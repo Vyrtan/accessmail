@@ -61,9 +61,9 @@ class Database:
         mail.date = pmail.date
         mail.subject = unicode(pmail.subject, "utf-8")
         mail._from = unicode(pmail._from, "utf-8")
-        mail.bcc = unicode(pmail.bcc, "utf-8")
-        mail.cc = unicode(pmail.cc, "utf-8")
-        mail.inReplyTo = unicode(pmail.inReplyTo, "utf-8")
+        mail.bcc = pmail.bcc
+        mail.cc = unicode(pmail.cc, "utf-8") if pmail.cc else ""
+        mail.inReplyTo = pmail.inReplyTo
         mail.message = unicode(pmail.message, "utf-8")
         mail.inboxId = pmail.inboxId
 
@@ -136,7 +136,8 @@ class Database:
 
     def execute(self):
         self.session.commit()
-        self.session.flush()
+        # flush after commit is redundant
+        # self.session.flush()
 
     def close(self):
         if self.session is not None:

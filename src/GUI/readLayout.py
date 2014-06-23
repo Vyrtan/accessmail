@@ -4,6 +4,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 from time import strptime
 from src.Controller.DatabaseController import DatabaseController
+from src.models import Mails
 
 
 Builder.load_file('GUI/readlayout.kv')
@@ -17,9 +18,11 @@ class ReadLayout(Screen):
 
     def __init__(self, **kwargs):
         super(ReadLayout, self).__init__(**kwargs)
+        self.email = None
 
     def on_email(self, instance, value):
-        self.displayEmail()
+        if self.email:
+            self.displayEmail()
 
     def displayEmail(self):
         self.textOutput.text = self.email.message
