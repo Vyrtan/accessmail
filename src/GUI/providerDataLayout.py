@@ -99,7 +99,10 @@ class ProviderDataLayout(GridLayout):
             imapCon = imaplib.IMAP4_SSL(clunkyConfig[provider]["IMAP"]["host"])
             email = self.mailInput.text
             account = string.split(email, '@')[0]
-            imapCon.login(account, self.pwInput.text)
+            if(provider == 1):
+                imapCon.login(account, self.pwInput.text)
+            else:
+                imapCon.login(email, self.pwInput.text)
             db = Database()
             db.createInbox("test", "test", email, account, self.pwInput.text,
                            clunkyConfig[provider]["IMAP"]["host"], clunkyConfig[provider]["SMTP"]["host"],
