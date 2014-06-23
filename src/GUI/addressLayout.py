@@ -3,7 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from src.GUI.ContactItem import ContactItem
 from kivy.properties import ObjectProperty, StringProperty
-from src.Controller.DatabaseController import DatabaseController
+from src.database import Database
 from kivy.uix.popup import Popup
 from src.models import Contacts
 
@@ -18,6 +18,7 @@ class AddressLayout(Screen):
         super(AddressLayout, self).__init__(**kwargs)
         self.contacts = []
         self.counter = 0
+        self.db = Database()
 
     def on_grid(self, instance, value):
         # this only indicates the object is loaded properly
@@ -45,8 +46,9 @@ class AddressLayout(Screen):
             self.grid.add_widget(item)
 
     def getContactsFromDB(self):
-        contacts = DatabaseController.loadContacts()
+        contacts = self.db.getContacts()
         self.contacts = contacts
+        self.displayContacts()
 
     def addNewContact(self):
         p = AddContactPopup()
@@ -58,12 +60,11 @@ class AddressLayout(Screen):
         contact = Contacts()
         contact.emailAddress = p.address
         contact.name = p.name
-        DatabaseController.addContact(contact)
-        self.contacts.append(contact)
-        self.displayContacts()
+        self.db.insertContact(contact)
+        self.getContactsFromDB()
 
     def deleteContact(self, contact):
-        DatabaseController.deleteContact(contact)
+        self.db.deleteContact(contact)
         self.contacts.remove(contact)
         self.grid.clear_widgets()
         self.displayContacts()

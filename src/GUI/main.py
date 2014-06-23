@@ -21,6 +21,7 @@ from .menuLayout import MenuLayout
 from .EmailItem import EmailItem
 from .firstStartLayout import FirstStartLayout
 from src.Controller.CommunicationController import CommunicationController
+from kivy.clock import Clock
 
 Builder.load_file("GUI/exitPopup.kv")
 
@@ -35,7 +36,13 @@ class Catalog(BoxLayout):
         # alternative solution to rotate through buttons: kivy1.8.1 FocusBehaviour
         # Window.bind(on_key_down=self.rotate_buttons)
         # load emails from webserver here
+        Clock.schedule_once(self.checkMails, 0)
+        Clock.schedule_interval(self.checkMails, 300)
+
+
+    def checkMails(self,_):
         CommunicationController.getEmailsFromServer()
+
 
     def show_layout(self, value, **param):
         if value == "Read":

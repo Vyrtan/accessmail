@@ -4,6 +4,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 from .EmailItem import EmailItem
 from src.Controller.DatabaseController import DatabaseController
+from kivy.clock import Clock
 
 Builder.load_file('GUI/overviewLayout.kv')
 
@@ -17,7 +18,13 @@ class OverviewLayout(Screen):
     def __init__(self, **kwargs):
         super(OverviewLayout, self).__init__(**kwargs)
         self.counter = 0
-        self.mails = self.get_emails_from_db()
+        self.mails = []
+        Clock.schedule_once(self.scheduledMailCheck, 0)
+        Clock.schedule_interval(self.scheduledMailCheck, 10)
+
+    def scheduledMailCheck(self,_):
+        self.mails = DatabaseController.load_emails()
+        self.displayEmails()
 
     #the kivy properties don't always load properly
     #this method observes the property and trigger on_change

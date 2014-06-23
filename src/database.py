@@ -59,12 +59,12 @@ class Database:
 
         mail = Mails()
         mail.date = pmail.date
-        mail.subject = pmail.subject
+        mail.subject = unicode(pmail.subject, "utf-8")
         mail._from = pmail._from
         mail.bcc = pmail.bcc
         mail.cc = pmail.cc
         mail.inReplyTo = pmail.inReplyTo
-        mail.message = pmail.message
+        mail.message = unicode(pmail.message, "utf-8")
         mail.inboxId = pmail.inboxId
 
         self.session.add(mail)
@@ -81,8 +81,8 @@ class Database:
 
     def insertContact(self, pContact):
         contact = Contacts()
-        contact.name = pContact.name
-        contact.emailAddress = pContact.emailAddress
+        contact.name = unicode(pContact.name, "utf-8")
+        contact.emailAddress = unicode(pContact.emailAddress, "utf-8")
         self.session.add(contact)
         self.execute()
 
