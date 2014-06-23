@@ -41,7 +41,7 @@ class WriteLayout(Screen):
                     'port': inbox.smtpPort,
                     'user': inbox.account,
                     'pw': inbox.password,
-                    'ssl': inbox.imapSSL
+                    'ssl': inbox.smtpSSL
                 }
             else:
                 dicti = {
@@ -49,7 +49,7 @@ class WriteLayout(Screen):
                     'port': inbox.smtpPort,
                     'user': inbox.userMail,
                     'pw': inbox.password,
-                    'ssl': inbox.imapSSL
+                    'ssl': inbox.smtpSSL
                 }
             try:
                 test = SMTPSender(dicti)
