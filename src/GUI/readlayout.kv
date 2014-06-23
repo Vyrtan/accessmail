@@ -2,6 +2,7 @@
 
 <ReadLayout>:
     textOutput: textOutput
+    subject: subject
     BoxLayout:
         orientation: "vertical"
         Label:
@@ -21,8 +22,15 @@
                     text: "Vorherige E-Mail"
                     on_press: root.previousEmail()
                 Button:
+                    text: "Antworten"
+                    on_press: root.reply()
+                Button:
                     text: "Nächste E-Mail"
                     on_press: root.nextEmail()
+            TextInput:
+                id: subject
+                size_hint: [1, 0.1]
+                text: "subject"
             ScrollView:
                 id: scrlv
                 TextInput:

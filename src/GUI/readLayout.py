@@ -11,19 +11,17 @@ class ReadLayout(Screen):
 
     email = ObjectProperty()
     textOutput = ObjectProperty()
+    subject = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(ReadLayout, self).__init__(**kwargs)
 
     def on_email(self, instance, value):
         self.displayEmail()
-        print "email object changed"
 
     def displayEmail(self):
-        print self.textOutput.text
-        print self.email.message
-        self.textOutput.text = self.email.message[:5000]
-        print "email gets displayed"
+        self.textOutput.text = self.email.message
+        self.subject.text = self.email.subject
 
     def nextEmail(self):
         print "next email"
@@ -31,4 +29,5 @@ class ReadLayout(Screen):
     def previousEmail(self):
         print "previous Email"
 
-
+    def reply(self):
+        print self.parent.parent.parent.show_layout("Write", subject=self.email.subject, address=self.email._from)

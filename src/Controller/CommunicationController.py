@@ -130,8 +130,6 @@ class CommunicationController(object):
                 m.date = e["Date"]
                 m.cc = e["CC"]
                 m.subject = e["Subject"]
-                print "----------------------Subject-------------------------"
-                print m.subject
                 m.inReplyTo = e["In-Reply-To"]
                 message = ""
                 if e.is_multipart():
