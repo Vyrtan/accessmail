@@ -44,6 +44,7 @@ class OverviewLayout(Screen):
     def add_emails(self, emails):
         for v in emails:
             item = EmailItem(v)
+            print v.read
             self.grid.add_widget(item)
 
     def previous_page(self):

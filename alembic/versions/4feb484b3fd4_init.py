@@ -51,6 +51,7 @@ def upgrade():
     sa.Column('inReplyTo', sa.String(length=255), nullable=True),
     sa.Column('message', sa.String(length=255), nullable=True),
     sa.Column('inboxId', sa.Integer(), nullable=True),
+    sa.Column('read', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['inboxId'], ['inboxes.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

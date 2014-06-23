@@ -4,6 +4,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.popup import Popup
 from src.Controller import DatabaseController
+import string
 
 
 Builder.load_file("GUI/EmailItem.kv")
@@ -20,10 +21,11 @@ class EmailItem(BoxLayout):
     def __init__(self, email, **kwargs):
         super(EmailItem, self).__init__(**kwargs)
         self.oMail = email
-        self.name = email._from
+        # TODO: get Name from Contactbook
+        self.name = string.split(email._from, "@")[0]
         self.email = email._from
         if email.subject:
-            self.subject = email.subject
+            self.subject = email.subject if len(email.subject) <= 20 else email.subject[:20] + "..."
         else:
             self.subject = "None"
 

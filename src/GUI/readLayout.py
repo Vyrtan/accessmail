@@ -21,8 +21,10 @@ class ReadLayout(Screen):
         self.email = None
 
     def on_email(self, instance, value):
-        if self.email:
-            self.displayEmail()
+        if not self.email:
+            return
+        self.displayEmail()
+
 
     def displayEmail(self):
         self.textOutput.text = self.email.message
@@ -34,6 +36,8 @@ class ReadLayout(Screen):
         # example for time
         # Sun, 22 Jun 2014 23:13:07 +0000
         # oldD = strptime(self.email.date, "%a, %d %b %Y %H:%M:%S +0000")
+        if not self.email:
+            return
         allMails = DatabaseController.load_emails()
         currMail = self.email
         for m in allMails:
@@ -45,6 +49,8 @@ class ReadLayout(Screen):
         self.email = nextMail
 
     def previousEmail(self):
+        if not self.email:
+            return
         allMails = DatabaseController.load_emails()
         currMail = self.email
         for m in allMails:
@@ -56,4 +62,6 @@ class ReadLayout(Screen):
         self.email = nextMail
 
     def reply(self):
+        if not self.email:
+            return
         print self.parent.parent.parent.show_layout("Write", subject=self.email.subject, address=self.email._from)

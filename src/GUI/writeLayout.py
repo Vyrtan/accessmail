@@ -53,11 +53,8 @@ class WriteLayout(Screen):
                 }
             try:
                 test = SMTPSender(dicti)
-                print "vor connect"
                 test.connect()
-                print "connected"
-                test.send_mail(inbox.userMail, self.sendTo.text, "test", self.mailText.text, None)
-                print "mail sent"
+                test.send_mail(inbox.userMail, self.sendTo.text, self.subject.text, self.mailText.text, None)
                 content = Button(text='Erfolgreich verschickt!')
                 popup = Popup(title='Erfolgreich!', content=content,
                               size_hint=(None, None), size=(400, 400))

@@ -19,6 +19,7 @@ class Mails(Base):
     bcc = Column(Text)
     inReplyTo = Column(String(255), index=True)
     message = Column(String(255), index=True)
+    read = Column(Integer())
     inboxId = Column(Integer, ForeignKey('inboxes.id'))
 
 

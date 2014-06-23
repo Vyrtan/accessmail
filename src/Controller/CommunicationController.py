@@ -127,10 +127,10 @@ class CommunicationController(object):
                 m_name, m.to = email.utils.parseaddr(e["To"])
                 m_name, m._from = email.utils.parseaddr(e["From"])
                 m.date = e["Date"]
-                print m.date
                 m.cc = e["CC"]
                 m.subject = e["Subject"]
                 m.inReplyTo = e["In-Reply-To"]
+                m.read = 0
                 message = ""
                 if e.is_multipart():
                     for payload in e.get_payload():
