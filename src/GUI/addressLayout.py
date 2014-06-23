@@ -60,7 +60,6 @@ class AddressLayout(Screen):
         contact.name = p.name
         DatabaseController.addContact(contact)
         self.contacts.append(contact)
-
         self.displayContacts()
 
     def deleteContact(self, contact):
