@@ -91,23 +91,24 @@ class CommunicationController(object):
 
     @staticmethod
     def getEmailsFromServer():
-        # establish IMAP Connection
-        imapCon = None
-        if(clunkyConfig[0]["IMAP"]["ssl"]):
-            imapCon = imaplib.IMAP4_SSL(clunkyConfig[0]["IMAP"]["host"])
-        else:
-            imapCon = imaplib.IMAP4(clunkyConfig[0]["IMAP"]["host"])
-        print("Connection established")
+
 
         try:
             # open database connection and get credentials
             db = Database()
             inbox = db.getInbox()
 
+            # establish IMAP Connection
+            imapCon = imaplib.IMAP4_SSL(inbox.imapServer, int(inbox.imapPort))
+
             # get inbox id for later use
             inboxID = inbox.id
 
-            emailAddress = inbox.userMail
+            if(inbox.imapServer=="imap.web.de"):
+                emailAddress = inbox.account
+            else:
+                emailAddress = inbox.userMail
+
             password = inbox.password
 
             imapCon.login(emailAddress, password)

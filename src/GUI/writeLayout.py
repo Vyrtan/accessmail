@@ -35,13 +35,22 @@ class WriteLayout(Screen):
         else:
             db = Database()
             inbox = db.getInbox()
-            dicti = {
-                'host': inbox.smtpServer,
-                'port': inbox.smtpPort,
-                'user': inbox.account,
-                'pw': inbox.password,
-                'ssl': inbox.imapSSL
-            }
+            if(inbox.smtpServer=="smtp.web.de"):
+                dicti = {
+                    'host': inbox.smtpServer,
+                    'port': inbox.smtpPort,
+                    'user': inbox.account,
+                    'pw': inbox.password,
+                    'ssl': inbox.imapSSL
+                }
+            else:
+                dicti = {
+                    'host': inbox.smtpServer,
+                    'port': inbox.smtpPort,
+                    'user': inbox.userMail,
+                    'pw': inbox.password,
+                    'ssl': inbox.imapSSL
+                }
             try:
                 test = SMTPSender(dicti)
                 print "vor connect"
