@@ -10,7 +10,7 @@ class RootWidget(BoxLayout):
     def selectedProvider(self, provider):
         print(provider)
         self.clear_widgets()
-        self.add_widget(ProviderDataLayout())
+        self.add_widget(ProviderDataLayout(provider))
 
 
 class FirstStartRootApp(App):

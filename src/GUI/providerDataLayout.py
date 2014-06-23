@@ -9,12 +9,14 @@ from kivy.uix.label import Label
 from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from src.database import Database
+from functools import partial
+import string
 from kivy.core.window import Window
 
 __author__ = 'ubuntu'
 
 clunkyConfig = {
-    0: {
+    2: {
         "IMAP": {
             "host": "imap.gmail.com",
             "port": 993,
@@ -26,12 +28,38 @@ clunkyConfig = {
             "ssl": True,
             "auth": True
         }
+    },
+    0: {
+        "IMAP": {
+            "host": "imap.gmx.net",
+            "port": 993,
+            "ssl": True
+        },
+        "SMTP": {
+            "host": "mail.gmx.net",
+            "port": 465,
+            "ssl": True,
+            "auth": True
+        }
+    },
+    1: {
+        "IMAP": {
+            "host": "imap.web.de",
+            "port": 993,
+            "ssl": True
+        },
+        "SMTP": {
+            "host": "smtp.web.de",
+            "port": 587,
+            "ssl": False,
+            "auth": True
+        }
     }
 }
 
 class ProviderDataLayout(GridLayout):
 
-    def __init__(self, **kwargs):
+    def __init__(self, provider, **kwargs):
         super(ProviderDataLayout, self).__init__(**kwargs)
 
         self.selectable = []
@@ -57,29 +85,27 @@ class ProviderDataLayout(GridLayout):
         self.add_widget(self.pwInput)
 
         submitButton = Button(text='Save', size_hint=(.2, .1))
-        submitButton.bind(on_press=self.save_credentials)
+        submitButton.bind(on_press=partial(self.save_credentials, provider))
         self.add_widget(submitButton)
 
         self.selectable += [self.mailInput, self.pwInput, submitButton]
 
-    def save_credentials(self, event):
+    def save_credentials(self, provider, event):
         print(self.pwInput.text)
         print(self.mailInput.text)
 
-        imapCon = None
-        if(clunkyConfig[0]["SMTP"]["ssl"]):
-            imapCon = imaplib.IMAP4_SSL(clunkyConfig[0]["IMAP"]["host"])
-        else:
-            imapCon = imaplib.IMAP4(clunkyConfig[0]["IMAP"]["host"])
 
         try:
-            imapCon.login(self.mailInput.text, self.pwInput.text)
+            imapCon = imaplib.IMAP4_SSL(clunkyConfig[provider]["IMAP"]["host"])
+            email = self.mailInput.text
+            account = string.split(email, '@')[0]
+            imapCon.login(account, self.pwInput.text)
             db = Database()
-            db.createInbox("test", "test", self.mailInput.text, "None", self.pwInput.text,
-                           clunkyConfig[0]["IMAP"]["host"], clunkyConfig[0]["SMTP"]["host"],
-                           clunkyConfig[0]["IMAP"]["port"], clunkyConfig[0]["SMTP"]["port"],
-                           clunkyConfig[0]["IMAP"]["ssl"], clunkyConfig[0]["SMTP"]["ssl"],
-                           clunkyConfig[0]["SMTP"]["auth"])
+            db.createInbox("test", "test", email, account, self.pwInput.text,
+                           clunkyConfig[provider]["IMAP"]["host"], clunkyConfig[provider]["SMTP"]["host"],
+                           clunkyConfig[provider]["IMAP"]["port"], clunkyConfig[provider]["SMTP"]["port"],
+                           clunkyConfig[provider]["IMAP"]["ssl"], clunkyConfig[provider]["SMTP"]["ssl"],
+                           clunkyConfig[provider]["SMTP"]["auth"])
             db.close()
             imapCon.logout()
             self.parent.killMe()
