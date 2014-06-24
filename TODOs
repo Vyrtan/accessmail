@@ -1,0 +1,18 @@
+TODO's:
+
++1. App builden
+2. Anhänge integrieren
++3. Icons und mehr zum Layout
++3.1 Icongrößen anpassen und _überall_ einbinden
+(+)3.2 Zusätzliche Label/Textfelder einbauen (CC, BCC, etc.)
+4. Accounteinstellungen zurücksetzen
+5. Mehr Provider integrieren
+6. Fenster beim Start maximieren
++7. Aktualisierungsbutton (Mailabfrage)
+8. Mails im HTML Format
++8.1 Mailformat anpassen (Zeilenumbrüche Boxen und so)
++9. Bestätigungsabfragen für Löschfunktionen
++10. Mails löschen!! (auch vom server)
++11. Posteingang/Postausgang modellieren, Einzelansicht löschen
++12. Zitate bei Antworten
++13. Skript anpassen
