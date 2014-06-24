@@ -3,7 +3,8 @@ from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.uix.popup import Popup
-from src.Controller import DatabaseController
+from src.database import Database
+from src.Controller.CommunicationController import CommunicationController
 import string
 
 
@@ -53,4 +54,6 @@ class DeletePopup(Popup):
         self.em = mail
 
     def deleteMail(self):
-        DatabaseController.DatabaseController.deleteEmail(self.em)
+        db = Database()
+        db.deleteMail(self.em)
+        CommunicationController.deleteMail(self.em)

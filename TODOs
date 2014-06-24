@@ -8,10 +8,8 @@ TODO's:
 4. Accounteinstellungen zurücksetzen
 5. Mehr Provider integrieren
 6. Fenster beim Start maximieren
-+7. Aktualisierungsbutton (Mailabfrage)
 8. Mails im HTML Format
 +8.1 Mailformat anpassen (Zeilenumbrüche Boxen und so)
-+9. Bestätigungsabfragen für Löschfunktionen
 +10. Mails löschen!! (auch vom server)
 +11. Posteingang/Postausgang modellieren, Einzelansicht löschen
 +12. Zitate bei Antworten
