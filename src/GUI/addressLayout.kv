@@ -27,12 +27,15 @@
             orientation: "horizontal"
             size_hint: [1, 0.1]
             Button:
+                size_hint: [None, None]
                 background_normal: "GUI/Icons/iPrevious.png"
                 on_press: root.previousPage()
             Button:
+                size_hint: [None, None]
                 background_normal: "GUI/Icons/iAdd.png"
                 on_press: root.addNewContact()
             Button:
+                size_hint: [None, None]
                 background_normal: "GUI/Icons/iNext.png"
                 on_press: root.nextPage()
         GridLayout:

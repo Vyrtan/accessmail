@@ -21,7 +21,7 @@ class ContactItem(BoxLayout):
         self.email = contact.emailAddress
 
     def trigger_delete(self):
-       print self.root.parent.parent.parent.deleteContact(self.contact)
+       self.root.parent.parent.parent.deleteContact(self.contact)
 
     # switches to WriteLayout and already fills in the address (supposedly)
     def trigger_write_mail(self):
