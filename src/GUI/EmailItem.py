@@ -31,15 +31,8 @@ class EmailItem(BoxLayout):
 
     # delete email with corresponding id from model
     def trigger_delete(self):
-        self.deleteMail()
-
-        # alternative version using a popup and confirmation
-        # p = DeletePopup()
-        # p.open()
-
-    def deleteMail(self):
-        DatabaseController.DatabaseController.deleteEmail(self.oMail)
-
+        p = DeletePopup(self.oMail)
+        p.open()
 
     # call this function with some email id to switch to the corresponding email from the model
     def trigger_read(self):
@@ -54,4 +47,10 @@ class EmailItem(BoxLayout):
 
 
 class DeletePopup(Popup):
-    pass
+
+    def __init__(self, mail):
+        super(DeletePopup, self).__init__()
+        self.em = mail
+
+    def deleteMail(self):
+        DatabaseController.DatabaseController.deleteEmail(self.em)
