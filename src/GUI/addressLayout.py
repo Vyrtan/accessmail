@@ -36,7 +36,7 @@ class AddressLayout(Screen):
     def displayContacts(self):
         print self.counter
         self.grid.clear_widgets()
-        self.addContacts(self.contacts[self.counter*10:(self.counter+1)*10])
+        self.addContacts(self.contacts[self.counter*7:(self.counter+1)*7])
 
     # see comments above add_emails in overviewLayout.py
     def addContacts(self, contacts):
@@ -77,7 +77,8 @@ class AddressLayout(Screen):
         self.displayContacts()
 
     def nextPage(self):
-        self.counter += 1
+        if ((self.counter+1) *7) < len(self.contacts):
+            self.counter += 1
         self.displayContacts()
 
     def printStuff(self):
