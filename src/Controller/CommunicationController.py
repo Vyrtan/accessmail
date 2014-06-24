@@ -108,7 +108,7 @@ class CommunicationController(object):
             imapCon.login(emailAddress, password)
             # fetch emails from server
             imapCon.select('Inbox')
-            typ, msgnum = imapCon.search(None, 'Subject', mail.subject)
+            typ, msgnum = imapCon.search(None, 'Subject', str(mail.subject))
             for num in msgnum[0].split():
                 imapCon.store(num, '+FLAGS', '\\Deleted')
             imapCon.expunge()
