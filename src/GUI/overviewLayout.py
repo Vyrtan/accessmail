@@ -4,6 +4,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 from .EmailItem import EmailItem
 from src.Controller.DatabaseController import DatabaseController
+from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
 
 Builder.load_file('GUI/overviewLayout.kv')
@@ -23,6 +24,7 @@ class OverviewLayout(Screen):
         Clock.schedule_interval(self.scheduledMailCheck, 60)
 
     def scheduledMailCheck(self,_):
+        CommunicationController.getEmailsFromServer()
         self.mails = DatabaseController.load_emails()
         self.displayEmails()
 

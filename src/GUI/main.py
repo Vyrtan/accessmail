@@ -43,13 +43,6 @@ class Catalog(BoxLayout):
         # alternative solution to rotate through buttons: kivy1.8.1 FocusBehaviour
         # Window.bind(on_key_down=self.rotate_buttons)
         # load emails from webserver here
-        Clock.schedule_once(self.checkMails, 0)
-        Clock.schedule_interval(self.checkMails, 300)
-
-
-    def checkMails(self,_):
-        CommunicationController.getEmailsFromServer()
-
 
     def show_layout(self, value, **param):
         if self.screen_manager.current == value:

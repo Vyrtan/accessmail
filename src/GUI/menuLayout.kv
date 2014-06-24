@@ -6,7 +6,7 @@
 
 
 <MenuLayout>:
-    buttons: [overBtn, readBtn, writeBtn, contactBtn, exitBtn]
+    buttons: [overBtn, inboxBtn, writeBtn, contactBtn, exitBtn]
     BoxLayout:
         orientation: "horizontal"
         spacing: 10
@@ -19,9 +19,9 @@
                 background_normal: "GUI/Icons/iOverview.png"
                 on_release: root.parent.show_layout("Overview")
             Button:
-                id: readBtn
-                background_normal: "GUI/Icons/iRead.png"
-                on_release: root.parent.show_layout("Read")
+                id: inboxBtn
+                background_normal: "GUI/Icons/iOverview.png"
+                on_release: root.parent.show_layout("Overview")
             Button:
                 id: writeBtn
                 background_normal: "GUI/Icons/iWrite.png"
@@ -30,10 +30,10 @@
                 id: contactBtn
                 background_normal: "GUI/Icons/iContacts.png"
                 on_release: root.parent.show_layout("Address")
-            Button:
-                id: resetBtn
-                text: "Reset"
-                on_release: root.parent.triggerReset()
+            #Button:
+            #    id: resetBtn
+            #    text: "Reset"
+            #    on_release: root.parent.triggerReset()
             Button:
                 id: exitBtn
                 background_normal: "GUI/Icons/iCancel.png"

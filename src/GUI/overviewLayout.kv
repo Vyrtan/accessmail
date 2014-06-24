@@ -36,11 +36,17 @@
             id: int_navigation
             size_hint: [1, 0.1]
             orientation: "horizontal"
-            AnchorLayout:
-                alignment: center
-                Button:
-                    text: "Vorherige Seite"
-                    on_press: root.previous_page()
+            spacing: 100
+            padding: [100, 0]
             Button:
-                text: "Nächste Seite"
-                on_press: root.next_page()
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iPrevious.png"
+                on_release: root.previous_page()
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iRefresh.png"
+                on_release: root.scheduledMailCheck("lol")
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iNext.png"
+                on_release: root.next_page()
