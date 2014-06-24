@@ -85,3 +85,35 @@ class CommunicationController(object):
             imapCon.logout()
         except imaplib.IMAP4.error as e:
             print(e)
+
+    @staticmethod
+    def deleteMail(mail):
+        # open database connection and get credentials
+        db = Database()
+        inbox = db.getInbox()
+        try:
+            # establish IMAP Connection
+            imapCon = imaplib.IMAP4_SSL(inbox.imapServer, int(inbox.imapPort))
+
+            # get inbox id for later use
+            inboxID = inbox.id
+
+            if(inbox.imapServer=="imap.web.de"):
+                emailAddress = inbox.account
+            else:
+                emailAddress = inbox.userMail
+
+            password = inbox.password
+
+            imapCon.login(emailAddress, password)
+            # fetch emails from server
+            imapCon.select('Inbox')
+            typ, msgnum = imapCon.search(None, 'Subject', mail.subject)
+            for num in msgnum[0].split():
+                imapCon.store(num, '+FLAGS', '\\Deleted')
+            imapCon.expunge()
+            imapCon.close()
+            db.close()
+            imapCon.logout()
+        except imaplib.IMAP4.error as e:
+            print(e)
