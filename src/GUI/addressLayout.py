@@ -53,7 +53,7 @@ class AddressLayout(Screen):
     def addNewContact(self):
         p = AddContactPopup()
         p.open()
-        p.bind(on_dismiss=self.processNewContact)
+        #p.bind(on_dismiss=self.processNewContact)
         # this thread continues even with the popup open
 
     def processNewContact(self, p):
