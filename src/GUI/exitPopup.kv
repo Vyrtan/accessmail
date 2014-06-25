@@ -6,13 +6,19 @@
     title: 'Verlassen bestätigen'
     BoxLayout:
         orientation: "vertical"
-        Label:
-            text: "Möchten Sie das Programm wirklich verlassen?"
-        Button:
-            text: ''
-            background_normal: "GUI/Icons/iCancel.png"
-            on_press: root.dismiss()
-        Button:
-            text: ''
-            background_normal: "GUI/Icons/iConfirm.png"
-            on_press: exit()
+        AnchorLayout:
+            anchor_x: "center"
+            Label:
+                text: "Möchten Sie das Programm wirklich verlassen?"
+        AnchorLayout:
+            anchor_x: "center"
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iCancel.png"
+                on_release: root.dismiss()
+        AnchorLayout:
+            anchor_x: "center"
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iConfirm.png"
+                on_release: exit()

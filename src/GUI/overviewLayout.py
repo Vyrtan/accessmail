@@ -39,7 +39,7 @@ class OverviewLayout(Screen):
 
     def displayEmails(self):
         self.grid.clear_widgets()
-        currentMails = self.mails[self.counter*7:(self.counter+1)*7]
+        currentMails = self.mails[self.counter*5:(self.counter+1)*5]
         self.add_emails(currentMails)
 
     # Parameter emails is a list of email objects as defined below
@@ -59,8 +59,9 @@ class OverviewLayout(Screen):
         self.displayEmails()
 
     def next_page(self):
-        if (self.counter+1 * 10) < len(self.mails):
+        if (self.counter+1 * 5) < len(self.mails):
             self.counter += 1
+        print len(self.mails)
         self.displayEmails()
 
     # responsible to switch between folders, will probably never be used

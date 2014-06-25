@@ -1,7 +1,8 @@
 #:kivy 1.8
 
 <AddContactPopup>:
-    size_hint: .5, .5
+    size_hint: [None, None]
+    size: [400, 600]
     auto_dismiss: False
     title: 'Add Contact'
     name: "None"
@@ -9,7 +10,6 @@
     BoxLayout:
         orientation: "vertical"
         Label:
-            #text: "Please enter name and email of your new contact:"
             text: "Bitte gib den Namen und die \nE-Mailadresse des neuen Kontakts ein:"
         TextInput:
             id: tname
@@ -17,9 +17,15 @@
         TextInput:
             id: taddress
             text: "E-Mail"
-        Button:
-            text: 'Hinzufügen'
-            on_press: root.handOverInfo(tname.text, taddress.text)
-        Button:
-            text: 'Abbrechen'
-            on_press: root.dismiss()
+        AnchorLayout:
+            anchor_x: "center"
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iConfirm.png"
+                on_release: root.handOverInfo(tname.text, taddress.text)
+        AnchorLayout:
+            anchor_x: "center"
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iCancel.png"
+                on_release: root.dismiss()

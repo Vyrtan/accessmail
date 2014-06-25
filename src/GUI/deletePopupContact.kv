@@ -8,10 +8,16 @@
         orientation: "vertical"
         Label:
             text: "Möchten Sie diesen Kontakt wirklich löschen?"
-        Button:
-            text: 'Nein'
-            on_press: root.dismiss()
-        Button:
-            text: 'Ja'
-            on_press: root.deleteContact()
-            on_press: root.dismiss()
+        AnchorLayout:
+            anchor_x: "center"
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iCancel.png"
+                on_release: root.dismiss()
+        AnchorLayout:
+            anchor_x: "center"
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iConfirm.png"
+                on_release: root.deleteContact()
+                on_release: root.dismiss()

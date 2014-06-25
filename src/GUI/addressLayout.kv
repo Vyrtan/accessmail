@@ -23,9 +23,13 @@
             bold: True
             font_size: 40
             text: "Adressbuch"
+        GridLayout:
+            id: grid
+            cols: 1
+            size_hint: [1, 1]
         BoxLayout:
             orientation: "horizontal"
-            size_hint: [1, 0.1]
+            size_hint: [1, None]
             spacing: root.width / 6
             padding: [root.width / 6, 0]
             Button:
@@ -40,7 +44,3 @@
                 size_hint: [None, None]
                 background_normal: "GUI/Icons/iNext.png"
                 on_press: root.nextPage()
-        GridLayout:
-            id: grid
-            cols: 1
-            size_hint: [1, 0.7]
