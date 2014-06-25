@@ -4,6 +4,13 @@
     color: (0,0,0,1)
 
 <EmailItem>:
+    canvas:
+        Color:
+            rgba: (0, 0, 0, 0.2) if not root.grey else (0, 0, 0, 0)
+        Rectangle:
+            # self here refers to the widget i.e BoxLayout
+            pos: self.pos
+            size: self.size
     orientation: "horizontal"
     root: root
     #sizehint does not work
@@ -15,17 +22,14 @@
     Label:
         text: root.subject
     Button:
-        text: ""
-        size_hint: [0.3, 1]
+        size_hint: [None, None]
         background_normal: "GUI/Icons/iRead.png"
         on_press: root.trigger_read()
     Button:
-        text: "Antworten"
         background_normal: "GUI/Icons/iReply.png"
-        size_hint: [0.3, 1]
+        size_hint: [None, None]
         on_press: root.trigger_reply()
     Button:
-        text: "Löschen"
         background_normal: "GUI/Icons/iCancel.png"
-        size_hint: [0.3, 1]
+        size_hint: [None, None]
         on_press: root.trigger_delete()

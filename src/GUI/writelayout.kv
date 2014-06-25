@@ -22,17 +22,21 @@
                 Label:
                     size_hint: [0.2, 1]
                     text: "An:"
+                    bold: True
                 TextInput:
                     id: sendTo
                     text: ""
                     multiline: False
+                Label:
+                    size_hint: [0.2, 1]
+                    text: "Thema:"
+                    bold: True
                 TextInput:
                     id: subject
                     text: ""
                     multiline: False
             TextInput:
                 id: mailText
-                text: ""
             GridLayout:
                 size_hint: [1, 0.1]
                 rows: 1

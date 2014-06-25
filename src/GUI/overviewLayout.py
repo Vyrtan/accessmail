@@ -45,8 +45,10 @@ class OverviewLayout(Screen):
     # Parameter emails is a list of email objects as defined below
     def add_emails(self, emails):
         for v in emails:
-            item = EmailItem(v)
-            print v.read
+            if (emails.index(v) % 2) != 0:
+                item = EmailItem(v)
+            else:
+                item = EmailItem(v, colour=1)
             self.grid.add_widget(item)
 
     def previous_page(self):

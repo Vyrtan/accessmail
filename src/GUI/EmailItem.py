@@ -1,10 +1,11 @@
 __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import StringProperty, ObjectProperty
+from kivy.properties import StringProperty, ObjectProperty, BooleanProperty
 from kivy.uix.popup import Popup
 from src.database import Database
 from src.Controller.CommunicationController import CommunicationController
+from kivy.graphics import Color
 import string
 
 
@@ -18,6 +19,7 @@ class EmailItem(BoxLayout):
     subject = StringProperty()
     root = ObjectProperty()
     oMail = ObjectProperty()
+    grey = BooleanProperty()
 
     def __init__(self, email, **kwargs):
         super(EmailItem, self).__init__(**kwargs)
@@ -25,10 +27,14 @@ class EmailItem(BoxLayout):
         # TODO: get Name from Contactbook
         self.name = string.split(email._from, "@")[0]
         self.email = email._from
+        self.grey = False
         if email.subject:
             self.subject = email.subject if len(email.subject) <= 20 else email.subject[:20] + "..."
         else:
             self.subject = "None"
+        if kwargs.get("colour", None):
+            print "IS GREY!!!!"
+            self.grey = True
 
     # delete email with corresponding id from model
     def trigger_delete(self):

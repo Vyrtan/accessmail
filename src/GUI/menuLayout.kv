@@ -6,7 +6,7 @@
 
 
 <MenuLayout>:
-    buttons: [overBtn, inboxBtn, writeBtn, contactBtn, exitBtn]
+    buttons: [overBtn, writeBtn, contactBtn, exitBtn]
     BoxLayout:
         orientation: "horizontal"
         spacing: 10
@@ -18,10 +18,10 @@
                 id: overBtn
                 background_normal: "GUI/Icons/iOverview.png"
                 on_release: root.parent.show_layout("Overview")
-            Button:
-                id: inboxBtn
-                background_normal: "GUI/Icons/iOverview.png"
-                on_release: root.parent.show_layout("Overview")
+            #Button:
+            #    id: inboxBtn
+            #    background_normal: "GUI/Icons/iOverview.png"
+            #    on_release: root.parent.show_layout("Overview")
             Button:
                 id: writeBtn
                 background_normal: "GUI/Icons/iWrite.png"
