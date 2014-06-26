@@ -35,12 +35,16 @@
             Button:
                 size_hint: [None, None]
                 background_normal: "GUI/Icons/iPrevious.png"
-                on_press: root.previousPage()
+                on_release: root.previousPage()
             Button:
                 size_hint: [None, None]
                 background_normal: "GUI/Icons/iAdd.png"
-                on_press: root.addNewContact()
+                on_release: root.addNewContact()
             Button:
                 size_hint: [None, None]
                 background_normal: "GUI/Icons/iNext.png"
-                on_press: root.nextPage()
+                on_release: root.nextPage()
+            Label:
+                bold: True
+                font_size: 24
+                text: root.pageCount

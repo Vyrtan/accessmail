@@ -62,7 +62,7 @@ class OverviewLayout(Screen):
         self.displayEmails()
 
     def next_page(self):
-        if (self.counter+1 * self.emailsPerPage) < len(self.mails):
+        if (self.counter+1 * self.emailsPerPage) < (len(self.mails) - 1):
             self.counter += 1
         self.displayEmails()
 

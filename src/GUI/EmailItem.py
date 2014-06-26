@@ -50,7 +50,13 @@ class EmailItem(BoxLayout):
     def trigger_reply(self):
         address = self.email
         subject = self.subject
-        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=address, subject=subject)
+        message = self.formatReplyMessage()
+        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=address, subject=subject, message=message)
+
+    def formatReplyMessage(self):
+        replyString = self.oMail.message.split("\n")
+        replyHeader = "\n>" + self.oMail._from + " wrote on " + self.oMail.date + ":\n>"
+        return replyHeader +'\n>'.join(replyString)
 
 
 class DeletePopup(Popup):

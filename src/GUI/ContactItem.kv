@@ -14,9 +14,15 @@
         text: root.email
     Label:
         text: root.subject
-    Button:
-        text: "Anschreiben"
-        on_press: root.trigger_write_mail()
-    Button:
-        text: "Löschen"
-        on_press: root.trigger_delete()
+    AnchorLayout:
+        align_v: "center"
+        Button:
+            size_hint: [None, None]
+            background_normal: "GUI/Icons/iWrite.png"
+            on_release: root.trigger_write_mail()
+    AnchorLayout:
+        align_v: "center"
+        Button:
+            size_hint: [None, None]
+            background_normal: "GUI/Icons/iCancel.png"
+            on_release: root.trigger_delete()

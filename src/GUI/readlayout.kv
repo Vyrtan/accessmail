@@ -15,22 +15,16 @@
             text: "Lesen"
         BoxLayout:
             orientation: "vertical"
-            GridLayout:
+            BoxLayout:
+                orientation: "horizontal"
                 size_hint: [1, 0.1]
-                rows: 1
-                Button:
-                    text: "Vorherige E-Mail"
-                    on_press: root.previousEmail()
-                Button:
-                    text: "Antworten"
-                    on_press: root.reply()
-                Button:
-                    text: "Nächste E-Mail"
-                    on_press: root.nextEmail()
-            TextInput:
-                id: subject
-                size_hint: [1, 0.1]
-                text: "subject"
+                Label:
+                    size_hint: [0.2, 1]
+                    bold: True
+                    text: "Thema:"
+                TextInput:
+                    id: subject
+                    text: "subject"
             ScrollView:
                 id: scrlv
                 scroll_type: ['bars']
@@ -39,3 +33,24 @@
                     text: "text"
                     size_hint: 1, None
                     height: max( (len(self._lines)+1) * self.line_height, scrlv.height)
+            GridLayout:
+                size_hint: [1, 0.2]
+                rows: 1
+                AnchorLayout:
+                    align_h: "center"
+                    Button:
+                        size_hint: [None, None]
+                        background_normal: "GUI/Icons/iPrevious.png"
+                        on_release: root.previousEmail()
+                AnchorLayout:
+                    align_h: "center"
+                    Button:
+                        size_hint: [None, None]
+                        background_normal: "GUI/Icons/iReply.png"
+                        on_release: root.trigger_reply()
+                AnchorLayout:
+                    align_h: "center"
+                    Button:
+                        size_hint: [None, None]
+                        background_normal: "GUI/Icons/iNext.png"
+                        on_release: root.nextEmail()

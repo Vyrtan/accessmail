@@ -56,16 +56,21 @@ class Catalog(BoxLayout):
             if read:
                 self.screen_manager.current_screen.email = read
         elif value == "Write":
-            param.setdefault("address", "None")
-            param.setdefault("subject", "None")
+            param.setdefault("address", "")
+            param.setdefault("subject", "")
+            param.setdefault("message", "")
             address = param["address"]
-            if param["subject"] == "None":
-                subject = "None"
+            if param["subject"] == "":
+                subject = ""
+            elif param["subject"].startswith("Re:"):
+                subject = param["subject"]
             else:
                 subject = "Re:" + param["subject"]
+            message = param["message"]
             self.screen_manager.current = value
             self.screen_manager.current_screen.strSendTo = address
             self.screen_manager.current_screen.strSubject = subject
+            self.screen_manager.current_screen.strMessage = message
         else:
             self.screen_manager.current = value
         return

@@ -15,3 +15,35 @@ TODO's:
 +12. Zitate bei Antworten
 +13. Skript anpassen
 +14. Kontakt hinzufügen Popup abbrechen
+
+Gefundene Bugs nach der Testphase (Simon's Zusammenfassung):
+Fehlende Icons für viele Buttons (Kontakte anschreiben/löschen, ...)
+Nachrichtentext im WriteLayout zurücksetzen
+Ladeanzeige bei Ladezeiten?
+Popups lesbarer machen
+Navigationspfeile in adressbuch und Inbox nur wenn nötig anzeigen
+Rechtsklick -> Bubble statt rote Punkte
+Sortierung der Emails aufsteigend nach alter
+Markierung ungelesener Mails
+Von ReadLayout Kontakte hinzufügen
+Email-Adressen auf Korrektheit überprüfen (regex)
+Namen/Email adressen in der Inbox mit Adressbuch synchronisieren
+Kontake editieren können
+Nachrichtentexte besser formatieren
+Mails im ReadLayout löschen?
+Idle beendet Programm?
+
+Außerdem Features:
+Gruppenfunktion für Kontakte
+Tastaturbedienbarkeit
+Screenreaderunterstützung
+Emails direkt auswählbar, nicht über Lupe lesen
+Layout farbiger gestalten (farben, kleinere Symbole, mehr emails/seite, ...)
+Datum von Emails anzeigen
+Emails weiterleiten
+Suchfunktion für Emails/Kontakte
+RollOver-Hinweise für Buttons
+Live-Update für neu eingetroffene Nachrichten (Benachrichtigung)
+Neu/Alt-Flags für Emails
+Menüicon indiziert, in welchem layout man sich zurzeit befindet
+Adressbuch anreichern

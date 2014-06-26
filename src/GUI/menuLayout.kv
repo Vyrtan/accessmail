@@ -14,28 +14,36 @@
         #change file paths so they are OS-independent
         GridLayout:
             cols: 1
-            Button:
-                id: overBtn
-                background_normal: "GUI/Icons/iOverview.png"
-                on_release: root.parent.show_layout("Overview")
+            BoxLayout:
+                padding: 25
+                Button:
+                    id: overBtn
+                    background_normal: "GUI/Icons/iOverview.png"
+                    on_release: root.parent.show_layout("Overview")
             #Button:
             #    id: inboxBtn
             #    background_normal: "GUI/Icons/iOverview.png"
             #    on_release: root.parent.show_layout("Overview")
-            Button:
-                id: writeBtn
-                background_normal: "GUI/Icons/iWrite.png"
-                on_release: root.parent.show_layout("Write")
-            Button:
-                id: contactBtn
-                background_normal: "GUI/Icons/iContacts.png"
-                on_release: root.parent.show_layout("Address")
+            BoxLayout:
+                padding: 25
+                Button:
+                    id: writeBtn
+                    background_normal: "GUI/Icons/iWrite.png"
+                    on_release: root.parent.show_layout("Write")
+            BoxLayout:
+                padding: 25
+                Button:
+                    id: contactBtn
+                    background_normal: "GUI/Icons/iContacts.png"
+                    on_release: root.parent.show_layout("Address")
             #Button:
             #    id: resetBtn
             #    text: "Reset"
             #    on_release: root.parent.triggerReset()
-            Button:
-                id: exitBtn
-                background_normal: "GUI/Icons/iCancel.png"
-                background_down: "GUI/Icons/app_exit_down.png"
-                on_release: root.parent.on_exit_press()
+            BoxLayout:
+                padding: 25
+                Button:
+                    id: exitBtn
+                    background_normal: "GUI/Icons/iCancel.png"
+                    background_down: "GUI/Icons/app_exit_down.png"
+                    on_release: root.parent.on_exit_press()

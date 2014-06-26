@@ -1,9 +1,9 @@
 #:kivy 1.7.2
 
 <WriteLayout>:
-    mailText: mailText
     sendTo: sendTo
     subject: subject
+    message: mailText
     BoxLayout:
         orientation: "vertical"
         Label:
@@ -37,14 +37,18 @@
                     multiline: False
             TextInput:
                 id: mailText
+                text: ""
             GridLayout:
-                size_hint: [1, 0.1]
+                size_hint: [1, 0.2]
                 rows: 1
                 #Button:
                 #    text: "Anhänge"
-                Button:
-                    text: "Senden"
-                    on_press: root.send_mail()
+                AnchorLayout:
+                    anchor_x: "center"
+                    Button:
+                        size_hint: [None, None]
+                        background_normal: "GUI/Icons/iConfirm.png"
+                        on_release: root.send_mail()
             #Label:
             #    size_hint: [0.2, 0.1]
             #    text: "Anhänge:"
