@@ -110,6 +110,7 @@ class ResetPopup(Popup):
 class MainApp(App):
     def build(self):
         self.title = "Accessmail"
+        Config.set("input","mouse","mouse,disable_multitouch")
 
         # get the screen resolution
         window = gtk.Window()

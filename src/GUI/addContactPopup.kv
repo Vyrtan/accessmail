@@ -2,7 +2,7 @@
 
 <AddContactPopup>:
     size_hint: [None, None]
-    size: [400, 600]
+    size: [450, 600]
     auto_dismiss: False
     title: 'Add Contact'
     title_color: (0,0,0,1)
@@ -13,7 +13,8 @@
     BoxLayout:
         orientation: "vertical"
         Label:
-            text: "Bitte gib den Namen und die \nE-Mailadresse des neuen Kontakts ein:"
+            font_size: 22
+            text: "Bitte geben Sie den\nNamen und die E-Mail-Adresse\ndes neuen Kontakts ein:"
             halign: "center"
         TextInput:
             id: tname
