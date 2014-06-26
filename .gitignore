@@ -8,3 +8,5 @@ config.ini
 client.db
 python.log
 data.db
+*.spec
+main.tar.gz

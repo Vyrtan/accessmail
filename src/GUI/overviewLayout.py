@@ -1,7 +1,7 @@
 __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, StringProperty
 from .EmailItem import EmailItem
 from src.Controller.DatabaseController import DatabaseController
 from src.Controller.CommunicationController import CommunicationController
@@ -15,6 +15,8 @@ Builder.load_file('GUI/overviewLayout.kv')
 class OverviewLayout(Screen):
 
     grid = ObjectProperty()
+    pageCount = StringProperty()
+    emailsPerPage = 5
 
     def __init__(self, **kwargs):
         super(OverviewLayout, self).__init__(**kwargs)
@@ -39,8 +41,9 @@ class OverviewLayout(Screen):
 
     def displayEmails(self):
         self.grid.clear_widgets()
-        currentMails = self.mails[self.counter*5:(self.counter+1)*5]
+        currentMails = self.mails[self.counter*self.emailsPerPage:(self.counter+1)*self.emailsPerPage]
         self.add_emails(currentMails)
+        self.setPageCount()
 
     # Parameter emails is a list of email objects as defined below
     def add_emails(self, emails):
@@ -59,10 +62,17 @@ class OverviewLayout(Screen):
         self.displayEmails()
 
     def next_page(self):
-        if (self.counter+1 * 5) < len(self.mails):
+        if (self.counter+1 * self.emailsPerPage) < len(self.mails):
             self.counter += 1
-        print len(self.mails)
         self.displayEmails()
+
+    def setPageCount(self):
+        a = self.emailsPerPage * self.counter + 1
+        a1 = a if self.counter >= 1 else self.emailsPerPage * self.counter
+        b = self.emailsPerPage * (self.counter + 1)
+        c = len(self.mails)
+        b1 = b if b < c else c
+        self.pageCount = "%d - %d / %d" %(a1,b1,c)
 
     # responsible to switch between folders, will probably never be used
     def switch_to(self, str):
