@@ -2,6 +2,7 @@ import imaplib
 from kivy.graphics.context_instructions import Color
 from kivy.graphics.instructions import Canvas
 from kivy.graphics.vertex_instructions import Rectangle, Line
+from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
@@ -12,6 +13,7 @@ from src.database import Database
 from functools import partial
 import string
 from kivy.core.window import Window
+from kivy.properties import ObjectProperty
 
 __author__ = 'ubuntu'
 
@@ -57,64 +59,44 @@ clunkyConfig = {
     }
 }
 
+Builder.load_file("GUI/providerDataLayout.kv")
+
+
 class ProviderDataLayout(GridLayout):
+
+    emailAddress = ObjectProperty()
+    password = ObjectProperty()
+    submitButt = ObjectProperty()
 
     def __init__(self, provider, **kwargs):
         super(ProviderDataLayout, self).__init__(**kwargs)
+        self.provider = provider
+        self.submitButt.bind(on_release=self.save_credentials)
+        print self.provider
 
-        self.selectable = []
-        self.current_butt = 0
-
-        self.cols = 1
-        self.rows = 6
-        self.row_default_height = .5
-        self.padding = [10, 10]
-
-        self.descriptionLabel = Label(text='Now you have to enter your user credentials,\n so we can get your mails', size_hint=(.1, .1), font_size=30)
-
-        self.mailInputLabel = Label(text='Please enter your Email', size_hint=(.1, .1), font_size=40)
-        self.mailInput = TextInput(text='', multiline=False, size_hint=(.1, .1), font_size=40, focus=True)
-
-        self.pwInputLabel = Label(text='Please enter your Password', size_hint=(.1, .1), font_size=40)
-        self.pwInput = TextInput(text='', multiline=False, size_hint=(.1, .1), font_size=40, password=True)
-
-        self.add_widget(self.descriptionLabel)
-        self.add_widget(self.mailInputLabel)
-        self.add_widget(self.mailInput)
-        self.add_widget(self.pwInputLabel)
-        self.add_widget(self.pwInput)
-
-        submitButton = Button(text='Save', size_hint=(.2, .1))
-        submitButton.bind(on_press=partial(self.save_credentials, provider))
-        self.add_widget(submitButton)
-
-        self.selectable += [self.mailInput, self.pwInput, submitButton]
-
-    def save_credentials(self, provider, event):
-        print(self.pwInput.text)
-        print(self.mailInput.text)
-
+    def save_credentials(self, event):
+        email = self.emailAddress.text
+        password = self.password.text
 
         try:
-            imapCon = imaplib.IMAP4_SSL(clunkyConfig[provider]["IMAP"]["host"])
-            email = self.mailInput.text
+            imapCon = imaplib.IMAP4_SSL(clunkyConfig[self.provider]["IMAP"]["host"])
             account = string.split(email, '@')[0]
-            if(provider == 1):
-                imapCon.login(account, self.pwInput.text)
+            if(self.provider == 1):
+                imapCon.login(account, password)
             else:
-                imapCon.login(email, self.pwInput.text)
+                imapCon.login(email, password)
             db = Database()
-            db.createInbox("test", "test", email, account, self.pwInput.text,
-                           clunkyConfig[provider]["IMAP"]["host"], clunkyConfig[provider]["SMTP"]["host"],
-                           clunkyConfig[provider]["IMAP"]["port"], clunkyConfig[provider]["SMTP"]["port"],
-                           clunkyConfig[provider]["IMAP"]["ssl"], clunkyConfig[provider]["SMTP"]["ssl"],
-                           clunkyConfig[provider]["SMTP"]["auth"])
+            db.createInbox("test", "test", email, account, password,
+                           clunkyConfig[self.provider]["IMAP"]["host"], clunkyConfig[self.provider]["SMTP"]["host"],
+                           clunkyConfig[self.provider]["IMAP"]["port"], clunkyConfig[self.provider]["SMTP"]["port"],
+                           clunkyConfig[self.provider]["IMAP"]["ssl"], clunkyConfig[self.provider]["SMTP"]["ssl"],
+                           clunkyConfig[self.provider]["SMTP"]["auth"])
             db.close()
             imapCon.logout()
             self.parent.killMe()
             # we are still logged in, right?
         except imaplib.IMAP4.error as e:
-            content = Button(text='An error occurred! Click here to try again')
+            content = Button(text='Ein Fehler ist aufgetreten. \n Hier klicken, um es nocheinmal zu versuchen')
             popup = Popup(title='Error!', content=content,
                           size_hint=(None, None), size=(400, 400))
             content.bind(on_press=popup.dismiss)

@@ -1,6 +1,7 @@
 import kivy
 import os
 from GUI.firstStartRootLayout import FirstStartRootApp
+import gtk
 
 kivy.require('1.8.0')
 
@@ -42,8 +43,8 @@ class Catalog(BoxLayout):
         self.current_butt = 0
         # alternative solution to rotate through buttons: kivy1.8.1 FocusBehaviour
         # Window.bind(on_key_down=self.rotate_buttons)
-        # load emails from webserver here
 
+    # switch between the available layouts like the inbox, write, addressbook, etc.
     def show_layout(self, value, **param):
         if self.screen_manager.current == value:
             return
@@ -73,21 +74,20 @@ class Catalog(BoxLayout):
         p = ResetPopup()
         p.open()
 
-    def rotate_buttons(self, keyboard, key,  *args):
-        # print("enter rotate button")
-        # print("current_butt: %d" %(self.current_butt))
-        # print("current button: %s" %self.buttons[self.current_butt].text)
-        if key == 9:
-            if self.current_butt < len(self.buttons)-1:
-                self.current_butt += 1
-            else:
-                self.current_butt = 0
-        #if key == 13:
-            # print("Return pressed")
-            #.buttons[self.current_butt].trigger_action(duration=0)
-            # Set current_butt to 0?
-            # current_butt = 0
-        # print("leaving rotate buttons")
+    # currently not used method to rotate through menu buttons
+    # there is no solution yet to get all available buttons in the currently displayed Layout
+    # def rotate_buttons(self, keyboard, key,  *args):
+    #     if key == 9:
+    #         if self.current_butt < len(self.buttons)-1:
+    #             self.current_butt += 1
+    #         else:
+    #             self.current_butt = 0
+    #     if key == 13:
+    #         print("Return pressed")
+    #         .buttons[self.current_butt].trigger_action(duration=0)
+    #         Set current_butt to 0?
+    #         current_butt = 0
+    #     print("leaving rotate buttons")
 
     def on_exit_press(self):
         p = ExitPopup()
@@ -105,19 +105,19 @@ class ResetPopup(Popup):
 class MainApp(App):
     def build(self):
         self.title = "Accessmail"
-        # try to maximize the window on start, doesn't work
-        # pygame.display.init()
-        # info = pygame.display.Info()
-        # width, height = info.current_w, info.current_h
-        # print width
-        # print height
-        # Config.set('graphics', 'width', str(width))
-        # Config.set('graphics', 'height', str(height))
-        #set the background colour of the application
+
+        # get the screen resolution
+        window = gtk.Window()
+        screen = window.get_screen()
+        width =  screen.get_width()
+        height = screen.get_height()
+
+        # set the background color to white
         Window.clearcolor = (1, 1, 1, 1)
 
-        #this starts the application in fullscreen, it doesn't look good though
-        #Window.fullscreen = True
+        # set the window size to the previously calculated screen resolution
+        Window.size = width, height
+
         return Catalog()
 
 

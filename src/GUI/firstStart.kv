@@ -4,7 +4,9 @@
     BoxLayout:
         orientation: "vertical"
         Label:
-            text: "Bitte wählen Sie den von Ihnen genutzten E-Mail Anbieter:"
+            font_size: 34
+            halign: "center"
+            text: "Bitte wählen Sie den von Ihnen\n genutzten E-Mail Anbieter:"
         GridLayout:
             cols: 2
             # Button:
@@ -17,7 +19,9 @@
                 text: "GMAIL"
                 on_press: root.parent.selectedProvider(2)
 
-        Button:
-            text: "Abbrechen"
-            background_normal: "GUI/Icons/iCancel.png"
-            on_press: exit()
+        AnchorLayout:
+            anchor_x: "center"
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iCancel.png"
+                on_press: exit()

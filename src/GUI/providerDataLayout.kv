@@ -1,0 +1,48 @@
+#:kivy 1.8.0
+
+<ProviderDataLayout>:
+    emailAddress: emailTxt
+    password: passwordTxt
+    submitButt: submitButton
+    cols: 1
+    padding: [20, 20]
+    Label:
+        font_size: 34
+        text: "Geben Sie nun Ihre Login-Informationen ein."
+    BoxLayout:
+        orientation: "horizontal"
+        Label:
+            font_size: 34
+            size_hint: [0.5, 1]
+            text: "E-mail Adresse:"
+        TextInput:
+            id: emailTxt
+            size_hint: [1, None]
+            font_size: 34
+            multiline: False
+    BoxLayout:
+        orientation: "horizontal"
+        Label:
+            font_size: 34
+            size_hint: [0.5, 1]
+            text: "Passwort:"
+        TextInput:
+            id: passwordTxt
+            size_hint: [1, None]
+            font_size: 34
+            password: True
+            multiline: False
+    AnchorLayout:
+        anchor_x: "center"
+        BoxLayout:
+            size_hint: [None, None]
+            orientation: "horizontal"
+            spacing: 50
+            Button:
+                size_hint: [None, None]
+                id: submitButton
+                background_normal: "GUI/Icons/iConfirm.png"
+            Button:
+                size_hint: [None, None]
+                background_normal: "GUI/Icons/iCancel.png"
+                on_release: exit()
