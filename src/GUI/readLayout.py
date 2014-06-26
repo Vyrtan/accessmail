@@ -29,6 +29,7 @@ class ReadLayout(Screen):
     def displayEmail(self):
         self.textOutput.text = self.email.message
         self.subject.text = self.email.subject
+        self.sender.text = self.email._from
 
     # maybe we should have a separate datamodel where all the emails are loaded? Which criteria defines
     # which email is next in the list? -> We already have all emails loaded in the overview layout

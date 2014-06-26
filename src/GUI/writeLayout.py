@@ -42,7 +42,9 @@ class WriteLayout(Screen):
             content.add_widget(Label(text="Bitte eine Nachricht eingeben"))
             content.add_widget(Button(background_normal="GUI/Icons/iConfirm.png", size_hint=[None, None]))
             popup = Popup(title='Fehler!', content=content,
-                          size_hint=(None, None), size=(400, 400))
+                          size_hint=(None, None), size=(400, 400),
+                          background="GUI/Icons/white_bg_400x400.png",
+                          title_color=(0,0,0,1))
             content.bind(on_release=popup.dismiss)
             popup.open()
         else:
@@ -70,7 +72,9 @@ class WriteLayout(Screen):
                 test.send_mail(inbox.userMail, self.sendTo.text, self.subject.text, self.mailText.text, None)
                 content = Button(text='Erfolgreich verschickt!')
                 popup = Popup(title='Erfolgreich!', content=content,
-                              size_hint=(None, None), size=(400, 400))
+                              size_hint=(None, None), size=(400, 400),
+                              background="GUI/Icons/white_bg_400x400.png",
+                              title_color=(0,0,0,1))
                 content.bind(on_release=popup.dismiss)
                 popup.open()
                 self.mailText = ""
@@ -84,6 +88,8 @@ class WriteLayout(Screen):
                 anch.add_widget(butt)
                 content.add_widget(anch)
                 popup = Popup(title='Fehler!', content=content,
-                              size_hint=(None, None), size=(400, 400))
+                              size_hint=(None, None), size=(400, 400),
+                              background="GUI/Icons/white_bg_400x400.png",
+                              title_color=(0,0,0,1))
                 butt.bind(on_release=popup.dismiss)
                 popup.open()

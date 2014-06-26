@@ -29,7 +29,7 @@ class ContactItem(BoxLayout):
 
     # switches to WriteLayout and already fills in the address (supposedly)
     def trigger_write_mail(self):
-        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=self.email)
+        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=self.email, message="")
 
 class DeletePopupContacts(Popup):
 

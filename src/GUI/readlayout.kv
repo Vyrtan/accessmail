@@ -3,6 +3,7 @@
 <ReadLayout>:
     textOutput: textOutput
     subject: subject
+    sender: sender
     BoxLayout:
         orientation: "vertical"
         Label:
@@ -21,10 +22,17 @@
                 Label:
                     size_hint: [0.2, 1]
                     bold: True
+                    text: "Absender:"
+                TextInput:
+                    id: sender
+                    text: ""
+                Label:
+                    size_hint: [0.2, 1]
+                    bold: True
                     text: "Thema:"
                 TextInput:
                     id: subject
-                    text: "subject"
+                    text: ""
             ScrollView:
                 id: scrlv
                 scroll_type: ['bars']

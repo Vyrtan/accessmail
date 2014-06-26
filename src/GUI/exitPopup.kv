@@ -2,15 +2,21 @@
 
 <ExitPopup>:
     size_hint: [None, None]
-    size: 400, 400
+    size: 400,400
     auto_dismiss: False
     title: 'Verlassen bestätigen'
+    title_color: (0,0,0,1)
+    #using a white background image because popup's background_color attribute changes everything BUT the popup
+    background: "GUI/Icons/white_bg_400x400.png"
+    separator_height: 5
     BoxLayout:
         orientation: "vertical"
         AnchorLayout:
             anchor_x: "center"
             Label:
-                text: "Möchten Sie das Programm wirklich verlassen?"
+                font_size: 22
+                halign: "center"
+                text: "Möchten Sie das Programm \nwirklich verlassen?"
         AnchorLayout:
             anchor_x: "center"
             Button:

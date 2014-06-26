@@ -98,7 +98,9 @@ class ProviderDataLayout(GridLayout):
         except imaplib.IMAP4.error as e:
             content = Button(text='Ein Fehler ist aufgetreten. \n Hier klicken, um es nocheinmal zu versuchen')
             popup = Popup(title='Error!', content=content,
-                          size_hint=(None, None), size=(400, 400))
+                          size_hint=(None, None), size=(400, 400),
+                          background="GUI/Icons/white_bg_400x400.png",
+                          title_color=(0,0,0,1))
             content.bind(on_press=popup.dismiss)
             popup.open()
             print(e)

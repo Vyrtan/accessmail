@@ -5,12 +5,16 @@
     size: [400, 600]
     auto_dismiss: False
     title: 'Add Contact'
+    title_color: (0,0,0,1)
     name: "None"
     address: "None"
+    background: "GUI/Icons/white_bg_400x400.png"
+    separator_height: 5
     BoxLayout:
         orientation: "vertical"
         Label:
             text: "Bitte gib den Namen und die \nE-Mailadresse des neuen Kontakts ein:"
+            halign: "center"
         TextInput:
             id: tname
             text: "Name"
