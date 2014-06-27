@@ -69,7 +69,7 @@ class WriteLayout(Screen):
             try:
                 test = SMTPSender(dicti)
                 test.connect()
-                test.send_mail(inbox.userMail, self.sendTo.text, self.subject.text, self.mailText.text, None)
+                test.send_mail(inbox.userMail, self.sendTo.text, self.subject.text, self.message.text, None)
                 content = Button(text='Erfolgreich verschickt!')
                 popup = Popup(title='Erfolgreich!', content=content,
                               size_hint=(None, None), size=(400, 400),
@@ -77,7 +77,7 @@ class WriteLayout(Screen):
                               title_color=(0,0,0,1))
                 content.bind(on_release=popup.dismiss)
                 popup.open()
-                self.mailText = ""
+                self.message.text = ""
             except Exception as e:
                 print e
                 # probably make this Popup an own kv and class (reusable everytime something goes wrong?)
