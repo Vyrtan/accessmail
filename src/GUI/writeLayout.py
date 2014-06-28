@@ -70,12 +70,23 @@ class WriteLayout(Screen):
                 test = SMTPSender(dicti)
                 test.connect()
                 test.send_mail(inbox.userMail, self.sendTo.text, self.subject.text, self.message.text, None)
-                content = Button(text='Erfolgreich verschickt!')
+                box = GridLayout(cols=1)
+                anch1 = AnchorLayout(anchor_h="center")
+                lbl = Label(text="Nachricht erfolgreich verschickt!", font_size=22, bold=True)
+                anch1.add_widget(lbl)
+                anch2 = AnchorLayout(anchor_h="center")
+                butt = Button(background_normal="GUI/Icons/iConfirm.png", size_hint=[None, None])
+                anch2.add_widget(butt)
+                box.add_widget(anch1)
+                box.add_widget(anch2)
+
+                content = box
                 popup = Popup(title='Erfolgreich!', content=content,
                               size_hint=(None, None), size=(400, 400),
                               background="GUI/Icons/white_bg_400x400.png",
                               title_color=(0,0,0,1))
                 content.bind(on_release=popup.dismiss)
+                butt.bind(on_release=popup.dismiss)
                 popup.open()
                 self.message.text = ""
             except Exception as e:

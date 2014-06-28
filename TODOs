@@ -47,3 +47,11 @@ Live-Update für neu eingetroffene Nachrichten (Benachrichtigung)
 Neu/Alt-Flags für Emails
 Menüicon indiziert, in welchem layout man sich zurzeit befindet
 Adressbuch anreichern
+
+Michael's Anmerkungen:
+Stift-Symbol anpassen
+Popups mit Schließen-Buttons versehen
+gesamtes Mailobject klickbar machen
+Pfeilnavigation anpassen
+Email-header Infos im ReadLayout
+Mailbutton deaktivieren während Mail geschickt wird
