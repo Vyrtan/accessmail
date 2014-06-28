@@ -49,7 +49,10 @@ class AddressLayout(Screen):
     def addContacts(self, contacts):
         # counter = 0
         for v in contacts:
-            item = ContactItem(v)
+            if (contacts.index(v) % 2) != 0:
+                item = ContactItem(v)
+            else:
+                item = ContactItem(v, colour=1)
             self.grid.add_widget(item)
 
     def getContactsFromDB(self):

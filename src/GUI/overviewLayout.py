@@ -31,7 +31,7 @@ class OverviewLayout(Screen):
         self.displayEmails()
 
     #the kivy properties don't always load properly
-    #this method observes the property and trigger on_change
+    #this method observes the property and triggers when it changes
     def on_grid(self, instance, value):
         self.displayEmails()
 

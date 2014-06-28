@@ -33,7 +33,6 @@ class EmailItem(BoxLayout):
         else:
             self.subject = "None"
         if kwargs.get("colour", None):
-            print "IS GREY!!!!"
             self.grey = True
 
     # delete email with corresponding id from model

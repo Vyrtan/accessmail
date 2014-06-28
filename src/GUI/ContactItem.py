@@ -1,7 +1,7 @@
 __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import StringProperty, ObjectProperty
+from kivy.properties import StringProperty, ObjectProperty, BooleanProperty
 from kivy.uix.popup import Popup
 from src.Controller.DatabaseController import DatabaseController
 
@@ -15,12 +15,16 @@ class ContactItem(BoxLayout):
     email = StringProperty()
     subject = StringProperty()
     root = ObjectProperty()
+    grey = BooleanProperty()
 
     def __init__(self, contact=None, **kwargs):
         super(ContactItem, self).__init__(**kwargs)
         self.contact = contact
         self.name = contact.name
         self.email = contact.emailAddress
+        self.grey = False
+        if kwargs.get("colour", None):
+            self.grey = True
 
     def trigger_delete(self):
        d = self.root
