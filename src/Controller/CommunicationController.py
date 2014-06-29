@@ -69,6 +69,8 @@ class CommunicationController(object):
                 m.subject = e["Subject"]
                 m.inReplyTo = e["In-Reply-To"]
                 m.read = 0
+                m.remoteID = e.get("message-ID", None)
+
                 message = ""
                 if e.is_multipart():
                     for payload in e.get_payload():

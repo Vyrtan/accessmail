@@ -20,6 +20,7 @@ class EmailItem(BoxLayout):
     root = ObjectProperty()
     oMail = ObjectProperty()
     grey = BooleanProperty()
+    read = BooleanProperty()
 
     def __init__(self, email, **kwargs):
         super(EmailItem, self).__init__(**kwargs)
@@ -28,6 +29,7 @@ class EmailItem(BoxLayout):
         self.name = string.split(email._from, "@")[0]
         self.email = email._from
         self.grey = False
+        self.read = email.read
         if email.subject:
             self.subject = email.subject if len(email.subject) <= 20 else email.subject[:20] + "..."
         else:
@@ -43,7 +45,6 @@ class EmailItem(BoxLayout):
     # call this function with some email id to switch to the corresponding email from the model
     def trigger_read(self):
         # best. expression. ever.
-        print self.oMail.message
         self.root.parent.parent.parent.parent.parent.parent.show_layout("Read", email=self.oMail)
 
     # get address and subject, create new email

@@ -62,12 +62,20 @@ class Database:
         mail.subject = unicode(pmail.subject, "utf-8")
         mail._from = unicode(pmail._from, "utf-8")
         mail.bcc = pmail.bcc
+        mail.read = pmail.read
         mail.cc = unicode(pmail.cc, "utf-8") if pmail.cc else ""
         mail.inReplyTo = pmail.inReplyTo
         mail.message = unicode(pmail.message, "utf-8")
         mail.inboxId = pmail.inboxId
 
         self.session.add(mail)
+        self.execute()
+
+    # this is intended to mark an email (in the database) as read
+    # i think it's too complicated to synchronize this with the server
+    def markMailAsRead(self, email):
+        self.session.execute("UPDATE Mails SET read=1 WHERE id=%d;"%(email.id))
+        print "email marked as read"
         self.execute()
 
     def deleteMail(self, email):

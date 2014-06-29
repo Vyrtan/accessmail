@@ -3,6 +3,7 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 from time import strptime
+from src.database import Database
 from src.Controller.DatabaseController import DatabaseController
 from src.models import Mails
 
@@ -23,8 +24,9 @@ class ReadLayout(Screen):
     def on_email(self, instance, value):
         if not self.email:
             return
+        db = Database()
+        db.markMailAsRead(self.email)
         self.displayEmail()
-
 
     def displayEmail(self):
         self.textOutput.text = self.email.message

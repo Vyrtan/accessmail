@@ -42,6 +42,7 @@ def upgrade():
     op.create_index('ix_contacts_name', 'contacts', ['name'], unique=False)
     op.create_table('mails',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('remoteID', sa.String(length=255),nullable=True),
     sa.Column('date', sa.String(length=255), nullable=True),
     sa.Column('subject', sa.String(length=255), nullable=True),
     sa.Column('_from', sa.String(length=255), nullable=True),

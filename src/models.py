@@ -11,6 +11,7 @@ class Mails(Base):
     __tablename__ = 'mails'
 
     id = Column(Integer, primary_key=True)
+    remoteID = Column(String(255))
     date = Column(String(255))  #TODO: We should use the internal sqlite date type
     subject = Column(String(255), index=True)
     _from = Column(String(255))
