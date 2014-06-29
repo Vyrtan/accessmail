@@ -8,32 +8,27 @@ from src.Controller.DatabaseController import DatabaseController
 from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
 
-Builder.load_file('GUI/inboxLayout.kv')
+Builder.load_file('GUI/outboxLayout.kv')
 
 
-# The kivy developers themselves are not happy with the list_view. Since we only need about 10 emails at once
-# we can just create an own widget adding it x-10 times to the overview
-class InboxLayout(Screen):
+class OutboxLayout(Screen):
 
     grid = ObjectProperty()
     pageCount = StringProperty()
     emailsPerPage = 5
 
     def __init__(self, **kwargs):
-        super(InboxLayout, self).__init__(**kwargs)
+        super(OutboxLayout, self).__init__(**kwargs)
         self.counter = 0
         self.mails = []
         self.nRead = 0
         Clock.schedule_once(self.scheduledMailCheck, 0)
         Clock.schedule_interval(self.scheduledMailCheck, 60)
 
-    def scheduledMailCheck(self,_):
-        CommunicationController.getEmailsFromServer()
+    def scheduledMailCheck(self, _):
+        CommunicationController.getSentFromServer()
         db = Database()
-        if self.nRead:
-            self.mails = db.getNotReadMails()
-        else:
-            self.mails = db.getAllMails()
+        self.mails = db.getSentMails()
         self.displayEmails()
 
     #the kivy properties don't always load properly
@@ -80,9 +75,3 @@ class InboxLayout(Screen):
         b1 = b if b < c else c
         self.pageCount = "%d - %d / %d" %(a1,b1,c)
 
-    def toggleSelection(self):
-        if self.nRead == 1:
-            self.nRead = 0
-        else:
-            self.nRead = 1
-        self.scheduledMailCheck("lolno")

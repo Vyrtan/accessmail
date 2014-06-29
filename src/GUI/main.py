@@ -21,7 +21,8 @@ from kivy.core.window import Window
 
 from .addressLayout import AddressLayout
 from .writeLayout import WriteLayout
-from .InboxLayout import OverviewLayout
+from .InboxLayout import InboxLayout
+from .outboxLayout import OutboxLayout
 from .readLayout import ReadLayout
 from .menuLayout import MenuLayout
 from .EmailItem import EmailItem

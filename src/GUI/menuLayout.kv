@@ -19,11 +19,13 @@
                 Button:
                     id: overBtn
                     background_normal: "GUI/Icons/iOverview.png"
-                    on_release: root.parent.show_layout("Overview")
-            #Button:
-            #    id: inboxBtn
-            #    background_normal: "GUI/Icons/iOverview.png"
-            #    on_release: root.parent.show_layout("Overview")
+                    on_release: root.parent.show_layout("Inbox")
+            BoxLayout:
+                padding: 25
+                Button:
+                    id: inboxBtn
+                    background_normal: "GUI/Icons/iOverview.png"
+                    on_release: root.parent.show_layout("Outbox")
             BoxLayout:
                 padding: 25
                 Button:

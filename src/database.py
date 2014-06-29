@@ -82,6 +82,12 @@ class Database:
         mails = self.session.query(Mails).filter(and_(getattr(Mails, "read") == 0)).all()
         return mails
 
+    def getSentMails(self):
+        inbox = self.getInbox()
+        mail = inbox.userMail
+        mails = self.session.query(Mails).filter(and_(getattr(Mails, "_from") == mail)).all()
+        return mails
+
     def deleteMail(self, email):
         self.session.delete(email)
         self.execute()

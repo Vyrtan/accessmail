@@ -4,7 +4,7 @@
     color: (0,0,0,1)
     disabled_color: (0,0,0,1)
 
-<InboxLayout>:
+<OutboxLayout>:
     grid: grid
     GridLayout:
         cols: 1
@@ -14,17 +14,7 @@
             size_hint: [1, 0.1]
             bold: True
             font_size: 40
-            text: "Empfangene Nachrichten"
-        BoxLayout:
-            id: ext_navigation
-            size_hint: [1, 0.1]
-            orientation: "horizontal"
-            Button:
-                text: "Ungelesen"
-                on_release: root.toggleSelection()
-            Button:
-                text: "Alle"
-                on_release: root.toggleSelection()
+            text: "Gesendete Nachrichten"
         GridLayout:
             id: grid
             cols: 1
