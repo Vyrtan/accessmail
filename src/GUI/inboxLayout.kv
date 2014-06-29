@@ -15,19 +15,16 @@
             bold: True
             font_size: 40
             text: "Übersicht"
-        #BoxLayout:
-        #    id: ext_navigation
-        #    size_hint: [1, 0.1]
-        #    orientation: "horizontal"
-        #    Button:
-        #        text: "Ungelesen"
-        #        on_press: root.switch_to("Not Read")
-        #    Button:
-        #        text: "Alle"
-        #        on_press: root.switch_to("All")
-        #    Button:
-        #        text: "Gesendet"
-        #        on_press: root.switch_to("Sent")
+        BoxLayout:
+            id: ext_navigation
+            size_hint: [1, 0.1]
+            orientation: "horizontal"
+            Button:
+                text: "Ungelesen"
+                on_release: root.toggleSelection()
+            Button:
+                text: "Alle"
+                on_release: root.toggleSelection()
         GridLayout:
             id: grid
             cols: 1

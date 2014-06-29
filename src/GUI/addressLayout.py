@@ -45,7 +45,7 @@ class AddressLayout(Screen):
         c = len(self.contacts)
         self.pageCount = "%d - %d/%d" %(a1, b1, c)
 
-    # see comments above add_emails in overviewLayout.py
+    # see comments above add_emails in InboxLayout.py
     def addContacts(self, contacts):
         # counter = 0
         for v in contacts:

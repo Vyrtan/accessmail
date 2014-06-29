@@ -3,11 +3,12 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty, StringProperty
 from .EmailItem import EmailItem
+from src.database import Database
 from src.Controller.DatabaseController import DatabaseController
 from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
 
-Builder.load_file('GUI/overviewLayout.kv')
+Builder.load_file('GUI/inboxLayout.kv')
 
 
 # The kivy developers themselves are not happy with the list_view. Since we only need about 10 emails at once
@@ -22,12 +23,17 @@ class OverviewLayout(Screen):
         super(OverviewLayout, self).__init__(**kwargs)
         self.counter = 0
         self.mails = []
+        self.nRead = 0
         Clock.schedule_once(self.scheduledMailCheck, 0)
         Clock.schedule_interval(self.scheduledMailCheck, 60)
 
     def scheduledMailCheck(self,_):
         CommunicationController.getEmailsFromServer()
-        self.mails = DatabaseController.load_emails()
+        db = Database()
+        if self.nRead:
+            self.mails = db.getNotReadMails()
+        else:
+            self.mails = db.getAllMails()
         self.displayEmails()
 
     #the kivy properties don't always load properly
@@ -74,6 +80,9 @@ class OverviewLayout(Screen):
         b1 = b if b < c else c
         self.pageCount = "%d - %d / %d" %(a1,b1,c)
 
-    # responsible to switch between folders, will probably never be used
-    def switch_to(self, str):
-        print("%s pressed" %str)
+    def toggleSelection(self):
+        if self.nRead == 1:
+            self.nRead = 0
+        else:
+            self.nRead = 1
+        self.scheduledMailCheck("lolno")
