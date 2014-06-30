@@ -74,21 +74,44 @@ class Database:
     # this is intended to mark an email (in the database) as read
     # i think it's too complicated to synchronize this with the server
     def markMailAsRead(self, email):
+        """
+
+        :param email: The E-Mail that is supposed to get marked
+        :type Mails: Mails
+        :return:
+        """
         self.session.execute("UPDATE Mails SET read=1 WHERE id=%d;"%(email.id))
         print "email marked as read"
         self.execute()
 
     def getNotReadMails(self):
+        """
+
+        :return: Returns all Mails which have not been marked as read
+        :rtype: [Mails]: List of Mails
+
+        """
         mails = self.session.query(Mails).filter(and_(getattr(Mails, "read") == 0)).all()
         return mails
 
     def getSentMails(self):
+        """
+
+        :return: Returns all Mails which have been sent by the currently logged in inbox
+        :rtype: [Mails]: List of Mails
+        """
         inbox = self.getInbox()
         mail = inbox.userMail
         mails = self.session.query(Mails).filter(and_(getattr(Mails, "_from") == mail)).all()
         return mails
 
     def deleteMail(self, email):
+        """
+
+        :param: email: The email that ought to be deleted
+        :type: Mails: Mails
+        :return
+        """
         self.session.delete(email)
         self.execute()
 
@@ -98,6 +121,12 @@ class Database:
         return contacts
 
     def insertContact(self, pContact):
+        """
+
+        :param: pContact: The contact that ought to be added to the database
+        :type: Contacts: Contacts
+        :return
+        """
         contact = Contacts()
         contact.name = unicode(pContact.name, "utf-8")
         contact.emailAddress = unicode(pContact.emailAddress, "utf-8")
@@ -105,6 +134,12 @@ class Database:
         self.execute()
 
     def deleteContact(self, contact):
+        """
+
+        :param: contact: The contact that ought to be deleted to the database
+        :type: Contacts: Contacts
+        :return
+        """
         self.session.delete(contact)
         self.execute()
 
@@ -148,16 +183,23 @@ class Database:
 
     def getInbox(self):
         """
+        :return The currently logged in inbox (account info, server info, etc.)
         :rtype: Inbox
         """
         return self.session.query(Inbox).first()
 
+    #function not used yet
     def resetAll(self):
         print("Deleting everything")
         self.session.expunge_all()
         self.execute()
 
     def execute(self):
+        '''
+        Commits all changes to the databases
+
+        :return:
+        '''
         self.session.commit()
         # flush after commit is redundant
         # self.session.flush()

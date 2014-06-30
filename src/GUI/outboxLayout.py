@@ -63,7 +63,7 @@ class OutboxLayout(Screen):
         self.displayEmails()
 
     def nextPage(self):
-        if ((self.counter+1) * self.emailsPerPage) < (len(self.mails) - 1):
+        if ((self.counter+1) * self.emailsPerPage) < (len(self.mails)):
             self.counter += 1
         self.displayEmails()
 

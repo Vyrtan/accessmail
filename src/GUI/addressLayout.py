@@ -29,11 +29,6 @@ class AddressLayout(Screen):
 
     def onChange(self):
         self.getContactsFromDB()
-        self.displayContacts()
-
-    def get_buttons(self):
-        for child in self.children:
-            print(child)
 
     def displayContacts(self):
         self.grid.clear_widgets()
@@ -61,47 +56,41 @@ class AddressLayout(Screen):
         self.displayContacts()
 
     def addNewContact(self):
-        p = AddContactPopup()
+        p = AddContactPopup(self.db, self)
         p.open()
-        p.bind(on_dismiss=self.processNewContact)
-        # this thread continues even with the popup open
-
-    def processNewContact(self, p):
-        contact = Contacts()
-        contact.emailAddress = p.address
-        contact.name = p.name
-        self.db.insertContact(contact)
-        self.getContactsFromDB()
 
     def deleteContact(self, contact):
         self.db.deleteContact(contact)
         self.contacts.remove(contact)
         self.grid.clear_widgets()
-        self.displayContacts()
+        self.getContactsFromDB()
 
     def previousPage(self):
         if self.counter > 0:
             self.counter -= 1
         else:
             self.counter = 0
-        self.displayContacts()
+        self.getContactsFromDB()
 
     def nextPage(self):
-        if ((self.counter+1) *self.contsPerPage) < len(self.contacts):
+        if ((self.counter+1) * self.contsPerPage) < len(self.contacts):
             self.counter += 1
-        self.displayContacts()
-
-    def printStuff(self):
-        print "Stuff"
+        self.getContactsFromDB()
 
 
 class AddContactPopup(Popup):
-    name = StringProperty()
-    address = StringProperty()
+    name = ObjectProperty()
+    address = ObjectProperty()
 
-    def handOverInfo(self, pname, paddress):
-        self.name = pname
-        self.address = paddress
+    def __init__(self, db, par, **kwargs):
+        super(AddContactPopup, self).__init__(**kwargs)
+        self.par = par
+        self.db = db
+
+    def addContact(self):
+        newContact = Contacts
+        newContact.emailAddress = self.address.text
+        newContact.name = self.name.text
+        self.db.insertContact(newContact)
+        self.par.getContactsFromDB()
         self.dismiss()
-
-

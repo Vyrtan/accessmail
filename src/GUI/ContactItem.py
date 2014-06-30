@@ -35,6 +35,7 @@ class ContactItem(BoxLayout):
     def trigger_write_mail(self):
         self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=self.email, message="")
 
+
 class DeletePopupContacts(Popup):
 
     def __init__(self, contact, d):

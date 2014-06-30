@@ -6,8 +6,8 @@
     auto_dismiss: False
     title: 'Add Contact'
     title_color: (0,0,0,1)
-    name: "None"
-    address: "None"
+    name: tname
+    address: taddress
     background: "GUI/Icons/white_bg_400x400.png"
     separator_height: 5
     BoxLayout:
@@ -27,7 +27,7 @@
             Button:
                 size_hint: [None, None]
                 background_normal: "GUI/Icons/iConfirm.png"
-                on_release: root.handOverInfo(tname.text, taddress.text)
+                on_release: root.addContact()
         AnchorLayout:
             anchor_x: "center"
             Button:

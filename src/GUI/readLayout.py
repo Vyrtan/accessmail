@@ -65,8 +65,6 @@ class ReadLayout(Screen):
         self.email = nextMail
 
     def trigger_reply(self):
-        address = self.email
-        subject = self.subject
         message = self.formatReplyMessage()
         self.parent.parent.parent.show_layout("Write", subject=self.email.subject, address=self.email._from, message=message)
 
