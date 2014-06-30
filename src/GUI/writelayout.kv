@@ -13,7 +13,7 @@
             disabled_color: (0,0,0,1)
             bold: True
             font_size: 40
-            text: "E-Mail verfassen"
+            text: "Write e-mail"
         BoxLayout:
             orientation: "vertical"
             GridLayout:
@@ -21,7 +21,7 @@
                 rows: 1
                 Label:
                     size_hint: [0.2, 1]
-                    text: "An:"
+                    text: "To:"
                     bold: True
                 TextInput:
                     id: sendTo
@@ -29,7 +29,7 @@
                     multiline: False
                 Label:
                     size_hint: [0.2, 1]
-                    text: "Thema:"
+                    text: "Subject:"
                     bold: True
                 TextInput:
                     id: subject
@@ -39,7 +39,7 @@
                 size_hint: [1, 0.1]
                 halign: "right"
                 bold: True
-                text: "Deine Nachricht:"
+                text: "Your message:"
             TextInput:
                 id: mailText
                 text: ""
@@ -47,7 +47,7 @@
                 size_hint: [1, 0.2]
                 rows: 1
                 #Button:
-                #    text: "Anhänge"
+                #    text: "Attachments:"
                 AnchorLayout:
                     anchor_x: "center"
                     Button:

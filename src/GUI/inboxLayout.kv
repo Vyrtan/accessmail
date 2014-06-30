@@ -14,16 +14,16 @@
             size_hint: [1, 0.1]
             bold: True
             font_size: 40
-            text: "Empfangene Nachrichten"
+            text: "Inbox"
         BoxLayout:
             id: ext_navigation
             size_hint: [1, 0.1]
             orientation: "horizontal"
             Button:
-                text: "Ungelesen"
+                text: "Not read e-mails"
                 on_release: root.toggleSelection()
             Button:
-                text: "Alle"
+                text: "All e-mails"
                 on_release: root.toggleSelection()
         GridLayout:
             id: grid

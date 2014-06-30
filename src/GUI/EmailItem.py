@@ -25,7 +25,6 @@ class EmailItem(BoxLayout):
     def __init__(self, email, **kwargs):
         super(EmailItem, self).__init__(**kwargs)
         self.oMail = email
-        # TODO: get Name from Contactbook
         self.name = string.split(email._from, "@")[0]
         self.email = email._from
         self.grey = False

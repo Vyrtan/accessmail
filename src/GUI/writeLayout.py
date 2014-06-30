@@ -39,9 +39,9 @@ class WriteLayout(Screen):
     def send_mail(self):
         if self.sendTo.text == "":
             content = GridLayout(cols=1)
-            content.add_widget(Label(text="Bitte eine Nachricht eingeben"))
+            content.add_widget(Label(text="Please enter a message"))
             content.add_widget(Button(background_normal="GUI/Icons/iConfirm.png", size_hint=[None, None]))
-            popup = Popup(title='Fehler!', content=content,
+            popup = Popup(title='Error!', content=content,
                           size_hint=(None, None), size=(400, 400),
                           background="GUI/Icons/white_bg_400x400.png",
                           title_color=(0,0,0,1))
@@ -72,7 +72,7 @@ class WriteLayout(Screen):
                 test.send_mail(inbox.userMail, self.sendTo.text, self.subject.text, self.message.text, None)
                 box = GridLayout(cols=1)
                 anch1 = AnchorLayout(anchor_h="center")
-                lbl = Label(text="Nachricht erfolgreich verschickt!", font_size=22, bold=True)
+                lbl = Label(text="Message successfully sent!", font_size=22, bold=True)
                 anch1.add_widget(lbl)
                 anch2 = AnchorLayout(anchor_h="center")
                 butt = Button(background_normal="GUI/Icons/iConfirm.png", size_hint=[None, None])
@@ -81,7 +81,7 @@ class WriteLayout(Screen):
                 box.add_widget(anch2)
 
                 content = box
-                popup = Popup(title='Erfolgreich!', content=content,
+                popup = Popup(title='Success!', content=content,
                               size_hint=(None, None), size=(400, 400),
                               background="GUI/Icons/white_bg_400x400.png",
                               title_color=(0,0,0,1))
@@ -93,12 +93,12 @@ class WriteLayout(Screen):
                 print e
                 # probably make this Popup an own kv and class (reusable everytime something goes wrong?)
                 content = GridLayout(cols=1)
-                content.add_widget(Label(text="Es ist ein Fehler aufgetreten"))
+                content.add_widget(Label(text="An error occurred.\nPlease try again"))
                 butt = Button(background_normal="GUI/Icons/iConfirm.png", size_hint=[None, None])
                 anch = AnchorLayout(align_h="center", size_hint=[None, None])
                 anch.add_widget(butt)
                 content.add_widget(anch)
-                popup = Popup(title='Fehler!', content=content,
+                popup = Popup(title='Error!', content=content,
                               size_hint=(None, None), size=(400, 400),
                               background="GUI/Icons/white_bg_400x400.png",
                               title_color=(0,0,0,1))

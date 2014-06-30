@@ -18,24 +18,28 @@
                 padding: 25
                 Button:
                     id: overBtn
+                    size_hint: [None, None]
                     background_normal: "GUI/Icons/iOverview.png"
                     on_release: root.parent.show_layout("Inbox")
             BoxLayout:
                 padding: 25
                 Button:
                     id: inboxBtn
+                    size_hint: [None, None]
                     background_normal: "GUI/Icons/iOverview.png"
                     on_release: root.parent.show_layout("Outbox")
             BoxLayout:
                 padding: 25
                 Button:
                     id: writeBtn
+                    size_hint: [None, None]
                     background_normal: "GUI/Icons/iWrite.png"
                     on_release: root.parent.show_layout("Write")
             BoxLayout:
                 padding: 25
                 Button:
                     id: contactBtn
+                    size_hint: [None, None]
                     background_normal: "GUI/Icons/iContacts.png"
                     on_release: root.parent.show_layout("Address")
             #Button:
@@ -46,6 +50,7 @@
                 padding: 25
                 Button:
                     id: exitBtn
+                    size_hint: [None, None]
                     background_normal: "GUI/Icons/iCancel.png"
                     background_down: "GUI/Icons/app_exit_down.png"
                     on_release: root.parent.on_exit_press()

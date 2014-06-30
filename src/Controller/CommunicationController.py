@@ -144,7 +144,10 @@ class CommunicationController(object):
 
             imapCon.login(emailAddress, password)
             # fetch emails from server
-            imapCon.select("Sent Mail")
+            if(inbox.imapServer=="imap.web.de"):
+                imapCon.select("Sent")
+            else:
+                imapCon.select("Sent Mail")
             result, data = imapCon.search(None, "ALL")
             ids = data[0].split()
             raw_mails = []
