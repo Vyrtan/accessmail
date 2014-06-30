@@ -1,8 +1,8 @@
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout
-from src.GUI.firstStartLayout import FirstStartLayout
-from src.GUI.providerDataLayout import ProviderDataLayout
+from GUI.firstStartLayout import FirstStartLayout
+from GUI.providerDataLayout import ProviderDataLayout
 
 
 class RootWidget(BoxLayout):

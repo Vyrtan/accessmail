@@ -8,8 +8,6 @@ from database import Database
 db = Database()
 
 if __name__ == "__main__":
-
-
     if not db.hasInbox():
         main.FirstStartRootApp().run()
 

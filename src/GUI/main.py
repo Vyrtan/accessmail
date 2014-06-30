@@ -133,7 +133,7 @@ class MainApp(App):
     '''
     This class is the main construct behind the kivy framework application.
     It is responsible for calling the containing widgets/layouts and for setting a few basic parameters.
-    s
+
     '''
 
     def build(self):
@@ -162,6 +162,7 @@ class MainApp(App):
 
 # input form for email settings
 class FirstStartApp(App):
+
     def build(self):
         return FirstStartLayout()
 
