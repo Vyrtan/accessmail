@@ -23,10 +23,13 @@ class Database:
 
     def getMailBy(self, what, value):
         """
+        This method searches the database for a certain criteria with a corresponding value and returns
+        the found object. It is necessarily an e-mail object. The
 
-        :param what: By What do you want to search?
+
+        :param what: The criteria used to search for
         :type what: string
-        :param value: Which value should I search for?
+        :param value: The value used to search for
         :type value: object
         :return: returns an email by id
         :rtype: Mails
@@ -38,6 +41,8 @@ class Database:
 
     def getAllMails(self):
         """
+        This method is used to get all available mails from the Mails-table.
+
         :return: returns a list of emails
         :rtype: Mails
         """
@@ -46,6 +51,7 @@ class Database:
 
     def insertMail(self, pmail):
         """
+        This method inserts a new mail to the database.
 
         :param subject: Mail's subject
         :type subject: str
@@ -75,6 +81,8 @@ class Database:
     # i think it's too complicated to synchronize this with the server
     def markMailAsRead(self, email):
         """
+        This mail uses the attribute "read" of an e-mail object and modifies it in the database.
+        Like this read e-mails and not yet read e-mails can be seperated.
 
         :param email: The E-Mail that is supposed to get marked
         :type Mails: Mails
@@ -86,6 +94,7 @@ class Database:
 
     def getNotReadMails(self):
         """
+        This method is used to search for all mails which have not been read yet.
 
         :return: Returns all Mails which have not been marked as read
         :rtype: [Mails]: List of Mails
@@ -96,6 +105,8 @@ class Database:
 
     def getSentMails(self):
         """
+        This method is used to get all mails from the database, which have been sent by the currently
+        logged in useraccount. The active inbox is used to compare to.
 
         :return: Returns all Mails which have been sent by the currently logged in inbox
         :rtype: [Mails]: List of Mails
@@ -107,6 +118,7 @@ class Database:
 
     def deleteMail(self, email):
         """
+        This method removes an e-mail from the database.
 
         :param: email: The email that ought to be deleted
         :type: Mails: Mails
@@ -117,11 +129,17 @@ class Database:
 
     # Contacts
     def getContacts(self):
+        '''
+        This method is used to get all contacts stored in the database.
+
+        :return: [Contacts]: A list of contacts
+        '''
         contacts = self.session.query(Contacts).all()
         return contacts
 
     def insertContact(self, pContact):
         """
+        This method is used to insert a new contact into the database.
 
         :param: pContact: The contact that ought to be added to the database
         :type: Contacts: Contacts
@@ -135,6 +153,7 @@ class Database:
 
     def deleteContact(self, contact):
         """
+        This method is used to delete a specified contact from the database.
 
         :param: contact: The contact that ought to be deleted to the database
         :type: Contacts: Contacts
@@ -145,7 +164,11 @@ class Database:
 
     def createInbox(self, firstName, lastName, userMail, account, password, imapServer, smtpServer, imapPort, smtpPort, imapSSL, smtpSSL, smtpAuth):
         """
-        Creates an Inbox
+        Creates an Inbox which contains all information about a user.
+        The information which are necessary to connect to the e-mail server are stored in this
+        object as well.
+
+        So far only one inbox can be used, however, in the future more inboxes can be added.
 
         :type userMail: str
         :type account: str
@@ -174,6 +197,11 @@ class Database:
         return inbox
 
     def hasInbox(self):
+        '''
+        This method is used to check whether an inbox is already existing.
+
+        :return: Boolean: True if there is an inbox, False if there is not.
+        '''
         try:
             self.session.query(Inbox).one()
         except NoResultFound:
@@ -183,16 +211,18 @@ class Database:
 
     def getInbox(self):
         """
+        This method is used to return the currently logged in inbox.
+
         :return The currently logged in inbox (account info, server info, etc.)
         :rtype: Inbox
         """
         return self.session.query(Inbox).first()
 
     #function not used yet
-    def resetAll(self):
-        print("Deleting everything")
-        self.session.expunge_all()
-        self.execute()
+    # def resetAll(self):
+    #     print("Deleting everything")
+    #     self.session.expunge_all()
+    #     self.execute()
 
     def execute(self):
         '''

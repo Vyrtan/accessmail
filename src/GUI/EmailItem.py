@@ -14,6 +14,13 @@ Builder.load_file("GUI/deletePopup.kv")
 
 
 class EmailItem(BoxLayout):
+    """
+    This class manages the corresponding controller level for e-mails. Single e-mails can be displayed in
+    the inbox and in the outbox. The necessary data is transferred through the email parameter.
+
+    :param email: The email to be displayed.
+    :param kwargs:
+    """
     name = StringProperty()
     email = StringProperty()
     subject = StringProperty()
@@ -38,22 +45,43 @@ class EmailItem(BoxLayout):
 
     # delete email with corresponding id from model
     def trigger_delete(self):
+        '''
+        This method deletes the email which is being displayed by the instance of this class.
+
+        :return:
+        '''
         p = DeletePopup(self.oMail)
         p.open()
 
     # call this function with some email id to switch to the corresponding email from the model
     def trigger_read(self):
+        '''
+        This method switches to the ReadLayout where the e-mail message can be looked at in full text.
+        It calls the screenmanager and hands over the e-mail object.
+
+        :return:
+        '''
         # best. expression. ever.
         self.root.parent.parent.parent.parent.parent.parent.show_layout("Read", email=self.oMail)
 
     # get address and subject, create new email
     def trigger_reply(self):
+        '''
+        This method switches to the WriteLayout handing over the correct e-mail address, the subject
+        with a "Re:" string addition and the original message with usual Reply-Mail formatting.
+
+        :return:
+        '''
         address = self.email
         subject = self.subject
         message = self.formatReplyMessage()
         self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=address, subject=subject, message=message)
 
     def formatReplyMessage(self):
+        '''
+        This method takes the message of the displayed e-mail and converts it to the usual Reply-Mail format.
+        :return:
+        '''
         replyString = self.oMail.message.split("\n")
         replyHeader = "\n>" + self.oMail._from + " wrote on " + self.oMail.date + ":\n>"
         return replyHeader +'\n>'.join(replyString)
@@ -61,11 +89,23 @@ class EmailItem(BoxLayout):
 
 class DeletePopup(Popup):
 
+    """
+    This class is used to delete E-mails within the inbox or outbox Layout.
+
+    :param mail:
+    """
+
     def __init__(self, mail):
         super(DeletePopup, self).__init__()
         self.em = mail
 
     def deleteMail(self):
+        '''
+        This method deletes the e-mail from the database and calls the method to delete the e-mail from
+        the server as well.
+
+        :return:
+        '''
         db = Database()
         db.deleteMail(self.em)
         CommunicationController.deleteMail(self.em)

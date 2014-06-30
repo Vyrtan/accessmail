@@ -5,7 +5,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
 Base = declarative_base()
-
+'''
+The classes found in this file are the model classes.
+The "Mails" class defines the structure of an e-mail object.
+The "Inbox" class defines which information about an account are needed.
+The "Contacts" class is used to store contact objects in the model.
+'''
 
 class Mails(Base):
     __tablename__ = 'mails'
@@ -46,6 +51,7 @@ class Inbox(Base):
 
     smtpAuth = Column(Integer())
     caches = relationship("Mails")
+
 
 #simply add a class like this?
 class Contacts(Base):

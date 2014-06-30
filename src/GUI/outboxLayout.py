@@ -12,6 +12,11 @@ Builder.load_file('GUI/outboxLayout.kv')
 
 
 class OutboxLayout(Screen):
+    '''
+    You can compare this documentation to the documentation for the inboxLayout class.
+    They are almost completely similar, but this one only gets Sent emails from the database
+    and displays them.
+    '''
 
     grid = ObjectProperty()
     pageCount = StringProperty()

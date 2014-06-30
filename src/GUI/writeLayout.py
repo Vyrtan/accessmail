@@ -16,6 +16,11 @@ Builder.load_file('GUI/writelayout.kv')
 
 class WriteLayout(Screen):
 
+    """
+    This method is used to handle the writing and sending of an e-mail.
+
+    :param kwargs:
+    """
     sendTo = ObjectProperty(None)
     subject = ObjectProperty(None)
     message = ObjectProperty(None)
@@ -26,6 +31,9 @@ class WriteLayout(Screen):
     def __init__(self, **kwargs):
         super(WriteLayout, self).__init__(**kwargs)
 
+    '''
+    These methods are observers who adjust the handed over information and displays them correctly
+    '''
     def on_strSendTo(self, instance, value):
         self.sendTo.text = value
 
@@ -35,8 +43,14 @@ class WriteLayout(Screen):
     def on_strMessage(self, instance, value):
         self.message.text = value
 
-
     def send_mail(self):
+        '''
+        This method is used to get the information necessary to send an e-mail from the inbox,
+        connects to the database and sends the information to the remote server. We have to differ
+        between the offered providers.
+
+        :return:
+        '''
         if self.sendTo.text == "":
             content = GridLayout(cols=1)
             content.add_widget(Label(text="Please enter a message"))

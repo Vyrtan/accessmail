@@ -36,6 +36,13 @@ Builder.load_file("GUI/resetPopup.kv")
 
 
 class Catalog(BoxLayout):
+    """
+    This method is the main frame. It contains all the other widgets and the screenmanager
+    which toggles through the respective layouts.
+    This class will be responsible for the handling of keyboard inputs in later use.
+
+    :param kwargs:
+    """
     screen_manager = ObjectProperty()
     buttons = ListProperty()
 
@@ -47,6 +54,15 @@ class Catalog(BoxLayout):
 
     # switch between the available layouts like the inbox, write, addressbook, etc.
     def show_layout(self, value, **param):
+        '''
+        This method takes a parameter value which contains the name of the to-be displayed layout.
+        It calles the screenmanager and (if necessary) hands over information about the called
+        layout.
+
+        :param value: The name of the Screen to be displayed
+        :param param: Additional information about the layout.
+        :return:
+        '''
         if self.screen_manager.current == value:
             return
         if value == "Read":
@@ -76,9 +92,9 @@ class Catalog(BoxLayout):
             self.screen_manager.current = value
         return
 
-    def triggerReset(self):
-        p = ResetPopup()
-        p.open()
+    # def triggerReset(self):
+    #     p = ResetPopup()
+    #     p.open()
 
     # currently not used method to rotate through menu buttons
     # there is no solution yet to get all available buttons in the currently displayed Layout
@@ -96,6 +112,11 @@ class Catalog(BoxLayout):
     #     print("leaving rotate buttons")
 
     def on_exit_press(self):
+        '''
+        This method opens up a confirmation popup to close the program.
+
+        :return:
+        '''
         p = ExitPopup()
         p.open()
 
@@ -109,7 +130,18 @@ class ResetPopup(Popup):
 
 
 class MainApp(App):
+    '''
+    This class is the main construct behind the kivy framework application.
+    It is responsible for calling the containing widgets/layouts and for setting a few basic parameters.
+    s
+    '''
+
     def build(self):
+        '''
+        This method is called when an instance of the MainApp is run.
+
+        :return:
+        '''
         self.title = "Accessmail"
         Config.set("input","mouse","mouse,disable_multitouch")
 

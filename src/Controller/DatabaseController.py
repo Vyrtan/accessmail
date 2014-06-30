@@ -3,6 +3,11 @@ import sqlite3
 from src.database import Database
 from src.models import *
 
+'''
+The DatabaseController used to handle the connection betweeen the View-classes and the database.
+It is deprecated though and will be removed within the upcoming patches.
+'''
+
 
 class DatabaseController(object):
 

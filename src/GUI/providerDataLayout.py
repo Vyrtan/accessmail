@@ -64,6 +64,15 @@ Builder.load_file("GUI/providerDataLayout.kv")
 
 class ProviderDataLayout(GridLayout):
 
+    """
+    This class is the controller which manages the first start of the program.
+    If no data are available yet, the user is asked to fill in his e-mail address and password.
+    This class then connects to the server using the filled in information and (if valid)
+    stores them in the database for future use.
+
+    :param provider: The provider handed over by the previous widget (firstStartLayout)
+    :param kwargs:
+    """
     emailAddress = ObjectProperty()
     password = ObjectProperty()
     submitButt = ObjectProperty()
@@ -75,6 +84,14 @@ class ProviderDataLayout(GridLayout):
         print self.provider
 
     def save_credentials(self, event):
+        '''
+        This method tries to connect to the server using the given information and (if successful)
+        stores the gained data in the Inbox table of the database. This is used by the program to
+        communicate with the server.
+
+        :param event: no used, still passed by the callback
+        :return:
+        '''
         email = self.emailAddress.text
         password = self.password.text
 

@@ -26,9 +26,30 @@ clunkyConfig = {
 
 
 class CommunicationController(object):
+    ''' This class handles the communication with the remote server.
+
+    This class only contains static methods. There are no attributes of the class used.
+    Because of the static character of the methods we can access them equally from
+    everywhere.
+
+    It automatically looks for the necessary connection data in the database.
+
+    Example:
+        To get the emails from the server import the module, call the class and the method:
+        from src.Controller.CommuncationController import CommunicationController
+        CommunicationController.getEmailsFromServer()
+
+
+    '''
+
 
     @staticmethod
     def getEmailsFromServer():
+        '''
+        This method fetches all emails in the remote folder "inbox" and stores them in the database.
+
+        :return
+        '''
 
 
         try:
@@ -92,6 +113,15 @@ class CommunicationController(object):
 
     @staticmethod
     def deleteMail(mail):
+        '''
+        This method takes an email-object, adds the flag "\\Deleted" and sends it to the server.
+        The IMAP server then deletes the mail.
+
+        :param mail: The mail to be deleted.
+        :type: Mails
+        :return:
+        '''
+
         # open database connection and get credentials
         db = Database()
         inbox = db.getInbox()
@@ -123,7 +153,11 @@ class CommunicationController(object):
     # gets all sent mails from the server
     @staticmethod
     def getSentFromServer():
+        ''' This method fetches all stored mails from the server from the "Sent" folder.
+        The received emails are then stored in the database.
 
+        :return:
+        '''
         try:
             # open database connection and get credentials
             db = Database()
@@ -138,6 +172,7 @@ class CommunicationController(object):
             if(inbox.imapServer=="imap.web.de"):
                 emailAddress = inbox.account
             else:
+
                 emailAddress = inbox.userMail
 
             password = inbox.password
