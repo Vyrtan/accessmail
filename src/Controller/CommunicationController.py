@@ -2,7 +2,6 @@ __author__ = 'grafgustav'
 import smtplib
 import email
 import imaplib
-import poplib
 from src.database import Database
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
