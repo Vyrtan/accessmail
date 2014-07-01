@@ -18,3 +18,6 @@ the "distro" folders with the "data.db" from the "build" folder.
 NOTICE:
 Due to problems adding the archives to the git repository we provide a dropbox link:
 https://www.dropbox.com/sh/qv0sdhy0uxhzcdr/AAAkhp8oC__p0fBEVDHxEbWla
+
+However the archives are also located in the respective folders inside the repository now.
+Have fun.
