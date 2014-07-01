@@ -14,3 +14,7 @@ it on older systems. Patches are about to come to fix this compatibility problem
 
 If you want to initialize the software again you can simply override the "data.db" in
 the "distro" folders with the "data.db" from the "build" folder.
+
+NOTICE:
+Due to problems adding the archives to the git repository we provide a dropbox link:
+https://www.dropbox.com/sh/qv0sdhy0uxhzcdr/AAAkhp8oC__p0fBEVDHxEbWla
