@@ -2,8 +2,6 @@
 
 \usetheme{TUDo}
 
-% Sprachumgebung
-\usepackage[ngerman]{babel}
 
 
 % Encoding je nach Compiler
@@ -23,6 +21,8 @@
 
 %Links
 \usepackage[]{hyperref}
+
+\renewcommand{\figurename}{Fig.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%-------------Hier Titel/Autor/Grafik/Lehrstuhl eintragen--------------%%%%%
@@ -79,124 +79,160 @@
 			\begin{frame}
 				\frametitle{Preparations}
 				\begin{itemize}
-					\item Kantendetektion
-					\item Pfaderzeugung
-					\item Wertezuweisung
-					\item Komponenten zusammenführen
-					\item Textzeilen markieren
+					\item Project Schedule
+					\item Kivy Framework
+					\item Testing routines
+					\item Packaging
+					\item more
 				\end{itemize}
 			\end{frame}
 			
-			\begin{frame}
-				\frametitle{Canny Kantendetektion}
-				%TODO: Quellen http://upload.wikimedia.org/wikipedia/commons/f/f0/Valve_original_%281%29.PNG
-		    		
-			\end{frame}
-			
 	
-		\subsection{Bestimmung der SWT-Werte}
+		\subsection{Project Schedule}
 			\begin{frame}
-				\frametitle{Bestimmung der SWT-Werte}
-		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
-		    		
+				\frametitle{Project Schedule}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.25]{Images/project_schedule.png}
+				\end{figure}
 			\end{frame}
 			
+		\subsection{Kivy Framework}
 			\begin{frame}
-				\frametitle{Bestimmung der SWT-Werte}
-		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
-		    		
-			\end{frame}
-			
-			\begin{frame}
-				\frametitle{Bestimmung der SWT-Werte}
-		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
-		    		
-			\end{frame}
-			
-			\begin{frame}
-				\frametitle{Bestimmung der SWT-Werte}
-		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
-		    		
-			\end{frame}
-			
-			\begin{frame}
-				\frametitle{Bestimmung der SWT-Werte}
-		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
-		    		
-			\end{frame}
-			
-			\begin{frame}
-				\frametitle{Bestimmung der SWT-Werte}
-		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
-		    		
-			\end{frame}
-			
-			\begin{frame}
-				\frametitle{Bestimmung der SWT-Werte}
-		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
-		    		
-			\end{frame}
-	
-		\subsection{Connected Components}
-			\begin{frame}
-				\frametitle{Connected Components}
+				\frametitle{The Kivy Framework}
+				\begin{itemize}
+					\item Cross platform
+					\item Business Friendly
+					\item GPU Accelerated
+				\end{itemize}
 				
+				\begin{figure}
+					\centering				
+					\includegraphics[scale=0.3]{Images/kivy_logo.png}
+					\caption{http://www.kivy.org/ - 02.July, 2014}
+				\end{figure}
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Kivy example}
+				\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{Images/kivy_helloworld_code.png}
+				\includegraphics[scale=0.3]{Images/kivy_helloworld_result.png}
+				\end{figure}
+			\end{frame}
+			
+		\subsection{Testing routines}
+			
+			\begin{frame}
+				\frametitle{Testing routines}
+				\begin{itemize}
+					\item Unit tests
+					\item Usability tests
+					\item User Centered Design
+				\end{itemize}
+			\end{frame}
+			
+		\subsection{Packaging}
+			\begin{frame}
+				\frametitle{Packaging}
+				\begin{itemize}
+					\item PyInstaller
+					\item Challenges: Many
+					\item Almost Cross-platform
+					\item Most frustrating part of development
+				\end{itemize}
+		    		
+			\end{frame}
+			
+			
+		\subsection{More}
+		
+			\begin{frame}
+				\frametitle{More}
+		    			More
+		    		
+			\end{frame}
+	
+		\subsection{The Software}
+			\begin{frame}
+				\frametitle{GUI}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{Images/firstStartRoot.png}
+				\end{figure}
+		    	\end{frame}
+		
+			\begin{frame}
+				\frametitle{GUI}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{Images/firstStartCredentials.png}
+				\end{figure}
 		    	\end{frame}
 			
 			\begin{frame}
-				\frametitle{Connected Components}
-				
+				\frametitle{GUI}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{Images/Inbox.png}
+				\end{figure}
 		    	\end{frame}
-		    		
+			
+			\begin{frame}
+				\frametitle{GUI}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{Images/Outbox.png}
+				\end{figure}
+		    	\end{frame}
+		    	
 		    	\begin{frame}
-		    		\frametitle{Connected Components}
-		    		
-				
-				%Bild zum Algorithmus, vllt. das Bild mit dem Männchen von Wikipedia? http://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Two-pass_connected_component_labeling.svg/220px-Two-pass_connected_component_labeling.svg.png
-				%s.  http://www.ub.tu-dortmund.de/katalog/titel/1304452
-			\end{frame}
-	
-		\subsection{Komponenten erkennen}
+				\frametitle{GUI}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{Images/Write_blank.png}
+				\end{figure}
+		    	\end{frame}
+		    	
+		    	\begin{frame}
+				\frametitle{GUI}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{Images/Read.png}
+				\end{figure}
+		    	\end{frame}
+		    	
+		    	\begin{frame}
+				\frametitle{GUI}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{Images/Addresses.png}
+				\end{figure}
+		    	\end{frame}
+		    	
+		    	\begin{frame}
+				\frametitle{GUI}
+				\begin{figure}
+					\centering
+					\includegraphics[scale=0.2]{Images/Answer.png}
+				\end{figure}
+		    	\end{frame}
 			\begin{frame}
-				\frametitle{Buchstaben zu Textzeilen gruppieren}
+				\frametitle{Techniques}
 				
-			\end{frame}
-			
-			% http://habrastorage.org/storage2/c86/5b3/67c/c865b367ce6a23bc0eda9423f9b29fc1.jpg
-			
-			\begin{frame}
-				\frametitle{Buchstaben zu Textzeilen gruppieren}
-			
-			\end{frame}
+		    	\end{frame}
+		    	
 	
-	\section{Evaluation}
-		\subsection{Datensätze}
+	\section{Conclusion}
 		\begin{frame}
-			\frametitle{ICDAR}
-		\end{frame}
-	
-		\subsection{Gütemaße}
-		\begin{frame}
-			\frametitle{Gütemaße}
-			$
-		    \begin{array}{lcl}
-				Precision & = & \frac{Ground\:Truth \:\cap\: Gefundene\:Markierungen}{Gefundene\:Markierungen} \\
-				\\
-				Recall & = & \frac{Ground\:Truth \:\cap\: Gefundene\:Markierungen}{Ground\:Truth} \\
-				\\
-				f-measure & = & \frac{1}{\frac{\alpha}{Precision}+\frac{1-\alpha}{Recall}}
-			\end{array}
-			$
-		\end{frame}
-	
-	\section{Zusammenfassung}
-		\begin{frame}
-			\frametitle{Zusammenfassung}
+			\frametitle{Conclusion}
 			%Diese Zusammenfassung ist nicht gut.
 			\begin{itemize}
-				\item Strichbreite als Indikator für Text
-				\item Komponenten werden aus SWT-Werten gebildet
-				\item Textzeilen und Wörter werden im Ursprungsbild indiziert
+				\item E-Mail Client
+				\item Full functionality
+				\item Simple Design
+				\item Accessible for everyone
 			\end{itemize}
 			
 		\end{frame}

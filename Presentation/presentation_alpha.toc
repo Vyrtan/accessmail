@@ -1,12 +1,11 @@
 \beamer@endinputifotherversion {3.24pt}
-\select@language {ngerman}
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
 \beamer@sectionintoc {2}{Our Approach}{4}{0}{2}
 \beamer@subsectionintoc {2}{1}{Preparations}{4}{0}{2}
-\beamer@subsectionintoc {2}{2}{Bestimmung der SWT-Werte}{6}{0}{2}
-\beamer@subsectionintoc {2}{3}{Connected Components}{13}{0}{2}
-\beamer@subsectionintoc {2}{4}{Komponenten erkennen}{16}{0}{2}
-\beamer@sectionintoc {3}{Evaluation}{18}{0}{3}
-\beamer@subsectionintoc {3}{1}{Datens\IeC {\"a}tze}{18}{0}{3}
-\beamer@subsectionintoc {3}{2}{G\IeC {\"u}tema\IeC {\ss }e}{19}{0}{3}
-\beamer@sectionintoc {4}{Zusammenfassung}{20}{0}{4}
+\beamer@subsectionintoc {2}{2}{Project Schedule}{5}{0}{2}
+\beamer@subsectionintoc {2}{3}{Kivy Framework}{6}{0}{2}
+\beamer@subsectionintoc {2}{4}{Testing routines}{8}{0}{2}
+\beamer@subsectionintoc {2}{5}{Packaging}{9}{0}{2}
+\beamer@subsectionintoc {2}{6}{More}{10}{0}{2}
+\beamer@subsectionintoc {2}{7}{The Software}{11}{0}{2}
+\beamer@sectionintoc {3}{Conclusion}{20}{0}{3}

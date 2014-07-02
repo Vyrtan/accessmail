@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.11)  2 JUL 2014 12:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.6.11)  2 JUL 2014 15:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -666,22 +666,6 @@ Package: beamerouterthemedefault 2012/10/02  (rcs-revision 5ed0f4010e8a)
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
 )))
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2013/12/03 3.9h The Babel package
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel-german/ngermanb.ldf
-Language: ngermanb 2013/12/13 v2.7 German support for babel (new orthography)
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2013/12/03 3.9h Babel common definitions
-LaTeX Info: Redefining \textlatin on input line 137.
-\babel@savecnt=\count153
-\U@D=\dimen185
-)
-\l@naustrian = a dialect from \language\l@ngerman 
-\l@nswissgerman = a dialect from \language\l@ngerman 
-Package babel Info: Making " an active character on input line 88.
-))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks40
@@ -969,16 +953,16 @@ File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count154
-\scratchdimen=\dimen186
+\scratchcounter=\count153
+\scratchdimen=\dimen185
 \scratchbox=\box53
-\nofMPsegments=\count155
-\nofMParguments=\count156
+\nofMPsegments=\count154
+\nofMParguments=\count155
 \everyMPshowfont=\toks42
-\MPscratchCnt=\count157
-\MPscratchDim=\dimen187
-\MPnumerator=\count158
-\makeMPintoPDFobject=\count159
+\MPscratchCnt=\count156
+\MPscratchDim=\dimen186
+\MPnumerator=\count157
+\makeMPintoPDFobject=\count158
 \everyMPtoPDFconversion=\toks43
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -1005,7 +989,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count160
+\c@section@level=\count159
 )
 LaTeX Info: Redefining \ref on input line 39.
 LaTeX Info: Redefining \pageref on input line 39.
@@ -1183,10 +1167,15 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [4
 
-]
+] <Images/project_schedule.png, id=96, 955.57pt x 678.535pt>
+File: Images/project_schedule.png Graphic file (type png)
+
+<use Images/project_schedule.png>
+Package pdftex.def Info: Images/project_schedule.png used on input line 98.
+(pdftex.def)             Requested size: 238.8919pt x 169.63333pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 94.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 98.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1203,10 +1192,16 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [5
 
-]
+ <./Images/project_schedule.png>]
+<Images/kivy_logo.png, id=105, 140.525pt x 140.525pt>
+File: Images/kivy_logo.png Graphic file (type png)
+
+<use Images/kivy_logo.png>
+Package pdftex.def Info: Images/kivy_logo.png used on input line 114.
+(pdftex.def)             Requested size: 42.15782pt x 42.15782pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 102.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 114.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1223,10 +1218,25 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [6
 
-]
+ <./Images/kivy_logo.png>]
+<Images/kivy_helloworld_code.png, id=113, 634.37pt x 224.84pt>
+File: Images/kivy_helloworld_code.png Graphic file (type png)
+
+<use Images/kivy_helloworld_code.png>
+Package pdftex.def Info: Images/kivy_helloworld_code.png used on input line 123
+.
+(pdftex.def)             Requested size: 190.31245pt x 67.45251pt.
+
+<Images/kivy_helloworld_result.png, id=114, 283.0575pt x 230.8625pt>
+File: Images/kivy_helloworld_result.png Graphic file (type png)
+
+<use Images/kivy_helloworld_result.png>
+Package pdftex.def Info: Images/kivy_helloworld_result.png used on input line 1
+23.
+(pdftex.def)             Requested size: 84.9179pt x 69.25928pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 108.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 123.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1243,10 +1253,11 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [7
 
-]
+ <./Images/kivy_helloworld_code.png> <./Images/kivy_helloworld_result.png>]
 File: TUDo-Logo.jpg Graphic file (type jpg)
- <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 114.
+
+<use TUDo-Logo.jpg>
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 134.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1266,7 +1277,7 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 ]
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 120.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 146.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1286,7 +1297,7 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 ]
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 126.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 155.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1303,10 +1314,15 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [10
 
-]
+] <Images/firstStartRoot.png, id=143, 804.00375pt x 629.35126pt>
+File: Images/firstStartRoot.png Graphic file (type png)
+
+<use Images/firstStartRoot.png>
+Package pdftex.def Info: Images/firstStartRoot.png used on input line 164.
+(pdftex.def)             Requested size: 160.7979pt x 125.86801pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 132.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 164.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1323,10 +1339,17 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [11
 
-]
+ <./Images/firstStartRoot.png>]
+<Images/firstStartCredentials.png, id=152, 799.98875pt x 625.33624pt>
+File: Images/firstStartCredentials.png Graphic file (type png)
+
+<use Images/firstStartCredentials.png>
+Package pdftex.def Info: Images/firstStartCredentials.png used on input line 17
+2.
+(pdftex.def)             Requested size: 159.99492pt x 125.06503pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 138.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 172.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1343,10 +1366,16 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [12
 
-]
+ <./Images/firstStartCredentials.png>]
+<Images/Inbox.png, id=161, 1318.9275pt x 743.77875pt>
+File: Images/Inbox.png Graphic file (type png)
+ <use Images/Inbox.png>
+Package pdftex.def Info: Images/Inbox.png used on input line 180.
+(pdftex.def)             Requested size: 263.78082pt x 148.75311pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
- <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 144.
+
+<use TUDo-Logo.jpg>
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 180.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1363,10 +1392,15 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [13
 
-]
+ <./Images/Inbox.png>] <Images/Outbox.png, id=171, 1316.92pt x 743.77875pt>
+File: Images/Outbox.png Graphic file (type png)
+
+<use Images/Outbox.png>
+Package pdftex.def Info: Images/Outbox.png used on input line 188.
+(pdftex.def)             Requested size: 263.37933pt x 148.75311pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 149.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 188.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1383,10 +1417,16 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [14
 
-]
+ <./Images/Outbox.png>]
+<Images/Write_blank.png, id=180, 1316.92pt x 742.775pt>
+File: Images/Write_blank.png Graphic file (type png)
+
+<use Images/Write_blank.png>
+Package pdftex.def Info: Images/Write_blank.png used on input line 196.
+(pdftex.def)             Requested size: 263.37933pt x 148.55237pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 157.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 196.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1403,10 +1443,16 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [15
 
-]
+ <./Images/Write_blank.png>]
+<Images/Read.png, id=189, 1317.92375pt x 742.775pt>
+File: Images/Read.png Graphic file (type png)
+ <use Images/Read.png>
+Package pdftex.def Info: Images/Read.png used on input line 204.
+(pdftex.def)             Requested size: 263.58008pt x 148.55237pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
- <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 163.
+
+<use TUDo-Logo.jpg>
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 204.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1423,10 +1469,16 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [16
 
-]
+ <./Images/Read.png>]
+<Images/Addresses.png, id=198, 1317.92375pt x 744.7825pt>
+File: Images/Addresses.png Graphic file (type png)
+
+<use Images/Addresses.png>
+Package pdftex.def Info: Images/Addresses.png used on input line 212.
+(pdftex.def)             Requested size: 263.58008pt x 148.95386pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 170.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 212.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1443,10 +1495,16 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [17
 
-]
+ <./Images/Addresses.png>]
+<Images/Answer.png, id=207, 1316.92pt x 743.77875pt>
+File: Images/Answer.png Graphic file (type png)
+ <use Images/Answer.png>
+Package pdftex.def Info: Images/Answer.png used on input line 220.
+(pdftex.def)             Requested size: 263.37933pt x 148.75311pt.
 File: TUDo-Logo.jpg Graphic file (type jpg)
- <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 176.
+
+<use TUDo-Logo.jpg>
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 220.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1463,25 +1521,10 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 
 [18
 
-]
-LaTeX Font Info:    Try loading font information for U+msa on input line 190.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 190.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 190.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 190.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 190.
+ <./Images/Answer.png>]
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 190.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 224.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1501,7 +1544,7 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 ]
 File: TUDo-Logo.jpg Graphic file (type jpg)
  <use TUDo-Logo.jpg>
-Package pdftex.def Info: TUDo-Logo.jpg used on input line 202.
+Package pdftex.def Info: TUDo-Logo.jpg used on input line 238.
 (pdftex.def)             Requested size: 117.69989pt x 21.33955pt.
 
 Overfull \hbox (19.2673pt too wide) has occurred while \output is active
@@ -1528,42 +1571,29 @@ Overfull \hbox (18.0pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `presentation_alpha.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 204.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 204.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 240.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 240.
  (./presentation_alpha.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 204.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 204.
-
-
-Package rerunfilecheck Warning: File `presentation_alpha.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `presentation_alpha.out':
-(rerunfilecheck)             Before: 48A85A45FF8FC4562D1C365EB97031C6;602
-(rerunfilecheck)             After:  2B9781B89272C25B5553AC7CB1A7ADDD;591.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 204.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 240.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 240.
+Package rerunfilecheck Info: File `presentation_alpha.out' has not changed.
+(rerunfilecheck)             Checksum: 292F7EEEF480162DC423A2A9162951AF;568.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 240.
  ) 
 Here is how much of TeX's memory you used:
- 16627 strings out of 494935
- 301574 string characters out of 6178122
- 380117 words of memory out of 5000000
- 19373 multiletter control sequences out of 15000+600000
- 36885 words of font info for 51 fonts, out of 8000000 for 9000
+ 16260 strings out of 494935
+ 297575 string characters out of 6178122
+ 369905 words of memory out of 5000000
+ 19029 multiletter control sequences out of 15000+600000
+ 21200 words of font info for 28 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 49i,20n,53p,407b,641s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 49i,20n,53p,407b,629s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr
-8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on presentation_alpha.pdf (20 pages, 127037 bytes).
+e/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on presentation_alpha.pdf (20 pages, 529115 bytes).
 PDF statistics:
- 254 PDF objects out of 1000 (max. 8388607)
- 214 compressed objects within 3 object streams
+ 250 PDF objects out of 1000 (max. 8388607)
+ 194 compressed objects within 2 object streams
  51 named destinations out of 1000 (max. 500000)
- 128 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 188 words of extra memory for PDF output out of 10000 (max. 10000000)
 
