@@ -1,0 +1,204 @@
+\documentclass[9pt]{beamer}
+
+\usetheme{TUDo}
+
+% Sprachumgebung
+\usepackage[ngerman]{babel}
+
+
+% Encoding je nach Compiler
+\ifluatex
+\usepackage[utf8]{luainputenc}
+\else
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\fi
+
+
+% Mathematik
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{cancel}
+
+%Links
+\usepackage[]{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%-------------Hier Titel/Autor/Grafik/Lehrstuhl eintragen--------------%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Titel:
+\title{Accessmail - an accessible E-Mail Client}
+%Autor
+\author{Simon Demming}
+%Lehrstuhl/Fakultät
+\institute[Department]{\par\smallskip\smallskip Department for Rehabilitation\\ Department for Computer Science}
+
+
+\begin{document}
+
+	\begin{frame}
+		\setcounter{framenumber}{0}
+	    \titlepage
+	\end{frame}
+	
+	\begin{frame}
+	    \frametitle{Einführung}
+	    \tableofcontents
+	\end{frame}
+	
+	%Einführung
+	\section{Introduction}
+		\begin{frame}
+			\frametitle{Introduction}
+			
+			E-Mail as a very important communication platform
+			\begin{itemize}
+				\item Used for direct communication
+				\item Used for registration purposes
+				\item Used for many other cool things like explosions
+			\end{itemize}
+		
+		\end{frame}
+	
+	
+	% Verwandte Arbeiten
+%	\section{Verwandte Arbeiten}
+%		\begin{frame}
+%			\frametitle{Verwandte Arbeiten}
+%			Dieser Abschnitt wird vermutlich noch rausgeschnitten. Grobe Ausführungen über Regions- und 	
+%			Texturbasierte Verfahren
+%		\end{frame}
+	
+	
+	%Stroke Width Transform
+	\section{Our Approach}
+		\subsection{Preparations}
+		
+			\begin{frame}
+				\frametitle{Preparations}
+				\begin{itemize}
+					\item Kantendetektion
+					\item Pfaderzeugung
+					\item Wertezuweisung
+					\item Komponenten zusammenführen
+					\item Textzeilen markieren
+				\end{itemize}
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Canny Kantendetektion}
+				%TODO: Quellen http://upload.wikimedia.org/wikipedia/commons/f/f0/Valve_original_%281%29.PNG
+		    		
+			\end{frame}
+			
+	
+		\subsection{Bestimmung der SWT-Werte}
+			\begin{frame}
+				\frametitle{Bestimmung der SWT-Werte}
+		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
+		    		
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Bestimmung der SWT-Werte}
+		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
+		    		
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Bestimmung der SWT-Werte}
+		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
+		    		
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Bestimmung der SWT-Werte}
+		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
+		    		
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Bestimmung der SWT-Werte}
+		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
+		    		
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Bestimmung der SWT-Werte}
+		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
+		    		
+			\end{frame}
+			
+			\begin{frame}
+				\frametitle{Bestimmung der SWT-Werte}
+		    		%Bild, welches die Pfadverfolgung von Kante zu Kante anzeigt
+		    		
+			\end{frame}
+	
+		\subsection{Connected Components}
+			\begin{frame}
+				\frametitle{Connected Components}
+				
+		    	\end{frame}
+			
+			\begin{frame}
+				\frametitle{Connected Components}
+				
+		    	\end{frame}
+		    		
+		    	\begin{frame}
+		    		\frametitle{Connected Components}
+		    		
+				
+				%Bild zum Algorithmus, vllt. das Bild mit dem Männchen von Wikipedia? http://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Two-pass_connected_component_labeling.svg/220px-Two-pass_connected_component_labeling.svg.png
+				%s.  http://www.ub.tu-dortmund.de/katalog/titel/1304452
+			\end{frame}
+	
+		\subsection{Komponenten erkennen}
+			\begin{frame}
+				\frametitle{Buchstaben zu Textzeilen gruppieren}
+				
+			\end{frame}
+			
+			% http://habrastorage.org/storage2/c86/5b3/67c/c865b367ce6a23bc0eda9423f9b29fc1.jpg
+			
+			\begin{frame}
+				\frametitle{Buchstaben zu Textzeilen gruppieren}
+			
+			\end{frame}
+	
+	\section{Evaluation}
+		\subsection{Datensätze}
+		\begin{frame}
+			\frametitle{ICDAR}
+		\end{frame}
+	
+		\subsection{Gütemaße}
+		\begin{frame}
+			\frametitle{Gütemaße}
+			$
+		    \begin{array}{lcl}
+				Precision & = & \frac{Ground\:Truth \:\cap\: Gefundene\:Markierungen}{Gefundene\:Markierungen} \\
+				\\
+				Recall & = & \frac{Ground\:Truth \:\cap\: Gefundene\:Markierungen}{Ground\:Truth} \\
+				\\
+				f-measure & = & \frac{1}{\frac{\alpha}{Precision}+\frac{1-\alpha}{Recall}}
+			\end{array}
+			$
+		\end{frame}
+	
+	\section{Zusammenfassung}
+		\begin{frame}
+			\frametitle{Zusammenfassung}
+			%Diese Zusammenfassung ist nicht gut.
+			\begin{itemize}
+				\item Strichbreite als Indikator für Text
+				\item Komponenten werden aus SWT-Werten gebildet
+				\item Textzeilen und Wörter werden im Ursprungsbild indiziert
+			\end{itemize}
+			
+		\end{frame}
+
+\end{document}
