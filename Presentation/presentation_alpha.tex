@@ -22,6 +22,9 @@
 %Links
 \usepackage[]{hyperref}
 
+%Float
+\usepackage[]{float}
+
 \renewcommand{\figurename}{Fig.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,56 +47,109 @@
 	\end{frame}
 	
 	\begin{frame}
-	    \frametitle{Einführung}
-	    \tableofcontents
+	    \frametitle{The team}
+	    % Picture of Jonas
+	    Jonas Langenberg \\
+	    23 years\\
+	    7th Semester BA Computer Science\\
+	    % Picture of me
+	    Simon Demming\\
+	    22 years\\
+	    6th Semester BA Computer Science\\
+	    
 	\end{frame}
 	
 	%Einführung
 	\section{Introduction}
+		
 		\begin{frame}
 			\frametitle{Introduction}
 			
-			E-Mail as a very important communication platform
+			Email as a very important communication platform used for
 			\begin{itemize}
-				\item Used for direct communication
-				\item Used for registration purposes
-				\item Used for online banking and other organisational purposes
+				\item Private communication
+				\item Labour affairs
+				\item Finances
+				\item Entertainment
 			\end{itemize}
+		\end{frame}
 		
+		\begin{frame}
+			\frametitle{Introduction}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.1]{Images/computersenior.jpg}
+				%TODO add source "Rainer Sturm  / pixelio.de"
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Email is not easy}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{Images/webstart.png}
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Email is not easy}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{Images/webstartmail.png}
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Email is not easy}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{Images/deletemailserror.png}
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Email is not easy}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{Images/yahoostart.png}
+			\end{figure}
 		\end{frame}
 	
-	
-	% Verwandte Arbeiten
-%	\section{Verwandte Arbeiten}
-%		\begin{frame}
-%			\frametitle{Verwandte Arbeiten}
-%			Dieser Abschnitt wird vermutlich noch rausgeschnitten. Grobe Ausführungen über Regions- und 	
-%			Texturbasierte Verfahren
-%		\end{frame}
-	
-	
-	%Stroke Width Transform
 	\section{Our Approach}
 		\subsection{Preparations}
 		
-			\begin{frame}
-				\frametitle{Preparations}
-				\begin{itemize}
-					\item Project Schedule
-					\item Kivy Framework
-					\item Testing routines
-					\item Packaging
-					\item more
-				\end{itemize}
-			\end{frame}
-			
+		\begin{frame}
+			\frametitle{Preparations}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{Images/project_schedule_1.png}
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Requirements}
+			\begin{itemize}[<+->]
+				\item Simple design\\
+				$\rightarrow$ High usability
+				\item High contrast\\
+				$\rightarrow$ Good for visually impaired persons
+				\item No distractions\\
+				$\rightarrow$ High usability again
+				\item Obvious pictographs\\
+				$\rightarrow$ Good for persons with learning disabilities (and internationalisation)
+				\item Foreseeable behaviour\\
+				$\rightarrow$ No confusion
+				\item Confirmations\\
+				$\rightarrow$ No accidental deletions
+			\end{itemize}
+		\end{frame}
 	
-		\subsection{Project Schedule}
+		\subsection{Software Design}
 			\begin{frame}
-				\frametitle{Project Schedule}
+				\frametitle{Software Design}
 				\begin{figure}
 					\centering
-					\includegraphics[scale=0.25]{Images/project_schedule.png}
+					\includegraphics[scale=0.25]{Images/project_schedule_2.png}
 				\end{figure}
 			\end{frame}
 			
@@ -122,33 +178,72 @@
 				\end{figure}
 			\end{frame}
 			
-		\subsection{Testing routines}
-			
-			\begin{frame}
-				\frametitle{Testing routines}
-				\begin{itemize}
-					\item User Centered Design
-					\item Extensive testing phase with possible end-users
-				\end{itemize}
-				Problems found during this routine:
-				\begin{itemize}
-					\item Quite some bugs
-					\item Page indication needed
-					\item Nicer visualisation
-					\item Interest in E-Mail definitely given
-				\end{itemize}
-			\end{frame}
-			
 		\subsection{Packaging}
 			\begin{frame}
 				\frametitle{Packaging}
+				\begin{figure}
+					\includegraphics[scale=1]{Images/pyinstaller_logo.png}
+				\end{figure}
 				\begin{itemize}
-					\item PyInstaller
+					\item PyInstaller - Packaging for Python
+					\item Cross platform
 					\item Challenges: Missing libraries, incomplete wrapping
-					\item Meant to be cross-platform
 				\end{itemize}
-		    		
 			\end{frame}
+			
+	\section{Testing routines}
+		
+		\begin{frame}
+			\frametitle{Preparations}
+			Aims:
+			\begin{itemize}
+				\item Finding bugs
+				\item Test usability
+				\item Get feedback on design
+			\end{itemize}
+			Material:
+			\begin{itemize}
+				\item The software packed for Windows
+				\item The hardware
+				\item A testing script
+			\end{itemize}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{The script}
+			Automatically test the following functions:
+			\begin{itemize}
+				\item Create an email account
+				\item Add a contact
+				\item Write an email
+				\item etc.
+			\end{itemize}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Testing}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.5]{Images/test_distribution.png}
+			\end{figure}
+		\end{frame}
+		
+		\begin{frame}
+			\frametitle{Testing routines}
+			\begin{itemize}
+				\item User Centered Design
+				\item Extensive testing phase with possible end-users
+			\end{itemize}
+			Results of this routine:
+			\begin{itemize}
+				\item Quite some bugs
+				\item Page indication needed
+				\item Nicer visualisation
+				\item Interest in E-Mail definitely given
+			\end{itemize}
+		\end{frame}
+			
+		
 			
 %		\subsection{The Software}
 %			\begin{frame}
@@ -222,7 +317,6 @@
 	
 	\section{Conclusion}
 	
-	
 		\subsection{The software}
 			\begin{frame}
 				\begin{center}
@@ -249,7 +343,7 @@
 				\frametitle{Future plans}
 				%Diese Zusammenfassung ist nicht gut.
 				\begin{itemize}
-					\item More colours
+					\item More appealing design
 					\item Photos to visualize contacts
 					\item More language support
 					\item Additional introduction (in simple language) for E-Mail

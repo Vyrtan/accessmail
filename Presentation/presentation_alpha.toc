@@ -1,11 +1,11 @@
 \beamer@endinputifotherversion {3.24pt}
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@sectionintoc {2}{Our Approach}{4}{0}{2}
-\beamer@subsectionintoc {2}{1}{Preparations}{4}{0}{2}
-\beamer@subsectionintoc {2}{2}{Project Schedule}{5}{0}{2}
-\beamer@subsectionintoc {2}{3}{Kivy Framework}{6}{0}{2}
-\beamer@subsectionintoc {2}{4}{Testing routines}{8}{0}{2}
-\beamer@subsectionintoc {2}{5}{Packaging}{9}{0}{2}
-\beamer@sectionintoc {3}{Conclusion}{10}{0}{3}
-\beamer@subsectionintoc {3}{1}{The software}{10}{0}{3}
-\beamer@subsectionintoc {3}{2}{The future}{12}{0}{3}
+\beamer@sectionintoc {2}{Our Approach}{9}{0}{2}
+\beamer@subsectionintoc {2}{1}{Preparations}{9}{0}{2}
+\beamer@subsectionintoc {2}{2}{Software Design}{16}{0}{2}
+\beamer@subsectionintoc {2}{3}{Kivy Framework}{17}{0}{2}
+\beamer@subsectionintoc {2}{4}{Packaging}{19}{0}{2}
+\beamer@sectionintoc {3}{Testing routines}{20}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{24}{0}{4}
+\beamer@subsectionintoc {4}{1}{The software}{24}{0}{4}
+\beamer@subsectionintoc {4}{2}{The future}{26}{0}{4}
