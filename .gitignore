@@ -10,3 +10,4 @@ python.log
 data.db
 *.spec
 main.tar.gz
+builds
