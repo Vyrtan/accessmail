@@ -1,10 +1,13 @@
 \BOOKMARK [2][]{Outline0.1}{Introduction}{}% 1
 \BOOKMARK [2][]{Outline0.2}{Our Approach}{}% 2
-\BOOKMARK [3][]{Outline0.2.1.9}{Preparations}{Outline0.2}% 3
-\BOOKMARK [3][]{Outline0.2.2.16}{Software Design}{Outline0.2}% 4
-\BOOKMARK [3][]{Outline0.2.3.17}{Kivy Framework}{Outline0.2}% 5
-\BOOKMARK [3][]{Outline0.2.4.19}{Packaging}{Outline0.2}% 6
-\BOOKMARK [2][]{Outline0.3}{Testing routines}{}% 7
-\BOOKMARK [2][]{Outline0.4}{Conclusion}{}% 8
-\BOOKMARK [3][]{Outline0.4.1.24}{The software}{Outline0.4}% 9
-\BOOKMARK [3][]{Outline0.4.2.26}{The future}{Outline0.4}% 10
+\BOOKMARK [3][]{Outline0.2.1.12}{Preparations}{Outline0.2}% 3
+\BOOKMARK [3][]{Outline0.2.2.19}{Software Design}{Outline0.2}% 4
+\BOOKMARK [3][]{Outline0.2.3.20}{Model}{Outline0.2}% 5
+\BOOKMARK [3][]{Outline0.2.4.21}{View}{Outline0.2}% 6
+\BOOKMARK [3][]{Outline0.2.5.23}{Controller}{Outline0.2}% 7
+\BOOKMARK [2][]{Outline0.3}{Software Development}{}% 8
+\BOOKMARK [3][]{Outline0.3.1.25}{Implementation}{Outline0.3}% 9
+\BOOKMARK [3][]{Outline0.3.2.26}{Test routine}{Outline0.3}% 10
+\BOOKMARK [2][]{Outline0.4}{Conclusion}{}% 11
+\BOOKMARK [3][]{Outline0.4.1.32}{The software}{Outline0.4}% 12
+\BOOKMARK [3][]{Outline0.4.2.34}{Conclusions}{Outline0.4}% 13

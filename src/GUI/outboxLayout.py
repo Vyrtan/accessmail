@@ -4,7 +4,6 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty, StringProperty
 from .EmailItem import EmailItem
 from src.database import Database
-from src.Controller.DatabaseController import DatabaseController
 from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
 
@@ -27,29 +26,30 @@ class OutboxLayout(Screen):
         self.counter = 0
         self.mails = []
         self.nRead = 0
-        Clock.schedule_once(self.scheduledMailCheck, 0)
-        Clock.schedule_interval(self.scheduledMailCheck, 60)
+        self.db = Database()
+        Clock.schedule_once(self.scheduled_mail_check, 0)
+        Clock.schedule_interval(self.scheduled_mail_check, 60)
 
-    def scheduledMailCheck(self, _):
+    def scheduled_mail_check(self, _):
         CommunicationController.getSentFromServer()
         db = Database()
         self.mails = db.getSentMails()
-        self.displayEmails()
+        self.display_emails()
 
     #the kivy properties don't always load properly
     #this method observes the property and triggers when it changes
     def on_grid(self, instance, value):
-        self.displayEmails()
+        self.display_emails()
 
     def get_emails_from_db(self):
-        emails = DatabaseController.load_emails()
+        emails = self.db.getAllMails()
         return emails
 
-    def displayEmails(self):
+    def display_emails(self):
         self.grid.clear_widgets()
         currentMails = self.mails[self.counter*self.emailsPerPage:(self.counter+1)*self.emailsPerPage]
         self.add_emails(currentMails)
-        self.setPageCount()
+        self.set_page_count()
 
     # Parameter emails is a list of email objects as defined below
     def add_emails(self, emails):
@@ -65,14 +65,14 @@ class OutboxLayout(Screen):
             self.counter -= 1
         else:
             self.counter = 0
-        self.displayEmails()
+        self.display_emails()
 
-    def nextPage(self):
+    def next_page(self):
         if ((self.counter+1) * self.emailsPerPage) < (len(self.mails)):
             self.counter += 1
-        self.displayEmails()
+        self.display_emails()
 
-    def setPageCount(self):
+    def set_page_count(self):
         a = self.emailsPerPage * self.counter + 1
         a1 = a if self.counter >= 1 else self.emailsPerPage * self.counter
         b = self.emailsPerPage * (self.counter + 1)

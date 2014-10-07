@@ -34,13 +34,13 @@ class WriteLayout(Screen):
     '''
     These methods are observers who adjust the handed over information and displays them correctly
     '''
-    def on_strSendTo(self, instance, value):
+    def on_str_sendTo(self, instance, value):
         self.sendTo.text = value
 
-    def on_strSubject(self, instance, value):
+    def on_str_subject(self, instance, value):
         self.subject.text = value
 
-    def on_strMessage(self, instance, value):
+    def on_str_message(self, instance, value):
         self.message.text = value
 
     def send_mail(self):

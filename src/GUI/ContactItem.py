@@ -3,7 +3,6 @@ from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ObjectProperty, BooleanProperty
 from kivy.uix.popup import Popup
-from src.Controller.DatabaseController import DatabaseController
 
 
 Builder.load_file("GUI/ContactItem.kv")
@@ -70,10 +69,10 @@ class DeletePopupContacts(Popup):
         self.cont = contact
         self.chef = d
 
-    def deleteContact(self):
+    def delete_contact(self):
         '''
         This method deletes the contact by calling the method from the addressbook itself.
 
         :return:
         '''
-        self.chef.parent.parent.parent.deleteContact(self.cont)
+        self.chef.parent.parent.parent.delete_contact(self.cont)

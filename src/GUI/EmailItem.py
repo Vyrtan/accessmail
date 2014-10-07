@@ -74,10 +74,10 @@ class EmailItem(BoxLayout):
         '''
         address = self.email
         subject = self.subject
-        message = self.formatReplyMessage()
+        message = self.format_reply_message()
         self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=address, subject=subject, message=message)
 
-    def formatReplyMessage(self):
+    def format_reply_message(self):
         '''
         This method takes the message of the displayed e-mail and converts it to the usual Reply-Mail format.
         :return:
@@ -99,7 +99,7 @@ class DeletePopup(Popup):
         super(DeletePopup, self).__init__()
         self.em = mail
 
-    def deleteMail(self):
+    def delete_mail(self):
         '''
         This method deletes the e-mail from the database and calls the method to delete the e-mail from
         the server as well.

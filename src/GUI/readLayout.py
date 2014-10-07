@@ -4,7 +4,6 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
 from time import strptime
 from src.database import Database
-from src.Controller.DatabaseController import DatabaseController
 from src.models import Mails
 
 
@@ -26,6 +25,7 @@ class ReadLayout(Screen):
     def __init__(self, **kwargs):
         super(ReadLayout, self).__init__(**kwargs)
         self.email = None
+        self.db = Database()
 
     def on_email(self, instance, value):
         '''
@@ -39,9 +39,9 @@ class ReadLayout(Screen):
             return
         db = Database()
         db.markMailAsRead(self.email)
-        self.displayEmail()
+        self.display_email()
 
-    def displayEmail(self):
+    def display_email(self):
         '''
         This method is used to display the currently active e-mail (which is held by the email attribute).
         The sender, subject and text are displayed.
@@ -54,7 +54,7 @@ class ReadLayout(Screen):
 
     # maybe we should have a separate datamodel where all the emails are loaded? Which criteria defines
     # which email is next in the list? -> We already have all emails loaded in the overview layout
-    def nextEmail(self):
+    def next_email(self):
         '''
         This method is used to access the next e-mail in the model. There is no proper order yet,
         but a chronological order is being pursued in future patches.s
@@ -66,7 +66,7 @@ class ReadLayout(Screen):
         # oldD = strptime(self.email.date, "%a, %d %b %Y %H:%M:%S +0000")
         if not self.email:
             return
-        allMails = DatabaseController.load_emails()
+        allMails = self.db.getAllMails()
         currMail = self.email
         for m in allMails:
             if m.id == currMail.id:
@@ -76,7 +76,7 @@ class ReadLayout(Screen):
         print nextMail
         self.email = nextMail
 
-    def previousEmail(self):
+    def previous_email(self):
         '''
         This method is used to access the previous e-mail in the model. There is no proper order yet,
         but a chronological order is being pursued in future patches.s
@@ -85,7 +85,7 @@ class ReadLayout(Screen):
         '''
         if not self.email:
             return
-        allMails = DatabaseController.load_emails()
+        allMails = self.db.getAllMails()
         currMail = self.email
         for m in allMails:
             if m.id == currMail.id:
@@ -102,10 +102,10 @@ class ReadLayout(Screen):
 
         :return:
         '''
-        message = self.formatReplyMessage()
+        message = self.format_reply_message()
         self.parent.parent.parent.show_layout("Write", subject=self.email.subject, address=self.email._from, message=message)
 
-    def formatReplyMessage(self):
+    def format_reply_message(self):
         '''
         This method formats the message string of the currently displayed e-mail to a Reply-format string.
 

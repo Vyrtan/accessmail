@@ -13,7 +13,7 @@ class RootWidget(BoxLayout):
 
     '''
 
-    def selectedProvider(self, provider):
+    def selected_provider(self, provider):
         '''
         This method takes the selected provider, hands it to the next class, which processes the
         login information.
@@ -44,11 +44,11 @@ class FirstStartRootApp(App):
 
         root.add_widget(FirstStartLayout())
 
-        root.killMe = self.killMe
+        root.killMe = self.kill_me
 
         return root
 
-    def killMe(self):
+    def kill_me(self):
         self.stop()
 
 if __name__ == '__main__':

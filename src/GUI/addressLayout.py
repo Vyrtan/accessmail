@@ -36,9 +36,9 @@ class AddressLayout(Screen):
 
         # this only indicates the object is loaded properly
         # better set observer to datamodel as well
-        self.getContactsFromDB()
+        self.get_contacts_from_db()
 
-    def displayContacts(self):
+    def display_contacts(self):
         '''
         This method calculates how many contacts shall be added to the GridLayout, calculates the
         page indicator and calls the actual adding of the contact objects.
@@ -46,7 +46,7 @@ class AddressLayout(Screen):
         :return:
         '''
         self.grid.clear_widgets()
-        self.addContacts(self.contacts[self.counter*self.contsPerPage:(self.counter+1)*self.contsPerPage])
+        self.add_contacts(self.contacts[self.counter*self.contsPerPage:(self.counter+1)*self.contsPerPage])
         a = self.counter * self.contsPerPage
         a1 = a if self.counter == 0 else self.counter * self.contsPerPage + 1
         b = (self.counter + 1) * self.contsPerPage
@@ -55,7 +55,7 @@ class AddressLayout(Screen):
         self.pageCount = "%d - %d/%d" %(a1, b1, c)
 
     # see comments above add_emails in InboxLayout.py
-    def addContacts(self, contacts):
+    def add_contacts(self, contacts):
         '''
         This method adds the contacts given by the parameter "contacts" to the GridLayout.
 
@@ -71,7 +71,7 @@ class AddressLayout(Screen):
                 item = ContactItem(v, colour=1)
             self.grid.add_widget(item)
 
-    def getContactsFromDB(self):
+    def get_contacts_from_db(self):
         '''
         This method gets all contacts from the database, stores them in the object-attribute "contacts"
         and calls the method to display all contacts stored in the attribute.
@@ -80,9 +80,9 @@ class AddressLayout(Screen):
         '''
         contacts = self.db.getContacts()
         self.contacts = contacts
-        self.displayContacts()
+        self.display_contacts()
 
-    def addNewContact(self):
+    def add_new_contact(self):
         '''
         This method is called when the user clicks the "Add contact" button in the bottom center.
         It opens up the necessary popup to fill in name and e-mail address of the new contact.
@@ -92,7 +92,7 @@ class AddressLayout(Screen):
         p = AddContactPopup(self.db, self)
         p.open()
 
-    def deleteContact(self, contact):
+    def delete_contact(self, contact):
         '''
         This method can be called from the contact item object of a certain contact object. The respective
         contact gets deleted from the database and the view is updated to the new data.
@@ -103,9 +103,9 @@ class AddressLayout(Screen):
         self.db.deleteContact(contact)
         self.contacts.remove(contact)
         self.grid.clear_widgets()
-        self.getContactsFromDB()
+        self.get_contacts_from_db()
 
-    def previousPage(self):
+    def previous_page(self):
         '''
         This method is used to switch through the pages of contacts.
         It turns one step backwards.
@@ -116,9 +116,9 @@ class AddressLayout(Screen):
             self.counter -= 1
         else:
             self.counter = 0
-        self.getContactsFromDB()
+        self.get_contacts_from_db()
 
-    def nextPage(self):
+    def next_page(self):
         '''
         This method is used to switch through the pages of contacts.
         It turns one step forward.
@@ -127,7 +127,7 @@ class AddressLayout(Screen):
         '''
         if ((self.counter+1) * self.contsPerPage) < len(self.contacts):
             self.counter += 1
-        self.getContactsFromDB()
+        self.get_contacts_from_db()
 
 
 class AddContactPopup(Popup):
@@ -147,10 +147,10 @@ class AddContactPopup(Popup):
         self.par = par
         self.db = db
 
-    def addContact(self):
+    def add_contact(self):
         newContact = Contacts
         newContact.emailAddress = self.address.text
         newContact.name = self.name.text
         self.db.insertContact(newContact)
-        self.par.getContactsFromDB()
+        self.par.get_contacts_from_db()
         self.dismiss()

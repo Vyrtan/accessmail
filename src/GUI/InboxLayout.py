@@ -4,7 +4,6 @@ from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty, StringProperty
 from .EmailItem import EmailItem
 from src.database import Database
-from src.Controller.DatabaseController import DatabaseController
 from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
 
@@ -30,10 +29,11 @@ class InboxLayout(Screen):
         self.counter = 0
         self.mails = []
         self.nRead = 0
-        Clock.schedule_once(self.scheduledMailCheck, 0)
-        Clock.schedule_interval(self.scheduledMailCheck, 60)
+        self.db = Database()
+        Clock.schedule_once(self.scheduled_mail_check, 0)
+        Clock.schedule_interval(self.scheduled_mail_check, 60)
 
-    def scheduledMailCheck(self,_):
+    def scheduled_mail_check(self,_):
         '''
         This method is called every 60 seconds to get new emails from the server and synchronize the view
         with the database.
@@ -47,7 +47,7 @@ class InboxLayout(Screen):
             self.mails = db.getNotReadMails()
         else:
             self.mails = db.getAllMails()
-        self.displayEmails()
+        self.display_emails()
 
     #the kivy properties don't always load properly
     #this method observes the property and triggers when it changes
@@ -60,7 +60,7 @@ class InboxLayout(Screen):
         :param value: not used, but gets passed
         :return:
         '''
-        self.displayEmails()
+        self.display_emails()
 
     def get_emails_from_db(self):
         '''
@@ -70,10 +70,10 @@ class InboxLayout(Screen):
         :return: emails: All e-mails found in the database.
         :rtype: [Emails]: List of Emails
         '''
-        emails = DatabaseController.load_emails()
+        emails = self.db.getAllMails()
         return emails
 
-    def displayEmails(self):
+    def display_emails(self):
         '''
         This method calculates the number of e-mails to be displayed, calls the add_emails method using
         that calculation and passes the right e-mails which ought to be displayed.
@@ -84,7 +84,7 @@ class InboxLayout(Screen):
         self.grid.clear_widgets()
         currentMails = self.mails[self.counter*self.emailsPerPage:(self.counter+1)*self.emailsPerPage]
         self.add_emails(currentMails)
-        self.setPageCount()
+        self.set_page_count()
 
     # Parameter emails is a list of email objects as defined below
     def add_emails(self, emails):
@@ -113,9 +113,9 @@ class InboxLayout(Screen):
             self.counter -= 1
         else:
             self.counter = 0
-        self.displayEmails()
+        self.display_emails()
 
-    def nextPage(self):
+    def next_page(self):
         '''
         This method is used to switch through the available pages.
         It turns the counter one step forward and refreshes the View.
@@ -124,9 +124,9 @@ class InboxLayout(Screen):
         '''
         if ((self.counter+1) * self.emailsPerPage) < (len(self.mails)):
             self.counter += 1
-        self.displayEmails()
+        self.display_emails()
 
-    def setPageCount(self):
+    def set_page_count(self):
         '''
         This method is used to calculate how many e-mails are being display and how many are available.
 
@@ -139,7 +139,7 @@ class InboxLayout(Screen):
         b1 = b if b < c else c
         self.pageCount = "%d - %d / %d" %(a1,b1,c)
 
-    def toggleSelection(self):
+    def toggle_selection(self):
         '''
         This methos is used to toggle between All and only Not-Read e-mails.
 
@@ -149,4 +149,4 @@ class InboxLayout(Screen):
             self.nRead = 0
         else:
             self.nRead = 1
-        self.scheduledMailCheck("lolno")
+        self.scheduled_mail_check("lolno")
