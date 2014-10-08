@@ -1,20 +1,16 @@
+Accessmail
 TODO's:
 
-+1. App builden
 2. Anhänge integrieren
 +3. Icons und mehr zum Layout
-+3.1 Icongrößen anpassen und _überall_ einbinden
 (+)3.2 Zusätzliche Label/Textfelder einbauen (CC, BCC, etc.)
 4. Accounteinstellungen zurücksetzen
+4.1 Einstellungsmenü
 5. Mehr Provider integrieren
-6. Fenster beim Start maximieren
 8. Mails im HTML Format
 +8.1 Mailformat anpassen (Zeilenumbrüche Boxen und so)
 +10. Mails löschen!! (auch vom server)
-+11. Posteingang/Postausgang modellieren, Einzelansicht löschen
-+12. Zitate bei Antworten
-+13. Skript anpassen
-+14. Kontakt hinzufügen Popup abbrechen
+11. Empfangene Nachrichten nicht bearbeitbar
 
 Gefundene Bugs nach der Testphase (Simon's Zusammenfassung):
 Fehlende Icons für viele Buttons (Kontakte anschreiben/löschen, ...)
@@ -34,24 +30,24 @@ Mails im ReadLayout löschen?
 Idle beendet Programm?
 
 Außerdem Features:
-Gruppenfunktion für Kontakte
-Tastaturbedienbarkeit
-Screenreaderunterstützung
-Emails direkt auswählbar, nicht über Lupe lesen
-Layout farbiger gestalten (farben, kleinere Symbole, mehr emails/seite, ...)
-Datum von Emails anzeigen
-Emails weiterleiten
++Gruppenfunktion für Kontakte
+++++Tastaturbedienbarkeit
++Screenreaderunterstützung
++Emails direkt auswählbar, nicht über Lupe lesen
++Layout farbiger gestalten (farben, kleinere Symbole, mehr emails/seite, ...)
++Datum von Emails anzeigen
++Emails weiterleiten
 Suchfunktion für Emails/Kontakte
-RollOver-Hinweise für Buttons
++RollOver-Hinweise für Buttons
 Live-Update für neu eingetroffene Nachrichten (Benachrichtigung)
-Neu/Alt-Flags für Emails
-Menüicon indiziert, in welchem layout man sich zurzeit befindet
-Adressbuch anreichern
-
-Michael's Anmerkungen:
-Stift-Symbol anpassen
-Popups mit Schließen-Buttons versehen
-gesamtes Mailobject klickbar machen
-Pfeilnavigation anpassen
-Email-header Infos im ReadLayout
++Menüicon indiziert, in welchem layout man sich zurzeit befindet
++Adressbuch anreichern (Foto, Gruppenzuteilung, etc.)
 Mailbutton deaktivieren während Mail geschickt wird
+
+
+Aktuelle TODO's (8.10.2014):
+1. Neue Testphase zur Bugfindung
+2. Hinzuzufügende Funktionen absprechen
+3. Besprechung: Internetrepräsentation für das Projekt?
+4. Besprechung: Plattformunabhängigkeit?
+5. 
