@@ -25,6 +25,7 @@
                     text: "Sender:"
                 TextInput:
                     id: sender
+                    readonly: True
                     text: ""
                 Label:
                     size_hint: [0.2, 1]
@@ -32,6 +33,7 @@
                     text: "Topic:"
                 TextInput:
                     id: subject
+                    readonly: True
                     text: ""
             ScrollView:
                 id: scrlv
@@ -39,7 +41,10 @@
                 TextInput:
                     id: textOutput
                     text: "text"
+                    readonly: True
+                    # use_bubble: True
                     size_hint: 1, None
+                    # max( (len(self._lines)+1) * self.line_height, scrlv.height)
                     height: max( (len(self._lines)+1) * self.line_height, scrlv.height)
             GridLayout:
                 size_hint: [1, 0.2]
