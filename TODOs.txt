@@ -30,7 +30,7 @@ Zweithöchste Priorität:
 2. Emails in HTML formatieren
 3. Regular Expression für Emailadressen
 4. Rechtsklick -> Kontextmenü mit Kopieren, Ausschneiden, Einfügen
-5. Mails nach Alter (jüngste zuerst) sortieren
+XXX5. Mails nach Alter (jüngste zuerst) sortieren
 6. Kontake aus ReadLayout hinzufügbar
 
 Niedrige Priorität:

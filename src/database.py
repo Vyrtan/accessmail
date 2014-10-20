@@ -46,7 +46,7 @@ class Database:
         :return: returns a list of emails
         :rtype: Mails
         """
-        mails = self.session.query(Mails).all()
+        mails = self.session.query(Mails).all()[::-1]
         return mails
 
     def insertMail(self, pmail):
