@@ -6,7 +6,13 @@
 
 
 <MenuLayout>:
-    buttons: [overBtn, writeBtn, contactBtn, exitBtn]
+    buttons: [inboxBtn, outboxBtn, writeBtn, contactBtn, exitBtn]
+    inboxBtn: inboxBtn
+    outboxBtn: outboxBtn
+    writeBtn: writeBtn
+    contactBtn: contactBtn
+    exitBtn: exitBtn
+
     BoxLayout:
         orientation: "horizontal"
         spacing: 10
@@ -17,14 +23,14 @@
             BoxLayout:
                 padding: 25
                 Button:
-                    id: overBtn
+                    id: inboxBtn
                     size_hint: [None, None]
                     background_normal: "GUI/Icons/iInbox.png"
                     on_release: root.parent.show_layout("Inbox")
             BoxLayout:
                 padding: 25
                 Button:
-                    id: inboxBtn
+                    id: outboxBtn
                     size_hint: [None, None]
                     background_normal: "GUI/Icons/iOutbox.png"
                     on_release: root.parent.show_layout("Outbox")
