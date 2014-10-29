@@ -66,6 +66,7 @@ class Catalog(BoxLayout):
         if self.screen_manager.current == value:
             return
         if value == "Read":
+            Window.clearcolor = (1,0.9,0.9,1)
             # read then contains the id for the email to be displayed
             param.setdefault("email", None)
             read = param["email"]
@@ -73,6 +74,7 @@ class Catalog(BoxLayout):
             if read:
                 self.screen_manager.current_screen.email = read
         elif value == "Write":
+            Window.clearcolor = (1,1,0.9,1)
             param.setdefault("address", "")
             param.setdefault("subject", "")
             param.setdefault("message", "")
@@ -89,6 +91,7 @@ class Catalog(BoxLayout):
             self.screen_manager.current_screen.strSubject = subject
             self.screen_manager.current_screen.strMessage = message
         else:
+            Window.clearcolor = (1,1,1,1)
             self.screen_manager.current = value
         return
 

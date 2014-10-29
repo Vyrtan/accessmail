@@ -29,13 +29,14 @@ class EmailItem(BoxLayout):
     grey = BooleanProperty()
     read = BooleanProperty()
 
-    def __init__(self, email, **kwargs):
+    def __init__(self, email, rootwidget, **kwargs):
         super(EmailItem, self).__init__(**kwargs)
         self.oMail = email
         self.name = string.split(email._from, "@")[0]
         self.email = email._from
         self.grey = False
         self.read = email.read
+        self.rootwidget = rootwidget
         if email.subject:
             self.subject = email.subject if len(email.subject) <= 20 else email.subject[:20] + "..."
         else:
@@ -50,7 +51,7 @@ class EmailItem(BoxLayout):
 
         :return:
         '''
-        p = DeletePopup(self.oMail)
+        p = DeletePopup(self.oMail, self.rootwidget)
         p.open()
 
     # call this function with some email id to switch to the corresponding email from the model
@@ -95,9 +96,10 @@ class DeletePopup(Popup):
     :param mail:
     """
 
-    def __init__(self, mail):
+    def __init__(self, mail, inbox):
         super(DeletePopup, self).__init__()
         self.em = mail
+        self.inbox = inbox
 
     def delete_mail(self):
         '''
@@ -108,4 +110,5 @@ class DeletePopup(Popup):
         '''
         db = Database()
         db.deleteMail(self.em)
-        CommunicationController.deleteMail(self.em)
+        CommunicationController.delete_mail(self.em)
+        self.inbox.display_emails()

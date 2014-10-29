@@ -50,7 +50,6 @@ class CommunicationController(object):
         :return
         '''
 
-
         try:
             # open database connection and get credentials
             db = Database()
@@ -71,8 +70,6 @@ class CommunicationController(object):
 
             imapCon.login(emailAddress, password)
             # fetch emails from server
-            print("List of folders on server")
-            print imapCon.list()
             imapCon.select("inbox")
             result, data = imapCon.search(None, "ALL")
             ids = data[0].split()
@@ -92,6 +89,7 @@ class CommunicationController(object):
                 m.inReplyTo = e["In-Reply-To"]
                 m.read = 0
                 m.remoteID = e.get("message-ID", None)
+                print m.remoteID
 
                 message = ""
                 if e.is_multipart():
@@ -111,7 +109,7 @@ class CommunicationController(object):
             print(e)
 
     @staticmethod
-    def deleteMail(mail):
+    def delete_mail(mail):
         '''
         This method takes an email-object, adds the flag "\\Deleted" and sends it to the server.
         The IMAP server then deletes the mail.
@@ -126,26 +124,27 @@ class CommunicationController(object):
         inbox = db.getInbox()
         try:
             # establish IMAP Connection
-            imapCon = imaplib.IMAP4_SSL(inbox.imapServer, int(inbox.imapPort))
+            imap_con = imaplib.IMAP4_SSL(inbox.imapServer, int(inbox.imapPort))
 
-            # get inbox id for later use
-            inboxID = inbox.id
-
-            if(inbox.imapServer=="imap.web.de"):
+            if inbox.imapServer=="imap.web.de":
                 emailAddress = inbox.account
             else:
                 emailAddress = inbox.userMail
 
             password = inbox.password
 
-            imapCon.login(emailAddress, password)
-            # fetch emails from server
-            imapCon.select('Inbox')
-            imapCon.store(mail.id, '+FLAGS', '\\Deleted')
-            imapCon.expunge()
-            imapCon.close()
+            imap_con.login(emailAddress, password)
+            imap_con.select('Inbox')
+
+            search_query = '(HEADER message-id %s)' % mail.remoteID
+
+            typ, data = imap_con.search(None, search_query)
+
+            imap_con.store(data[0], '+FLAGS', '\\Deleted')
+            imap_con.expunge()
+            imap_con.close()
             db.close()
-            imapCon.logout()
+            imap_con.logout()
         except imaplib.IMAP4.error as e:
             print(e)
 

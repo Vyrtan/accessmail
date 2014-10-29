@@ -3,10 +3,10 @@ Priorisierte und geordnete TODOs:
 Accessibility:
 Höchste Priorität:
 1. Icons als allgemein verständlich sichern
-2. Tastaturbedienbarkeit
+2. Tastaturbedienbarkeit sichern
 
 Zweithöchste Priorität:
-1. RollOver-Erklärungen
+1. RollOver-Erklärungen [Erledigt für Menü]
 2. Zugriff durch externe Software (Screenreader)
 3. Menüicon indiziert, in welchem layout man sich zurzeit befindet
 4. Navigationspfeile nur bei Bedarf anzeigen
@@ -30,8 +30,8 @@ Zweithöchste Priorität:
 2. Emails in HTML formatieren
 3. Regular Expression für Emailadressen
 4. Rechtsklick -> Kontextmenü mit Kopieren, Ausschneiden, Einfügen
-XXX5. Mails nach Alter (jüngste zuerst) sortieren
-6. Kontake aus ReadLayout hinzufügbar
+[Erledigt] 5. Mails nach Alter (jüngste zuerst) sortieren
+6. Kontakte aus ReadLayout hinzufügbar
 
 Niedrige Priorität:
 1. Suchfunktion in Adressbuch und In/Outbox

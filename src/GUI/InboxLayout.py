@@ -97,9 +97,9 @@ class InboxLayout(Screen):
         '''
         for v in emails:
             if (emails.index(v) % 2) != 0:
-                item = EmailItem(v)
+                item = EmailItem(v, self)
             else:
-                item = EmailItem(v, colour=1)
+                item = EmailItem(v, self, colour=1)
             self.grid.add_widget(item)
 
     def previous_page(self):

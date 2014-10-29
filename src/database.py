@@ -73,6 +73,7 @@ class Database:
         mail.inReplyTo = pmail.inReplyTo
         mail.message = unicode(pmail.message, "utf-8")
         mail.inboxId = pmail.inboxId
+        mail.remoteID = pmail.remoteID
 
         self.session.add(mail)
         self.execute()
@@ -216,7 +217,9 @@ class Database:
         :return The currently logged in inbox (account info, server info, etc.)
         :rtype: Inbox
         """
-        return self.session.query(Inbox).first()
+        inboxes = self.session.query(Inbox)
+        print inboxes
+        return inboxes.first()
 
     #function not used yet
     # def resetAll(self):

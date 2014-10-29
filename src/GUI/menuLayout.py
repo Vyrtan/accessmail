@@ -20,7 +20,7 @@ class MenuLayout(Screen):
 
     def __init__(self, **kwargs):
         super(MenuLayout, self).__init__(**kwargs)
-        Clock.schedule_interval(self.check_mouse_pos, 1)
+        Clock.schedule_interval(self.check_mouse_pos, 2)
         self.tooltip_active = ""
 
     def check_mouse_pos(self, _):
