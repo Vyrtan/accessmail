@@ -73,19 +73,7 @@ class EmailItem(BoxLayout):
 
         :return:
         '''
-        address = self.email
-        subject = self.subject
-        message = self.format_reply_message()
-        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=address, subject=subject, message=message)
-
-    def format_reply_message(self):
-        '''
-        This method takes the message of the displayed e-mail and converts it to the usual Reply-Mail format.
-        :return:
-        '''
-        replyString = self.oMail.message.split("\n")
-        replyHeader = "\n>" + self.oMail._from + " wrote on " + self.oMail.date + ":\n>"
-        return replyHeader +'\n>'.join(replyString)
+        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", email=self.oMail)
 
 
 class DeletePopup(Popup):
@@ -111,4 +99,4 @@ class DeletePopup(Popup):
         db = Database()
         db.deleteMail(self.em)
         CommunicationController.delete_mail(self.em)
-        self.inbox.display_emails()
+        self.inbox.scheduled_mail_check("lolno")

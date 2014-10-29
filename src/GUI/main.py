@@ -31,6 +31,8 @@ from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
 from src.database import Database
 
+from src.models import Mails
+
 Builder.load_file("GUI/exitPopup.kv")
 Builder.load_file("GUI/resetPopup.kv")
 
@@ -59,6 +61,8 @@ class Catalog(BoxLayout):
         It calles the screenmanager and (if necessary) hands over information about the called
         layout.
 
+        possible values: Inbox, Outbox, Read, Write, Address
+
         :param value: The name of the Screen to be displayed
         :param param: Additional information about the layout.
         :return:
@@ -67,33 +71,32 @@ class Catalog(BoxLayout):
             return
         if value == "Read":
             Window.clearcolor = (1,0.9,0.9,1)
-            # read then contains the id for the email to be displayed
-            param.setdefault("email", None)
-            read = param["email"]
+            read = param.get("email", None)
             self.screen_manager.current = value
             if read:
                 self.screen_manager.current_screen.email = read
+            else:
+                self.screen_manager.current_screen.email = self.empty_email()
         elif value == "Write":
             Window.clearcolor = (1,1,0.9,1)
-            param.setdefault("address", "")
-            param.setdefault("subject", "")
-            param.setdefault("message", "")
-            address = param["address"]
-            if param["subject"] == "":
-                subject = ""
-            elif param["subject"].startswith("Re:"):
-                subject = param["subject"]
-            else:
-                subject = "Re:" + param["subject"]
-            message = param["message"]
+            email = param.get("email", None)
             self.screen_manager.current = value
-            self.screen_manager.current_screen.strSendTo = address
-            self.screen_manager.current_screen.strSubject = subject
-            self.screen_manager.current_screen.strMessage = message
+            if email:
+                self.screen_manager.current_screen.email = email
+            else:
+                self.screen_manager.current_screen.email = self.empty_email()
         else:
             Window.clearcolor = (1,1,1,1)
             self.screen_manager.current = value
         return
+
+    @staticmethod
+    def empty_email():
+        m = Mails()
+        m._from = ""
+        m.message = ""
+        m.subject = ""
+        return m
 
     # def triggerReset(self):
     #     p = ResetPopup()

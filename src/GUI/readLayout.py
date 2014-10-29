@@ -102,15 +102,4 @@ class ReadLayout(Screen):
 
         :return:
         '''
-        message = self.format_reply_message()
-        self.parent.parent.parent.show_layout("Write", subject=self.email.subject, address=self.email._from, message=message)
-
-    def format_reply_message(self):
-        '''
-        This method formats the message string of the currently displayed e-mail to a Reply-format string.
-
-        :return: string: The formatted message.
-        '''
-        replyString = self.email.message.split("\n")
-        replyHeader = "\n>" + self.email._from + " wrote on " + self.email.date + ":\n>"
-        return replyHeader +'\n>'.join(replyString)
+        self.parent.parent.parent.show_layout("Write", email=self.email)

@@ -24,24 +24,45 @@ class WriteLayout(Screen):
     sendTo = ObjectProperty(None)
     subject = ObjectProperty(None)
     message = ObjectProperty(None)
-    strSendTo = StringProperty()
-    strSubject = StringProperty()
-    strMessage = StringProperty()
+    email = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(WriteLayout, self).__init__(**kwargs)
+        self.email = None
 
-    '''
-    These methods are observers who adjust the handed over information and displays them correctly
-    '''
-    def on_str_sendTo(self, instance, value):
-        self.sendTo.text = value
+    def on_email(self, instance, value):
+        if self.email:
+            self.display_email(value)
+        else:
+            self.sendTo.text = ""
+            self.subject.text = ""
+            self.message.text = ""
 
-    def on_str_subject(self, instance, value):
-        self.subject.text = value
+    def display_email(self, email):
+        self.sendTo.text = email._from
+        if len(email.subject) > 0:
+            if not email.subject.startswith("Re:"):
+                self.subject.text = "Re: " + email.subject
+            else:
+                self.subject.text = email.subject
+        else:
+            self.subject.text = ""
+        self.message.text = self.format_reply_message(email)
 
-    def on_str_message(self, instance, value):
-        self.message.text = value
+    def format_reply_message(self, email):
+        '''
+        This method takes the message of the displayed e-mail and converts it to the usual Reply-Mail format.
+        :return:
+        '''
+        if len(email.message) > 0:
+            replyString = email.message.split("\n")
+        else:
+            replyString = ""
+        if len(email._from) > 0:
+            replyHeader = "\n>" + email._from + " wrote on " + email.date + ":\n>"
+        else:
+            replyHeader = ""
+        return replyHeader +'\n>'.join(replyString)
 
     def send_mail(self):
         '''
