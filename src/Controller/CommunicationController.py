@@ -87,6 +87,8 @@ class CommunicationController(object):
                 m.cc = e["CC"]
                 m.subject = e["Subject"]
                 m.inReplyTo = e["In-Reply-To"]
+                # content_type = e["Content-Type"]
+                # print content_type
                 m.read = 0
                 m.remoteID = e.get("message-ID", None)
                 print m.remoteID

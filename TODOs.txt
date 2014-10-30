@@ -21,7 +21,7 @@ Niedrige Priorität:
 
 Technik:
 Höchste Priorität:
-1. Funktionalität gewährleisten (Mails löschen [Erledigt], korrekte Anzeige)
+1. Funktionalität gewährleisten (Mails löschen [Erledigt], korrekte Anzeige, Web&Gmail in Funktionalität anzugleichen)
 2. Zusätzliche Email Funktionalität (Anhänge, CC, BCC, Weiterleiten, Empfangene Emails nicht bearbeitbar [Erledigt], etc.)
 3. Mehr Provider integrieren
 
@@ -32,7 +32,7 @@ Zweithöchste Priorität:
 4. Rechtsklick -> Kontextmenü mit Kopieren, Ausschneiden, Einfügen
 5. Mails nach Alter (jüngste zuerst) sortieren [Erledigt]
 6. Kontakte aus ReadLayout hinzufügbar
-7. In- & Outbox refreshen nach Löschen einer Mail
+7. In- & Outbox refreshen nach Löschen einer Mail [Erledigt]
 
 Niedrige Priorität:
 1. Suchfunktion in Adressbuch und In/Outbox
@@ -40,3 +40,7 @@ Niedrige Priorität:
 3. Adressbuch mit Emails synchronisieren
 4. Editierbare Kontakte
 
+
+Baum aufbauen für Tooltipps und Tastaturbedienbarkeit
+Adressbuch anreichern Fotos, Gruppen -> Anzeige ändern (email adresse eigentlich überflüssig)
+-> Abgleichen mit Inbox/Outbox - Namen statt adressen

@@ -7,9 +7,6 @@ kivy.require('1.8.0')
 
 from kivy.app import App
 from kivy.config import Config
-import pygame
-
-
 
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty, ListProperty
@@ -171,6 +168,3 @@ class FirstStartApp(App):
 
     def build(self):
         return FirstStartLayout()
-
-
-# holy shit right click draws red circles!!

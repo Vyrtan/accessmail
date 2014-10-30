@@ -19,7 +19,7 @@ class ReadLayout(Screen):
     :param kwargs:
     """
     email = ObjectProperty()
-    textOutput = ObjectProperty()
+    textOutput = ObjectProperty(None)
     subject = ObjectProperty()
 
     def __init__(self, **kwargs):
@@ -48,7 +48,8 @@ class ReadLayout(Screen):
         Unfortunately the encoding of the e-mail is somewhat defective. This will be soon patched.
         :return:
         '''
-        self.textOutput.text = self.email.message
+        # replacing \r with "" removes the boxes
+        self.textOutput.text = self.email.message.replace("\r", "")
         self.subject.text = self.email.subject
         self.sender.text = self.email._from
 

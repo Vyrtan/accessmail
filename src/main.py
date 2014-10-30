@@ -1,7 +1,4 @@
 from GUI import main
-import os
-import sys
-import gtk
 from database import Database
 
 

@@ -11,7 +11,9 @@ class Database:
     
     def __init__(self):
 
+        # change back to relative path!
         uri = 'sqlite:///../data.db'
+        print uri
 
         if __debug__:
             self.engine = create_engine(uri, echo=True)
@@ -71,7 +73,7 @@ class Database:
         mail.read = pmail.read
         mail.cc = unicode(pmail.cc, "utf-8") if pmail.cc else ""
         mail.inReplyTo = pmail.inReplyTo
-        mail.message = unicode(pmail.message, "utf-8")
+        mail.message = unicode(pmail.message, "utf-8", errors="replace")
         mail.inboxId = pmail.inboxId
         mail.remoteID = pmail.remoteID
 
