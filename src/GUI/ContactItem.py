@@ -1,3 +1,5 @@
+from src.models import Mails
+
 __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
@@ -52,7 +54,11 @@ class ContactItem(BoxLayout):
 
         :return:
         '''
-        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", address=self.email, message="")
+        mail = Mails()
+        mail._from = self.email
+        mail.subject = ""
+        mail.message = ""
+        self.root.parent.parent.parent.parent.parent.parent.show_layout("Write", email=mail)
 
 
 class DeletePopupContacts(Popup):

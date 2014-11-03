@@ -47,9 +47,10 @@ class WriteLayout(Screen):
                 self.subject.text = email.subject
         else:
             self.subject.text = ""
-        self.message.text = self.format_reply_message(email)
+        self.message.text = self.format_reply_message(email) if len(email.message) > 0 else ""
 
-    def format_reply_message(self, email):
+    @staticmethod
+    def format_reply_message(email):
         '''
         This method takes the message of the displayed e-mail and converts it to the usual Reply-Mail format.
         :return:
