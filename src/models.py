@@ -60,3 +60,4 @@ class Contacts(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(255))
     emailAddress = Column(String(255))
+    picture = Column(String(255))

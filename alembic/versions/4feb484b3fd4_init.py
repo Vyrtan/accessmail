@@ -37,6 +37,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=255), nullable=True),
     sa.Column('emailAddress', sa.String(length=255), nullable=True),
+    sa.Column('picture', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index('ix_contacts_name', 'contacts', ['name'], unique=False)

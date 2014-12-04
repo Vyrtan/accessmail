@@ -151,6 +151,7 @@ class Database:
         contact = Contacts()
         contact.name = unicode(pContact.name, "utf-8")
         contact.emailAddress = unicode(pContact.emailAddress, "utf-8")
+        contact.picture = unicode(pContact.picture, "utf-8") if pContact.picture else None
         self.session.add(contact)
         self.execute()
 

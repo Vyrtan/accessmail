@@ -23,6 +23,7 @@ class ContactItem(BoxLayout):
     name = StringProperty()
     email = StringProperty()
     subject = StringProperty()
+    picture = StringProperty()
     root = ObjectProperty()
     grey = BooleanProperty()
 
@@ -31,6 +32,7 @@ class ContactItem(BoxLayout):
         self.contact = contact
         self.name = contact.name
         self.email = contact.emailAddress
+        self.picture = "GUI/Icons/iStandard_user.png" if not contact.picture else contact.picture
         self.grey = False
         if kwargs.get("colour", None):
             self.grey = True

@@ -6,6 +6,7 @@ from kivy.properties import ObjectProperty, StringProperty
 from src.database import Database
 from kivy.uix.popup import Popup
 from src.models import Contacts
+from kivy.uix.floatlayout import FloatLayout
 
 Builder.load_file('GUI/addressLayout.kv')
 Builder.load_file('GUI/addContactPopup.kv')
@@ -141,6 +142,7 @@ class AddContactPopup(Popup):
     """
     name = ObjectProperty()
     address = ObjectProperty()
+    file_chooser = ObjectProperty()
 
     def __init__(self, db, par, **kwargs):
         super(AddContactPopup, self).__init__(**kwargs)
@@ -151,6 +153,9 @@ class AddContactPopup(Popup):
         newContact = Contacts
         newContact.emailAddress = self.address.text
         newContact.name = self.name.text
+        newContact.picture = self.file_chooser.selection[0]
         self.db.insertContact(newContact)
         self.par.get_contacts_from_db()
         self.dismiss()
+
+

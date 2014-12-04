@@ -1,5 +1,12 @@
 #:kivy 1.8
 
+<LoadDialog>:
+    BoxLayout:
+        size_hint: [None, None]
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+
 <AddContactPopup>:
     size_hint: [None, None]
     size: [450, 600]
@@ -8,6 +15,7 @@
     title_color: (0,0,0,1)
     name: tname
     address: taddress
+    file_chooser: file_chooser
     background: "GUI/Icons/white_bg_400x400.png"
     separator_height: 5
     BoxLayout:
@@ -22,15 +30,19 @@
         TextInput:
             id: taddress
             text: "E-Mail"
+        FileChooserIconView:
+            id: file_chooser
+            filters: ['*.png', '*.jpg', '*.jpeg']
+            rootpath: "../CustomPictures/"
         AnchorLayout:
             anchor_x: "center"
-            Button:
+            BoxLayout:
                 size_hint: [None, None]
-                background_normal: "GUI/Icons/iConfirm.png"
-                on_release: root.add_contact()
-        AnchorLayout:
-            anchor_x: "center"
-            Button:
-                size_hint: [None, None]
-                background_normal: "GUI/Icons/iCancel.png"
-                on_release: root.dismiss()
+                Button:
+                    size_hint: [None, None]
+                    background_normal: "GUI/Icons/iConfirm.png"
+                    on_release: root.add_contact()
+                Button:
+                    size_hint: [None, None]
+                    background_normal: "GUI/Icons/iCancel.png"
+                    on_release: root.dismiss()

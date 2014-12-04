@@ -15,6 +15,10 @@
     orientation: "horizontal"
     root: root
     size_hint: [1, None]
+    Button:
+        size_hint: [None, None]
+        background_normal: root.picture
+        on_release: root.trigger_write_mail()
     Label:
         size_hint: [0.4, 1]
         font_size: 16
