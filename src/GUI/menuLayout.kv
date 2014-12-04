@@ -48,10 +48,14 @@
                     size_hint: [None, None]
                     background_normal: "GUI/Icons/iContacts.png"
                     on_release: root.parent.show_layout("Address")
-            #Button:
-            #    id: resetBtn
-            #    text: "Reset"
-            #    on_release: root.parent.triggerReset()
+            BoxLayout:
+                padding: 25
+                Button:
+                    id: contactBtn
+                    size_hint: [None, None]
+                    text: "Settings"
+                    # background_normal: "GUI/Icons/iContacts.png"
+                    on_release: root.parent.show_layout("Settings")
             BoxLayout:
                 padding: 25
                 Button:

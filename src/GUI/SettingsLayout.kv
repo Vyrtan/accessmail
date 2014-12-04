@@ -1,0 +1,57 @@
+#:kivy 1.8
+
+<Label>
+    color: (0,0,0,1)
+    disabled_color: (0,0,0,1)
+
+<SettingsLayout>:
+    grid: grid
+    GridLayout:
+        cols: 1
+        spacing: 5
+        Label:
+            id: label
+            size_hint: [1, 0.1]
+            bold: True
+            font_size: 40
+            text: "Settings"
+        GridLayout:
+            id: grid
+            cols: 1
+            size_hint: [1, 0.7]
+            # add settings here
+            GridLayout:
+                id: change_colours
+                cols: 2
+                Label:
+                    text: "Colour theme:"
+                Button:
+                    text: "Change something?"
+            GridLayout:
+                id: reset_database
+                cols: 2
+                Label:
+                    text: "Reset Database"
+                Button:
+                    text: "Reset"
+            GridLayout:
+                id: reset_database
+                cols: 2
+                Label:
+                    text: "Reset Database"
+                Button:
+                    text: "Reset"
+            GridLayout:
+                id: button_bar
+                cols: 3
+                Button:
+                    text: ""
+                    background_normal: "GUI/Icons/iCancel.png"
+                    on_release: root.reset_settings()
+                Button:
+                    text: "Reset program"
+                    on_release: root.reset_program()
+                Button:
+                    text: ""
+                    background_normal: "GUI/Icons/iConfirm.png"
+                    on_release: root.save_settings()

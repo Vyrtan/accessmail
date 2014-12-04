@@ -12,7 +12,7 @@ Builder.load_file('GUI/menuLayout.kv')
 
 class MenuLayout(Screen):
 
-    inboxBtn = ObjectProperty()
+    inboxBtn = ObjectProperty(None)
     outboxBtn = ObjectProperty()
     writeBtn = ObjectProperty()
     contactBtn = ObjectProperty()
@@ -20,7 +20,7 @@ class MenuLayout(Screen):
 
     def __init__(self, **kwargs):
         super(MenuLayout, self).__init__(**kwargs)
-        Clock.schedule_interval(self.check_mouse_pos, 2)
+        # Clock.schedule_interval(self.check_mouse_pos, 2)
         self.tooltip_active = ""
 
     def check_mouse_pos(self, _):
