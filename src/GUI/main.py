@@ -15,6 +15,7 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 
 from kivy.core.window import Window
+from widgetHelpers.WidgetManager import WidgetManager
 
 from src.Service.WidgetNode import WidgetNode
 
@@ -29,7 +30,6 @@ from .SettingsLayout import SettingsLayout
 from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
 from src.database import Database
-import time
 
 from src.models import Mails
 
@@ -49,14 +49,16 @@ class Catalog(BoxLayout):
     menu = ObjectProperty()
 
     def __init__(self, **kwargs):
+        w = WidgetManager.Instance()
+        w.set_root_widget(self)
         super(Catalog, self).__init__(**kwargs)
         self.current_butt = 0
         # self.tree = []
         self.buttons = []
         self.text_input = []
-        Clock.schedule_once(self.build_tree, 0)
+        Clock.schedule_once(w.build_tree, 0)
         # Clock.schedule_interval(self.scheduled_mouse_check, 1)
-        Window.bind(on_key_down=self.rotate_buttons)
+        Window.bind(on_key_down=w.rotate_buttons)
 
     def scheduled_mouse_check(self, asdf):
         pos = Window.mouse_pos
@@ -64,25 +66,7 @@ class Catalog(BoxLayout):
             if wid.collide_point(pos[0], pos[1]):
                 print wid.background_normal
 
-    def build_tree(self, _):
-        # root = WidgetNode(self)
-        # for child in root.get_content().children:
-        #     root.add_child(child)
-        
-        buttons = []
-        text_input = []
-        stack = [self.screen_manager, self.menu]
-        while len(stack) > 0:
-            current_object = stack[0]
-            stack.pop(0)
-            if type(current_object) == Button:
-                buttons.append(current_object)
-            elif type(current_object) == TextInput:
-                text_input.append(current_object)
-            else:
-                stack += current_object.children[:]
-        self.buttons = buttons
-        self.text_input = text_input
+
 
     # switch between the available layouts like the inbox, write, addressbook, etc.
     def show_layout(self, value, **param):
@@ -118,7 +102,7 @@ class Catalog(BoxLayout):
         else:
             Window.clearcolor = (1,1,1,1)
             self.screen_manager.current = value
-        self.build_tree("a")
+        WidgetManager.Instance().build_tree("a")
         return
 
     @staticmethod
@@ -135,26 +119,7 @@ class Catalog(BoxLayout):
 
     # currently not used method to rotate through menu buttons
     # there is no solution yet to get all available buttons in the currently displayed Layout
-    def rotate_buttons(self, keyboard, key,  *args):
-        if key == 9:
-            orig_bg = self.buttons[self.current_butt].background_normal.replace("_focus", "")
-            self.buttons[self.current_butt].background_normal = orig_bg
-            if self.current_butt < len(self.buttons)-1:
-                self.current_butt += 1
-            else:
-                self.current_butt = 0
-            old_bg = self.buttons[self.current_butt].background_normal
-            print old_bg
-            new_bg = old_bg[0:-4] + "_focus.png"
-            if old_bg != "atlas://data/images/defaulttheme/button":
-                self.buttons[self.current_butt].background_normal = new_bg
-        if key == 13:
-            print("Return pressed")
-            print self.buttons[self.current_butt].background_normal
-            self.buttons[self.current_butt].trigger_action(duration=0)
-            # Set current_butt to 0?
-            # self.current_butt = 0
-        print("leaving rotate buttons")
+
 
     def on_exit_press(self):
         '''

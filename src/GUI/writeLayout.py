@@ -6,6 +6,7 @@ from kivy.uix.anchorlayout import AnchorLayout
 from src.Service.smtpsender import SMTPSender
 from src.database import Database
 from kivy.uix.gridlayout import GridLayout
+from widgetHelpers.WidgetManager import WidgetManager
 
 __author__ = 'grafgustav'
 from kivy.lang import Builder
@@ -73,6 +74,8 @@ class WriteLayout(Screen):
 
         :return:
         '''
+        WidgetManager.Instance().build_tree("a")
+
         if self.sendTo.text == "":
             content = GridLayout(cols=1)
             content.add_widget(Label(text="Please enter a message"))

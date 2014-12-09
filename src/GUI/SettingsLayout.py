@@ -28,4 +28,4 @@ class SettingsLayout(Screen):
 # 1. Reset Account
 # 2. Adjust colours
 # 3. Adjust text size
-# 4. Adjust something else
+# 4. Adjust numbers of contacts and emails displayed per page

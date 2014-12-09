@@ -22,7 +22,7 @@
         orientation: "vertical"
         Label:
             font_size: 22
-            text: "Please enter the \nname and E-Mail-Address\nof your new contact:"
+            text: "Please enter the data \nof your new contact:"
             halign: "center"
         TextInput:
             id: tname
@@ -30,10 +30,12 @@
         TextInput:
             id: taddress
             text: "E-Mail"
-        FileChooserIconView:
-            id: file_chooser
-            filters: ['*.png', '*.jpg', '*.jpeg']
-            rootpath: "../CustomPictures/"
+        BoxLayout:
+            # background: "GUI/Icons/white_bg_400x400.png"
+            FileChooserIconView:
+                id: file_chooser
+                filters: ['*.png', '*.jpg', '*.jpeg']
+                rootpath: "../CustomPictures/"
         AnchorLayout:
             anchor_x: "center"
             BoxLayout:

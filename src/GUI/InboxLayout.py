@@ -33,7 +33,7 @@ class InboxLayout(Screen):
         Clock.schedule_once(self.scheduled_mail_check, 0)
         Clock.schedule_interval(self.scheduled_mail_check, 60)
 
-    def scheduled_mail_check(self,_):
+    def scheduled_mail_check(self, _):
         '''
         This method is called every 60 seconds to get new emails from the server and synchronize the view
         with the database.
