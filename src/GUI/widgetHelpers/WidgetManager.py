@@ -11,6 +11,7 @@ class WidgetManager:
 
     def __init__(self):
         self.root_widget = None
+        self.popup_root = None
         self.iterable_list = []
         self.current_butt = 0
         print "Widget Manager created"
@@ -21,11 +22,14 @@ class WidgetManager:
     def get_root_widget(self):
         return self.root_widget
 
-    def set_manually_widget_list(self, wids):
-        self.iterable_list = wids
-
     def get_widget_list(self):
         return self.iterable_list
+
+    def set_popup_root(self, pop):
+        self.popup_root = pop
+
+    def get_popup_root(self):
+        return self.popup_root
 
     # kivy sometimes takes time to load all widgets properly
     # delaying the actual construction of the tree does not guarantee a proper tree construction,
@@ -34,9 +38,10 @@ class WidgetManager:
         Clock.schedule_once(self.build_tree_execute, 0.5)
 
     def build_tree_execute(self, _):
+        print "Building Tree"
         buttons = []
         text_input = []
-        stack = [self.root_widget]
+        stack = [self.root_widget] if not self.popup_root else [self.popup_root]
         while len(stack) > 0:
             current_object = stack[0]
             stack.pop(0)
@@ -61,15 +66,16 @@ class WidgetManager:
             if type(current_element) == TextInput:
                 if current_element.focus:
                     return
+            previous_element = current_element
             if self.current_butt < len(merged_list) - 1:
                     self.current_butt += 1
             else:
                 self.current_butt = 0
-            previous_element = merged_list[self.current_butt - 1] \
-                if self.current_butt >= 1 else merged_list[-1]
             current_element = merged_list[self.current_butt]
             if type(current_element) == TextInput:
                 current_element.focus = True
+                if type(previous_element) == Button:
+                    self.unfocus_button(previous_element)
             elif type(current_element) == Button:
                 self.unfocus_button(previous_element)
                 self.focus_button(current_element)
@@ -89,7 +95,5 @@ class WidgetManager:
 
     @staticmethod
     def unfocus_button(butt):
-        print "Unfocusing"
-        print butt.background_normal
         orig_bg = butt.background_normal.replace("_focus", "")
         butt.background_normal = orig_bg

@@ -6,6 +6,7 @@ from .EmailItem import EmailItem
 from src.database import Database
 from src.Controller.CommunicationController import CommunicationController
 from kivy.clock import Clock
+from widgetHelpers.WidgetManager import WidgetManager
 
 Builder.load_file('GUI/inboxLayout.kv')
 
@@ -85,6 +86,7 @@ class InboxLayout(Screen):
         currentMails = self.mails[self.counter*self.emailsPerPage:(self.counter+1)*self.emailsPerPage]
         self.add_emails(currentMails)
         self.set_page_count()
+        WidgetManager.Instance().build_tree("a")
 
     # Parameter emails is a list of email objects as defined below
     def add_emails(self, emails):

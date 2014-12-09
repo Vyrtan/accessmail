@@ -60,13 +60,11 @@ class Catalog(BoxLayout):
         # Clock.schedule_interval(self.scheduled_mouse_check, 1)
         Window.bind(on_key_down=w.rotate_buttons)
 
-    def scheduled_mouse_check(self, asdf):
+    def scheduled_mouse_check(self, _):
         pos = Window.mouse_pos
         for wid in self.buttons:
             if wid.collide_point(pos[0], pos[1]):
                 print wid.background_normal
-
-
 
     # switch between the available layouts like the inbox, write, addressbook, etc.
     def show_layout(self, value, **param):
@@ -103,7 +101,6 @@ class Catalog(BoxLayout):
             Window.clearcolor = (1,1,1,1)
             self.screen_manager.current = value
         WidgetManager.Instance().build_tree("a")
-        return
 
     @staticmethod
     def empty_email():

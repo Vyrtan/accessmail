@@ -18,11 +18,11 @@
             Button:
                 size_hint: [None, None]
                 background_normal: "GUI/Icons/iCancel.png"
-                on_release: root.dismiss()
+                on_release: root.call_dismiss()
         AnchorLayout:
             anchor_x: "center"
             Button:
                 size_hint: [None, None]
                 background_normal: "GUI/Icons/iConfirm.png"
                 on_release: root.delete_contact()
-                on_release: root.dismiss()
+                on_release: root.call_dismiss()
