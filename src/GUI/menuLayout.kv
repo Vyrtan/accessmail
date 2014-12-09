@@ -24,6 +24,7 @@
                 padding: 25
                 Button:
                     id: inboxBtn
+                    tooltip: "See all received e-mails"
                     size_hint: [None, None]
                     background_normal: "GUI/Icons/iInbox.png"
                     on_release: root.parent.show_layout("Inbox")
@@ -31,6 +32,7 @@
                 padding: 25
                 Button:
                     id: outboxBtn
+                    tooltip: "See all sent e-mails"
                     size_hint: [None, None]
                     background_normal: "GUI/Icons/iOutbox.png"
                     on_release: root.parent.show_layout("Outbox")
@@ -38,6 +40,7 @@
                 padding: 25
                 Button:
                     id: writeBtn
+                    tooltip: "Write a new e-mail"
                     size_hint: [None, None]
                     background_normal: "GUI/Icons/iWrite.png"
                     on_release: root.parent.show_layout("Write")
@@ -45,13 +48,15 @@
                 padding: 25
                 Button:
                     id: contactBtn
+                    tooltip: "See all contacts"
                     size_hint: [None, None]
                     background_normal: "GUI/Icons/iContacts.png"
                     on_release: root.parent.show_layout("Address")
             BoxLayout:
                 padding: 25
                 Button:
-                    id: contactBtn
+                    id: settingsBtn
+                    tooltip: "Change settings"
                     size_hint: [None, None]
                     text: "Settings"
                     # background_normal: "GUI/Icons/iContacts.png"
@@ -60,6 +65,7 @@
                 padding: 25
                 Button:
                     id: exitBtn
+                    tooltip: "Leave the application"
                     size_hint: [None, None]
                     background_normal: "GUI/Icons/iCancel.png"
                     background_down: "GUI/Icons/app_exit_down.png"

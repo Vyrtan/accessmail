@@ -57,14 +57,8 @@ class Catalog(BoxLayout):
         self.buttons = []
         self.text_input = []
         Clock.schedule_once(w.build_tree, 0)
-        # Clock.schedule_interval(self.scheduled_mouse_check, 1)
+        Clock.schedule_interval(w.detect_collision, 1)
         Window.bind(on_key_down=w.rotate_buttons)
-
-    def scheduled_mouse_check(self, _):
-        pos = Window.mouse_pos
-        for wid in self.buttons:
-            if wid.collide_point(pos[0], pos[1]):
-                print wid.background_normal
 
     # switch between the available layouts like the inbox, write, addressbook, etc.
     def show_layout(self, value, **param):

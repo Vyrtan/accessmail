@@ -4,6 +4,8 @@ from Singleton import Singleton
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.clock import Clock
+from kivy.core.window import Window
+from src.GUI.Tooltip import ToolTip
 
 
 @Singleton
@@ -14,6 +16,8 @@ class WidgetManager:
         self.popup_root = None
         self.iterable_list = []
         self.current_butt = 0
+        self.previous_mouse_position = None
+        self.tooltip_active = False
         print "Widget Manager created"
 
     def set_root_widget(self, r):
@@ -97,3 +101,33 @@ class WidgetManager:
     def unfocus_button(butt):
         orig_bg = butt.background_normal.replace("_focus", "")
         butt.background_normal = orig_bg
+
+    def detect_collision(self, _):
+        pos = Window.mouse_pos
+        print pos
+        for widget in self.iterable_list:
+            changed = False
+            if widget.collide_point(pos[0], pos[1]):
+                print "Colliding"
+                if (self.previous_mouse_position == widget) and not self.tooltip_active:
+                    tp = ToolTip(text=widget.tooltip)
+                    widget.add_widget(tp)
+                    self.tooltip_active = True
+                    changed = True
+                elif (self.previous_mouse_position == widget) and self.tooltip_active:
+                    self.tooltip_active = True
+                    changed = True
+                elif (self.previous_mouse_position != widget) and self.tooltip_active:
+                    self.tooltip_active = False
+                    self.previous_mouse_position = widget
+                else:
+                    self.previous_mouse_position = widget
+            if not changed:
+                widget.clear_widgets()
+
+# Cases of collisions:
+# 1. The collided widget is the same as the previous one and has no tooltip displayed -> display tooltip
+# 2. The collided widget is the same as the previous one and has a tooltip displayed -> change nothing
+# 3. The collided widget is not the same as the previous one and a tooltip is still being displayed
+# -> remove tooltip, edit previous one
+# 4. The collided widget is not the same as the previous one, no tooltip displayed -> edit previous one
