@@ -23,6 +23,7 @@ class InboxLayout(Screen):
     """
     grid = ObjectProperty()
     pageCount = StringProperty()
+    all_emails = StringProperty()
     emailsPerPage = 5
 
     def __init__(self, **kwargs):
@@ -31,6 +32,7 @@ class InboxLayout(Screen):
         self.mails = []
         self.nRead = 0
         self.db = Database()
+        self.all_emails = "Show only not read e-mails"
         Clock.schedule_once(self.scheduled_mail_check, 0)
         Clock.schedule_interval(self.scheduled_mail_check, 60)
 
@@ -148,7 +150,10 @@ class InboxLayout(Screen):
         :return:
         '''
         if self.nRead == 1:
+            self.all_emails = "Show only not read e-mails"
             self.nRead = 0
         else:
             self.nRead = 1
+            self.all_emails = "Show all e-mails"
+        print self.all_emails
         self.scheduled_mail_check("lolno")

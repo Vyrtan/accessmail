@@ -17,6 +17,7 @@
     size_hint: [1, None]
     Button:
         size_hint: [None, None]
+        tooltip: "Write an e-mail"
         background_normal: root.picture
         on_release: root.trigger_write_mail()
     Label:
@@ -31,6 +32,7 @@
         align_v: "center"
         Button:
             size_hint: [None, None]
+            tooltip: "Write an e-mail"
             background_normal: "GUI/Icons/iWrite.png"
             on_release: root.trigger_write_mail()
     AnchorLayout:
@@ -38,5 +40,6 @@
         align_v: "center"
         Button:
             size_hint: [None, None]
+            tooltip: "Delete this e-mail"
             background_normal: "GUI/Icons/iCancel.png"
             on_release: root.trigger_delete()

@@ -34,14 +34,17 @@
             padding: [root.width / 6, 0]
             Button:
                 size_hint: [None, None]
+                tooltip: "Switch to previous page"
                 background_normal: "GUI/Icons/iPrevious.png"
                 on_release: root.previous_page()
             Button:
                 size_hint: [None, None]
+                tooltip: "Add a new contact"
                 background_normal: "GUI/Icons/iAdd.png"
                 on_release: root.add_new_contact()
             Button:
                 size_hint: [None, None]
+                tooltip: "Switch to next page"
                 background_normal: "GUI/Icons/iNext.png"
                 on_release: root.next_page()
             Label:

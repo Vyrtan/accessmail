@@ -20,10 +20,8 @@
             size_hint: [1, 0.1]
             orientation: "horizontal"
             Button:
-                text: "Not read e-mails"
-                on_release: root.toggle_selection()
-            Button:
-                text: "All e-mails"
+                text: root.all_emails
+                tooltip: "Show only not read e-mails"
                 on_release: root.toggle_selection()
         GridLayout:
             id: grid
@@ -37,14 +35,17 @@
             padding: [root.width / 6, 0]
             Button:
                 size_hint: [None, None]
+                tooltip: "Switch to previous page"
                 background_normal: "GUI/Icons/iPrevious.png"
                 on_release: root.previous_page()
             Button:
                 size_hint: [None, None]
+                tooltip: "Check for new e-mails"
                 background_normal: "GUI/Icons/iRefresh.png"
                 on_release: root.scheduled_mail_check("lol")
             Button:
                 size_hint: [None, None]
+                tooltip: "Switch to next page"
                 background_normal: "GUI/Icons/iNext.png"
                 on_release: root.next_page()
             Label:

@@ -29,13 +29,16 @@
         text: root.subject
     Button:
         size_hint: [None, None]
+        tooltip: "Read this e-mail"
         background_normal: "GUI/Icons/iRead.png"
         on_press: root.trigger_read()
     Button:
         background_normal: "GUI/Icons/iReply.png"
+        tooltip: "Reply to this e-mail"
         size_hint: [None, None]
         on_press: root.trigger_reply()
     Button:
         background_normal: "GUI/Icons/iCancel.png"
+        tooltip: "Delete this e-mail"
         size_hint: [None, None]
         on_press: root.trigger_delete()

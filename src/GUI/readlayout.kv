@@ -53,17 +53,20 @@
                     align_h: "center"
                     Button:
                         size_hint: [None, None]
+                        tooltip: "Switch to previous e-mail"
                         background_normal: "GUI/Icons/iPrevious.png"
                         on_release: root.previous_email()
                 AnchorLayout:
                     align_h: "center"
                     Button:
                         size_hint: [None, None]
+                        tooltip: "Reply to this e-mail"
                         background_normal: "GUI/Icons/iReply.png"
                         on_release: root.trigger_reply()
                 AnchorLayout:
                     align_h: "center"
                     Button:
                         size_hint: [None, None]
+                        tooltip: "Switch to next e-mail"
                         background_normal: "GUI/Icons/iNext.png"
                         on_release: root.next_email()
