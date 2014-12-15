@@ -22,12 +22,14 @@ class ToolTip(Label):
     def __init__(self, **kwargs):
         super(ToolTip, self).__init__(**kwargs)
         # set position at current mouse cursor position
+        # TODO: adjust position so it always stays inside the window
         self.pos = (Window.mouse_pos[0], Window.mouse_pos[1])
         # update the texture value of the widget
         self.texture_update()
         # set the size of the label to that of the text
         self.size = self.texture_size
         # draw the label background
+        # TODO: Also make sure it is always in the foreground
         with self.canvas.before:
             #set the label background color to the background property as rgb list color
             #sure there must be a better method than this but it works

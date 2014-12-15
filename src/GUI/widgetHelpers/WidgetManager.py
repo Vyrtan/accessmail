@@ -104,10 +104,14 @@ class WidgetManager:
 
     def detect_collision(self, _):
         pos = Window.mouse_pos
+        widget_found = False
         print pos
         for widget in self.iterable_list:
             changed = False
-            if widget.collide_point(pos[0], pos[1]):
+            rel_pos = widget.to_widget(pos[0], pos[1], False)
+            print rel_pos
+            if widget.collide_point(rel_pos[0], rel_pos[1]):
+                widget_found = True
                 print "Colliding"
                 if (self.previous_mouse_position == widget) and not self.tooltip_active:
                     tp = ToolTip(text=widget.tooltip)
@@ -124,6 +128,8 @@ class WidgetManager:
                     self.previous_mouse_position = widget
             if not changed:
                 widget.clear_widgets()
+        if not widget_found:
+            self.previous_mouse_position = None
 
 # Cases of collisions:
 # 1. The collided widget is the same as the previous one and has no tooltip displayed -> display tooltip
