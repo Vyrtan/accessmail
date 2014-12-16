@@ -6,6 +6,10 @@
 
 <SettingsLayout>:
     grid: grid
+    txt_colourblind: txt_colourblind
+    txt_nbr_mails: txt_nbr_mails
+    txt_nbr_addresses: txt_nbr_addresses
+    txt_font_size: txt_font_size
     GridLayout:
         cols: 1
         spacing: 5
@@ -20,38 +24,56 @@
             cols: 1
             size_hint: [1, 0.7]
             # add settings here
-            GridLayout:
-                id: change_colours
-                cols: 2
+            BoxLayout:
                 Label:
-                    text: "Colour theme:"
-                Button:
-                    text: "Change something?"
-            GridLayout:
-                id: reset_database
-                cols: 2
+                    text: "Colourblind mode:"
+                TextInput:
+                    id: txt_colourblind
+                    text: ""
+                    tooltip: "(De)Activate colourblind mode"
+            BoxLayout:
                 Label:
-                    text: "Reset Database"
-                Button:
-                    text: "Reset"
-            GridLayout:
-                id: reset_database
-                cols: 2
+                    text: "Numbers of E-mails displayed:"
+                TextInput:
+                    id: txt_nbr_mails
+                    text: ""
+                    tooltip: "Define number of e-mails displayed"
+            BoxLayout:
                 Label:
-                    text: "Reset Database"
-                Button:
-                    text: "Reset"
-            GridLayout:
+                    text: "Numbers of Contacts displayed:"
+                TextInput:
+                    id: txt_nbr_addresses
+                    text: ""
+                    tooltip: "Define number of contacts displayed"
+            BoxLayout:
+                Label:
+                    text: "Font size:"
+                TextInput:
+                    id: txt_font_size
+                    text: ""
+                    tooltip: "Set the font size"
+            AnchorLayout:
                 id: button_bar
-                cols: 3
-                Button:
-                    text: ""
-                    background_normal: "GUI/Icons/iCancel.png"
-                    on_release: root.reset_settings()
-                Button:
-                    text: "Reset program"
-                    on_release: root.reset_program()
-                Button:
-                    text: ""
-                    background_normal: "GUI/Icons/iConfirm.png"
-                    on_release: root.save_settings()
+                BoxLayout:
+                    size_hint: [None, None]
+                    BoxLayout:
+                        size_hint: [None, None]
+                        Button:
+                            text: ""
+                            tooltip: "Discard changes"
+                            background_normal: "GUI/Icons/iCancel.png"
+                            on_release: root.discard_changes()
+                    BoxLayout:
+                        size_hint: [None, None]
+                        Button:
+                            text: "Reset program"
+                            size: self.texture_size
+                            tooltip: "Reset the whole program"
+                            on_release: root.reset_program()
+                    BoxLayout:
+                        size_hint: [None, None]
+                        Button:
+                            text: ""
+                            tooltip: "Save changes"
+                            background_normal: "GUI/Icons/iConfirm.png"
+                            on_release: root.save_settings()

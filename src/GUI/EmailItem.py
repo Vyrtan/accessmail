@@ -97,6 +97,6 @@ class DeletePopup(Popup):
         :return:
         '''
         db = Database()
-        db.deleteMail(self.em)
+        db.delete_mail(self.em)
         CommunicationController.delete_mail(self.em)
         self.inbox.scheduled_mail_check("lolno")

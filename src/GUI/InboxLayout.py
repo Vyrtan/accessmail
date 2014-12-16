@@ -24,7 +24,6 @@ class InboxLayout(Screen):
     grid = ObjectProperty()
     pageCount = StringProperty()
     all_emails = StringProperty()
-    emailsPerPage = 5
 
     def __init__(self, **kwargs):
         super(InboxLayout, self).__init__(**kwargs)
@@ -32,6 +31,7 @@ class InboxLayout(Screen):
         self.mails = []
         self.nRead = 0
         self.db = Database()
+        self.emailsPerPage = self.db.get_settings("nbr_mails")
         self.all_emails = "Show only not read e-mails"
         Clock.schedule_once(self.scheduled_mail_check, 0)
         Clock.schedule_interval(self.scheduled_mail_check, 60)
@@ -47,9 +47,9 @@ class InboxLayout(Screen):
         CommunicationController.getEmailsFromServer()
         db = Database()
         if self.nRead:
-            self.mails = db.getNotReadMails()
+            self.mails = db.get_not_read_mails()
         else:
-            self.mails = db.getAllMails()
+            self.mails = db.get_all_mails()
         self.display_emails()
 
     #the kivy properties don't always load properly
@@ -73,7 +73,7 @@ class InboxLayout(Screen):
         :return: emails: All e-mails found in the database.
         :rtype: [Emails]: List of Emails
         '''
-        emails = self.db.getAllMails()
+        emails = self.db.get_all_mails()
         return emails
 
     def display_emails(self):

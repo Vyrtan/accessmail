@@ -103,7 +103,7 @@ class ProviderDataLayout(GridLayout):
             else:
                 imapCon.login(email, password)
             db = Database()
-            db.createInbox("test", "test", email, account, password,
+            db.create_inbox("test", "test", email, account, password,
                            clunkyConfig[self.provider]["IMAP"]["host"], clunkyConfig[self.provider]["SMTP"]["host"],
                            clunkyConfig[self.provider]["IMAP"]["port"], clunkyConfig[self.provider]["SMTP"]["port"],
                            clunkyConfig[self.provider]["IMAP"]["ssl"], clunkyConfig[self.provider]["SMTP"]["ssl"],

@@ -30,6 +30,10 @@ def upgrade():
     sa.Column('imapSSL', sa.Integer(), nullable=True),
     sa.Column('smtpSSL', sa.Integer(), nullable=True),
     sa.Column('smtpAuth', sa.Integer(), nullable=True),
+    sa.Column('nbr_mails', sa.Integer(), nullable=True),
+    sa.Column('nbr_addresses', sa.Integer(), nullable=True),
+    sa.Column('colourblind_mode', sa.Integer(), nullable=True),
+    sa.Column('font_size', sa.Integer(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_index('ix_inboxes_password', 'inboxes', ['password'], unique=False)

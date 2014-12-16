@@ -45,7 +45,7 @@ class SMTPSender(object):
 
 if __name__ == '__main__':
     db = Database()
-    inbox = db.getInbox()
+    inbox = db.get_inbox()
     dicti = {
         'host': inbox.smtpServer,
         'port': inbox.smtpPort,

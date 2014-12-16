@@ -53,7 +53,7 @@ class CommunicationController(object):
         try:
             # open database connection and get credentials
             db = Database()
-            inbox = db.getInbox()
+            inbox = db.get_inbox()
 
             # establish IMAP Connection
             imapCon = imaplib.IMAP4_SSL(inbox.imapServer, int(inbox.imapPort))
@@ -101,7 +101,7 @@ class CommunicationController(object):
                     message = e.get_payload()
                 m.message = message
                 m.inboxId = inboxID
-                db.insertMail(m)
+                db.insert_mail(m)
                 index += 1
 
             # close database connection
@@ -123,7 +123,7 @@ class CommunicationController(object):
 
         # open database connection and get credentials
         db = Database()
-        inbox = db.getInbox()
+        inbox = db.get_inbox()
         try:
             # establish IMAP Connection
             imap_con = imaplib.IMAP4_SSL(inbox.imapServer, int(inbox.imapPort))
@@ -161,7 +161,7 @@ class CommunicationController(object):
         try:
             # open database connection and get credentials
             db = Database()
-            inbox = db.getInbox()
+            inbox = db.get_inbox()
 
             # establish IMAP Connection
             imapCon = imaplib.IMAP4_SSL(inbox.imapServer, int(inbox.imapPort))
@@ -210,7 +210,7 @@ class CommunicationController(object):
                     message = e.get_payload()
                 m.message = message
                 m.inboxId = inboxID
-                db.insertMail(m)
+                db.insert_mail(m)
                 index += 1
 
             # close database connection

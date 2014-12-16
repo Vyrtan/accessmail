@@ -18,10 +18,10 @@ class AddressLayout(Screen):
 
     def __init__(self, **kwargs):
         super(AddressLayout, self).__init__(**kwargs)
-        self.contsPerPage = 5
         self.contacts = []
         self.counter = 0
         self.db = Database()
+        self.contsPerPage = self.db.get_settings("nbr_addresses")
 
     def on_grid(self, instance, value):
         '''
@@ -79,7 +79,7 @@ class AddressLayout(Screen):
 
         :return:
         '''
-        contacts = self.db.getContacts()
+        contacts = self.db.get_contacts()
         self.contacts = contacts
         self.display_contacts()
 
@@ -101,7 +101,7 @@ class AddressLayout(Screen):
         :param contact:
         :return:
         '''
-        self.db.deleteContact(contact)
+        self.db.delete_contact(contact)
         self.contacts.remove(contact)
         self.grid.clear_widgets()
         self.get_contacts_from_db()
@@ -154,7 +154,7 @@ class AddContactPopup(Popup):
         newContact.emailAddress = self.address.text
         newContact.name = self.name.text
         newContact.picture = self.file_chooser.selection[0]
-        self.db.insertContact(newContact)
+        self.db.insert_contact(newContact)
         self.par.get_contacts_from_db()
         self.dismiss()
 

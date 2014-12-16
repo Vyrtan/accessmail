@@ -12,6 +12,7 @@ The "Inbox" class defines which information about an account are needed.
 The "Contacts" class is used to store contact objects in the model.
 '''
 
+
 class Mails(Base):
     __tablename__ = 'mails'
 
@@ -32,6 +33,7 @@ class Mails(Base):
 class Inbox(Base):
     __tablename__ = 'inboxes'
 
+    # regular mail communication stuff
     id = Column(Integer, primary_key=True)
     userMail = Column(String(255))
     account = Column(String(255))
@@ -50,6 +52,13 @@ class Inbox(Base):
     smtpSSL = Column(Integer())
 
     smtpAuth = Column(Integer())
+
+    # settings
+    nbr_mails = Column(Integer())
+    nbr_addresses = Column(Integer())
+    colourblind_mode = Column(Integer())
+    font_size = Column(Integer())
+
     caches = relationship("Mails")
 
 

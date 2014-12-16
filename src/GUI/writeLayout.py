@@ -1,4 +1,4 @@
-from kivy.properties import ObjectProperty, StringProperty
+from kivy.properties import ObjectProperty, StringProperty, NumericProperty
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.popup import Popup
@@ -26,10 +26,13 @@ class WriteLayout(Screen):
     subject = ObjectProperty(None)
     message = ObjectProperty(None)
     email = ObjectProperty()
+    text_size = NumericProperty()
 
     def __init__(self, **kwargs):
         super(WriteLayout, self).__init__(**kwargs)
         self.email = None
+        self.db = Database()
+        self.text_size = self.db.get_settings("font_size")
 
     def on_email(self, instance, value):
         if self.email:
@@ -88,7 +91,7 @@ class WriteLayout(Screen):
             popup.open()
         else:
             db = Database()
-            inbox = db.getInbox()
+            inbox = db.get_inbox()
             if(inbox.smtpServer=="smtp.web.de"):
                 dicti = {
                     'host': inbox.smtpServer,

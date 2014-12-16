@@ -1,7 +1,7 @@
 __author__ = 'grafgustav'
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, NumericProperty
 from time import strptime
 from src.database import Database
 from src.models import Mails
@@ -21,11 +21,13 @@ class ReadLayout(Screen):
     email = ObjectProperty()
     textOutput = ObjectProperty(None)
     subject = ObjectProperty()
+    text_size = NumericProperty()
 
     def __init__(self, **kwargs):
         super(ReadLayout, self).__init__(**kwargs)
         self.email = None
         self.db = Database()
+        self.text_size = self.db.get_settings("font_size")
 
     def on_email(self, instance, value):
         '''
@@ -38,7 +40,7 @@ class ReadLayout(Screen):
         if not self.email:
             return
         db = Database()
-        db.markMailAsRead(self.email)
+        db.mark_mail_as_read(self.email)
         self.display_email()
 
     def display_email(self):
@@ -67,7 +69,7 @@ class ReadLayout(Screen):
         # oldD = strptime(self.email.date, "%a, %d %b %Y %H:%M:%S +0000")
         if not self.email:
             return
-        allMails = self.db.getAllMails()
+        allMails = self.db.get_all_mails()
         currMail = self.email
         for m in allMails:
             if m.id == currMail.id:
@@ -86,7 +88,7 @@ class ReadLayout(Screen):
         '''
         if not self.email:
             return
-        allMails = self.db.getAllMails()
+        allMails = self.db.get_all_mails()
         currMail = self.email
         for m in allMails:
             if m.id == currMail.id:

@@ -28,6 +28,7 @@
                     tooltip: "The sender"
                     readonly: True
                     write_tab: False
+                    font_size: root.text_size
                     text: ""
                 Label:
                     size_hint: [0.2, 1]
@@ -38,6 +39,7 @@
                     tooltip: "The subject"
                     readonly: True
                     write_tab: False
+                    font_size: root.text_size
                     text: ""
             ScrollView:
                 id: scrlv
@@ -46,6 +48,7 @@
                     id: textOutput
                     tooltip: "The message"
                     text: ""
+                    font_size: root.text_size
                     readonly: True
                     write_tab: False
                     # use_bubble: True

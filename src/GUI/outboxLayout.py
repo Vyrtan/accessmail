@@ -33,7 +33,7 @@ class OutboxLayout(Screen):
     def scheduled_mail_check(self, _):
         CommunicationController.getSentFromServer()
         db = Database()
-        self.mails = db.getSentMails()
+        self.mails = db.get_sent_mails()
         self.display_emails()
 
     #the kivy properties don't always load properly
@@ -42,7 +42,7 @@ class OutboxLayout(Screen):
         self.display_emails()
 
     def get_emails_from_db(self):
-        emails = self.db.getAllMails()
+        emails = self.db.get_all_mails()
         return emails
 
     def display_emails(self):
