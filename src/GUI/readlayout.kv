@@ -27,6 +27,7 @@
                     id: sender
                     tooltip: "The sender"
                     readonly: True
+                    write_tab: False
                     text: ""
                 Label:
                     size_hint: [0.2, 1]
@@ -36,6 +37,7 @@
                     id: subject
                     tooltip: "The subject"
                     readonly: True
+                    write_tab: False
                     text: ""
             ScrollView:
                 id: scrlv
@@ -45,6 +47,7 @@
                     tooltip: "The message"
                     text: ""
                     readonly: True
+                    write_tab: False
                     # use_bubble: True
                     size_hint: 1, None
                     # max( (len(self._lines)+1) * self.line_height, scrlv.height)

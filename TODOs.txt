@@ -1,4 +1,6 @@
 Priorisierte und geordnete TODOs:
+Since there are exclusively german developers working on this project, this list has been written in German.
+For questions about TODO's please contact the owner of the repository
 
 Accessibility:
 Höchste Priorität:

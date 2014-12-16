@@ -76,7 +76,7 @@ class Catalog(BoxLayout):
         if self.screen_manager.current == value:
             return
         if value == "Read":
-            Window.clearcolor = (1,0.9,0.9,1)
+            Window.clearcolor = (1, 0.6, 0.204, 1)
             read = param.get("email", None)
             self.screen_manager.current = value
             if read:
@@ -84,7 +84,7 @@ class Catalog(BoxLayout):
             else:
                 self.screen_manager.current_screen.email = self.empty_email()
         elif value == "Write":
-            Window.clearcolor = (1,1,0.9,1)
+            Window.clearcolor = (1, 1, 0.408, 1)
             email = param.get("email", None)
             self.screen_manager.current = value
             if email:
@@ -92,7 +92,16 @@ class Catalog(BoxLayout):
             else:
                 self.screen_manager.current_screen.email = self.empty_email()
         else:
-            Window.clearcolor = (1,1,1,1)
+            if value == "Outbox":
+                Window.clearcolor = (1, 0.408, 0.698, 1)
+            elif value == "Address":
+                Window.clearcolor = (0.6, 0.816, 1, 1)
+            elif value == "Settings":
+                Window.clearcolor = (0.204, 1, 0.204, 1)
+            elif value == "Inbox":
+                Window.clearcolor = (0.628, 0.628, 0.628, 1)
+            else:
+                Window.clearcolor = (1, 1, 1, 1)
             self.screen_manager.current = value
         WidgetManager.Instance().build_tree("a")
 
@@ -110,7 +119,6 @@ class Catalog(BoxLayout):
 
     # currently not used method to rotate through menu buttons
     # there is no solution yet to get all available buttons in the currently displayed Layout
-
 
     def on_exit_press(self):
         '''
