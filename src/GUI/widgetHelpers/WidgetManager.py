@@ -71,10 +71,19 @@ class WidgetManager:
                 if current_element.focus:
                     return
             previous_element = current_element
-            if self.current_butt < len(merged_list) - 1:
-                    self.current_butt += 1
+            if len(args[-1]) > 0:
+                print args[-1][0]
+                if args[-1][0] == "shift":
+                    print "Going back"
+                    if self.current_butt > 0:
+                        self.current_butt -= 1
+                    else:
+                        self.current_butt = len(merged_list) - 1
             else:
-                self.current_butt = 0
+                if self.current_butt < len(merged_list) - 1:
+                        self.current_butt += 1
+                else:
+                    self.current_butt = 0
             current_element = merged_list[self.current_butt]
             if type(current_element) == TextInput:
                 current_element.focus = True
