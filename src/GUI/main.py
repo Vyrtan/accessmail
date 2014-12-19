@@ -104,6 +104,7 @@ class Catalog(BoxLayout):
                 Window.clearcolor = (1, 1, 1, 1)
             self.screen_manager.current = value
         WidgetManager.Instance().build_tree("a")
+        WidgetManager.Instance().unfocus_all_buttons()
 
     @staticmethod
     def empty_email():
@@ -157,11 +158,11 @@ class MainApp(App):
         # get the screen resolution
         window = gtk.Window()
         screen = window.get_screen()
-        width =  screen.get_width()
+        width = screen.get_width()
         height = screen.get_height()
 
         # set the background color to white
-        Window.clearcolor = (1, 1, 1, 1)
+        Window.clearcolor = (0.628, 0.628, 0.628, 1)
 
         # set the window size to the previously calculated screen resolution
         Window.size = width, height

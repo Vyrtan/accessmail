@@ -271,11 +271,11 @@ class Database:
         self.execute()
         return inbox
 
-    #function not used yet
-    # def resetAll(self):
-    #     print("Deleting everything")
-    #     self.session.expunge_all()
-    #     self.execute()
+    # function not used yet
+    def reset_database(self):
+        print("Deleting everything")
+        self.session.expunge_all()
+        self.execute()
 
     def execute(self):
         """

@@ -48,7 +48,7 @@ class SettingsLayout(Screen):
     def reset_program(self):
         # reset the entire database
         print "Reset database"
-        self.db.edit_settings("font_size", 10)
+        self.db.reset_database()
         self.restart_program()
 
     @staticmethod

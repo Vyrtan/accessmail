@@ -67,14 +67,14 @@ class WidgetManager:
         merged_list = self.iterable_list
         current_element = merged_list[self.current_butt]
         if key == 9:
+            # Don't switch further if you're in a TextInput field
             if type(current_element) == TextInput:
                 if current_element.focus:
                     return
             previous_element = current_element
+            # define whether to iterate forwards or backwards through the widgets
             if len(args[-1]) > 0:
-                print args[-1][0]
                 if args[-1][0] == "shift":
-                    print "Going back"
                     if self.current_butt > 0:
                         self.current_butt -= 1
                     else:
@@ -94,6 +94,7 @@ class WidgetManager:
                 self.focus_button(current_element)
             else:
                 print "Error: Object neither Button nor TextInput"
+        # call the event of the button focused
         if key == 13:
             if type(current_element) != TextInput:
                 self.unfocus_button(current_element)
@@ -102,7 +103,9 @@ class WidgetManager:
     @staticmethod
     def focus_button(butt):
         old_bg = butt.background_normal
-        new_bg = old_bg[0:-4] + "_focus.png"
+        new_bg = old_bg
+        if not "_focus" in old_bg:
+            new_bg = old_bg[0:-4] + "_focus.png"
         if old_bg != "atlas://data/images/defaulttheme/button":
             butt.background_normal = new_bg
 
@@ -110,6 +113,10 @@ class WidgetManager:
     def unfocus_button(butt):
         orig_bg = butt.background_normal.replace("_focus", "")
         butt.background_normal = orig_bg
+
+    def unfocus_all_buttons(self):
+        for butt in self.iterable_list:
+            self.unfocus_button(butt)
 
     def detect_collision(self, _):
         pos = Window.mouse_pos

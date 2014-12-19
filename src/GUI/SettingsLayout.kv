@@ -22,9 +22,10 @@
         GridLayout:
             id: grid
             cols: 1
-            size_hint: [1, 0.7]
+            size_hint: [1, 0.9]
             # add settings here
             BoxLayout:
+                size_hint: [1, 0.2]
                 Label:
                     text: "Colourblind mode:"
                 TextInput:
@@ -32,6 +33,7 @@
                     text: ""
                     tooltip: "(De)Activate colourblind mode"
             BoxLayout:
+                size_hint: [1, 0.2]
                 Label:
                     text: "Numbers of E-mails displayed:"
                 TextInput:
@@ -39,6 +41,7 @@
                     text: ""
                     tooltip: "Define number of e-mails displayed"
             BoxLayout:
+                size_hint: [1, 0.2]
                 Label:
                     text: "Numbers of Contacts displayed:"
                 TextInput:
@@ -46,34 +49,33 @@
                     text: ""
                     tooltip: "Define number of contacts displayed"
             BoxLayout:
+                size_hint: [1, 0.2]
                 Label:
                     text: "Font size:"
                 TextInput:
                     id: txt_font_size
                     text: ""
                     tooltip: "Set the font size"
-            AnchorLayout:
-                id: button_bar
+            BoxLayout:
+                size_hint: [None, None]
+                orientation: "horizontal"
                 BoxLayout:
                     size_hint: [None, None]
-                    BoxLayout:
-                        size_hint: [None, None]
-                        Button:
-                            text: ""
-                            tooltip: "Discard changes"
-                            background_normal: "GUI/Icons/iCancel.png"
-                            on_release: root.discard_changes()
-                    BoxLayout:
-                        size_hint: [None, None]
-                        Button:
-                            text: "Reset program"
-                            size: self.texture_size
-                            tooltip: "Reset the whole program"
-                            on_release: root.reset_program()
-                    BoxLayout:
-                        size_hint: [None, None]
-                        Button:
-                            text: ""
-                            tooltip: "Save changes"
-                            background_normal: "GUI/Icons/iConfirm.png"
-                            on_release: root.save_settings()
+                    Button:
+                        text: ""
+                        tooltip: "Discard changes"
+                        background_normal: "GUI/Icons/iCancel.png"
+                        on_release: root.discard_changes()
+                BoxLayout:
+                    size_hint: [None, None]
+                    Button:
+                        text: "Reset"
+                        tooltip: "Reset the whole program"
+                        on_release: root.reset_program()
+                BoxLayout:
+                    size_hint: [None, None]
+                    Button:
+                        text: ""
+                        tooltip: "Save changes"
+                        background_normal: "GUI/Icons/iConfirm.png"
+                        on_release: root.save_settings()
