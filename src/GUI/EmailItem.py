@@ -21,8 +21,7 @@ class EmailItem(BoxLayout):
     :param email: The email to be displayed.
     :param kwargs:
     """
-    name = StringProperty()
-    email = StringProperty()
+    display_name = StringProperty()
     subject = StringProperty()
     root = ObjectProperty()
     oMail = ObjectProperty()
@@ -32,8 +31,9 @@ class EmailItem(BoxLayout):
     def __init__(self, email, rootwidget, **kwargs):
         super(EmailItem, self).__init__(**kwargs)
         self.oMail = email
-        self.name = string.split(email._from, "@")[0]
         self.email = email._from
+        name = kwargs.get("name", None)
+        self.display_name = name if name else email._from
         self.grey = False
         self.read = email.read
         self.rootwidget = rootwidget

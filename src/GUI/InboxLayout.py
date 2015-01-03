@@ -23,16 +23,18 @@ class InboxLayout(Screen):
     """
     grid = ObjectProperty()
     pageCount = StringProperty()
-    all_emails = StringProperty()
+    all_emails_text = StringProperty()
 
     def __init__(self, **kwargs):
         super(InboxLayout, self).__init__(**kwargs)
         self.counter = 0
         self.mails = []
+        self.contacts = []
         self.nRead = 0
         self.db = Database()
         self.emailsPerPage = self.db.get_settings("nbr_mails")
-        self.all_emails = "Show only not read e-mails"
+        self.all_emails_text = "Show only not read e-mails"
+        print type(self.all_emails_text)
         Clock.schedule_once(self.scheduled_mail_check, 0)
         Clock.schedule_interval(self.scheduled_mail_check, 60)
 
@@ -45,11 +47,10 @@ class InboxLayout(Screen):
         :return:
         '''
         CommunicationController.getEmailsFromServer()
-        db = Database()
         if self.nRead:
-            self.mails = db.get_not_read_mails()
+            self.mails = self.db.get_not_read_mails()
         else:
-            self.mails = db.get_all_mails()
+            self.mails = self.db.get_all_mails()
         self.display_emails()
 
     #the kivy properties don't always load properly
@@ -75,6 +76,16 @@ class InboxLayout(Screen):
         '''
         emails = self.db.get_all_mails()
         return emails
+
+    def get_contacts_from_db(self):
+        '''
+        This method loads the contacts from the database and returns them.
+
+        :return: contacts: All contacts found in the database.
+        :rtype: [Contacts]: List of Contacts
+        '''
+        contacts = self.db.get_contacts()
+        return contacts
 
     def display_emails(self):
         '''
@@ -150,10 +161,10 @@ class InboxLayout(Screen):
         :return:
         '''
         if self.nRead == 1:
-            self.all_emails = "Show only not read e-mails"
+            self.all_emails_text = "Show only not read e-mails"
             self.nRead = 0
         else:
             self.nRead = 1
-            self.all_emails = "Show all e-mails"
-        print self.all_emails
+            self.all_emails_text = "Show all e-mails"
+        print self.all_emails_text
         self.scheduled_mail_check("lolno")

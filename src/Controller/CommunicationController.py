@@ -6,22 +6,7 @@ from src.database import Database
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from src.models import Mails
-
-clunkyConfig = {
-    0: {
-        "IMAP": {
-            "host": "imap.gmail.com",
-            "port": 993,
-            "ssl": True
-        },
-        "SMTP": {
-            "host": "smtp.gmail.com",
-            "port": 465,
-            "ssl": True,
-            "auth": True
-        }
-    }
-}
+from clunky_config import clunkyConfig
 
 
 class CommunicationController(object):

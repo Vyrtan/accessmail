@@ -89,8 +89,8 @@ class Database:
         :type Mails: Mails
         :return:
         """
-        # TODO: change this to actually using the power of sqlalchemy
-        self.session.execute("UPDATE Mails SET read=1 WHERE id=%d;"%(email.id))
+        db_mail = self.session.query(Mails).filter(Mails.id == email.id).one()
+        db_mail.read = 1
         self.execute()
 
     def get_not_read_mails(self):
@@ -266,8 +266,7 @@ class Database:
         :param value: the value to be set
         """
         inbox = self.session.query(Inbox).first()
-        # TODO: change this to actually using the power of sqlalchemy
-        self.session.execute("UPDATE inboxes SET %s=%d WHERE id=%d;"%(identifier, value, inbox.id))
+        setattr(inbox, identifier, value)
         self.execute()
         return inbox
 
